@@ -1,11 +1,10 @@
 //Drive base code for 2017 Mechabytes MRDC team
 //Standard 8wd "Halo" drive control with passive omni drop down for pinpoint turns
-//Written by Billy Doherty
 
 #include "Arduino.h"
 #include "DriveBase.h"
 
-DriveBase::DriveBase(int leftPWM, int rightPWM, int omniSolenoid)
+DriveBase::DriveBase(int leftPWM, int rightPWM, bool omniSolenoid)
 {
 //subsystem setup, assigns pin number and initializes pin
 
