@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include "Arm.h"
-
+//this is my domain <3 :) -Jason
 Arm::Arm(int PWM1, int PWM2)
 {
 //subsystem setup, assigns pin number and initializes pin

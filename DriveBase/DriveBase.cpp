@@ -1,6 +1,6 @@
 //Drive base code for 2017 Mechabytes MRDC team
 //Standard 8wd "Halo" drive control with passive omni drop down for pinpoint turns
-//Ingrid testing
+//Drivin' and Derivin' Wheely Wheely TooT TooT: Aditya Chitnis
 #include "Arduino.h"
 #include "DriveBase.h"
 
