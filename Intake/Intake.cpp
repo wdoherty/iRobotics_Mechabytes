@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include "Intake.h"
-
+//Kyle Patel
 Intake::Intake(int PWM)
 {
 //subsystem setup, assigns pin number and initializes pin
@@ -25,7 +25,7 @@ void Intake::runIntake(bool lTrigger, bool rTrigger)
 {
 //if left trigger held, run intake out
 //if right trigger held, run intake in
-//right trigger taakes priority
+//right trigger takes priority
 
 if(rTrigger)
 {
