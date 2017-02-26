@@ -10,14 +10,16 @@ class DriveBase
 {
 public:
 
-  DriveBase(int leftPWM, int rightPWM, bool omniSolenoid);
+  DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, int omniSolenoid);
   void updateDrive(double lStickY, double rStickX, bool propToggle);
 
 private:
 
-  int lPWM;
-  int rPWM;
-  bool _omniSolenoid;
+  int lPWM1;
+  int lPWM2;
+  int rPWM1;
+  int rPWM2;
+  int _omniSolenoid;
   double _lStickY = 0.0;
   double _rStickX = 0.0;
   bool _propToggle = false;

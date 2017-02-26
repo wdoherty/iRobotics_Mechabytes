@@ -1,6 +1,9 @@
 -IC:\Users\Billy\.platformio\packages\framework-arduinoavr\cores\arduino
 -IC:\Users\Billy\.platformio\packages\framework-arduinoavr\variants\mega
 -IC:\Users\Billy\Desktop\Mechabytes\RobotCode\src
+-IC:\Users\Billy\.platformio\lib\Library_0bedb
+-IC:\Users\Billy\.platformio\lib\Library_3e8c2
+-IC:\Users\Billy\.platformio\lib\Library_4437c
 -IC:\Users\Billy\.platformio\packages\framework-arduinoavr\libraries\Bridge\src
 -IC:\Users\Billy\.platformio\packages\framework-arduinoavr\libraries\EEPROM\src
 -IC:\Users\Billy\.platformio\packages\framework-arduinoavr\libraries\Esplora\src
