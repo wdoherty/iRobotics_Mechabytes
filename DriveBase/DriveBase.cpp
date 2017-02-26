@@ -4,16 +4,20 @@
 #include "Arduino.h"
 #include "DriveBase.h"
 
-DriveBase::DriveBase(int leftPWM, int rightPWM, bool omniSolenoid)
+DriveBase::DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, int omniSolenoid)
 {
 //subsystem setup, assigns pin number and initializes pin
 
-  lPWM = leftPWM;
-  rPWM = rightPWM;
+  lPWM1 = leftPWM1;
+  lPWM2 = leftPWM2;
+  rPWM1 = rightPWM1;
+  rPWM2 = rightPWM2;
   _omniSolenoid = omniSolenoid;
 
-  pinMode(lPWM, OUTPUT);
-  pinMode(rPWM, OUTPUT);
+  pinMode(lPWM1, OUTPUT);
+  pinMode(rPWM1, OUTPUT);
+  pinMode(lPWM2, OUTPUT);
+  pinMode(rPWM2, OUTPUT);
   pinMode(_omniSolenoid, OUTPUT);
 }
 
@@ -31,8 +35,10 @@ void DriveBase::setThrottle()
 
 //sends value to speed controller
 
-  analogWrite(lPWM, lSpeed);
-  analogWrite(rPWM, rSpeed);
+  analogWrite(lPWM1, lSpeed);
+  analogWrite(lPWM2, lSpeed);
+  analogWrite(rPWM1, rSpeed);
+  analogWrite(rPWM2, rSpeed);
 }
 
 void DriveBase::setOmniDrop(boolean state)
@@ -41,7 +47,7 @@ void DriveBase::setOmniDrop(boolean state)
   digitalWrite(_omniSolenoid, state);
 }
 
-void DriveBase::updateDrive(double lStickY, double rStickX, boolean propToggle)
+void DriveBase::updateDrive(double lStickY, double rStickX, bool propToggle)
 {
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,
