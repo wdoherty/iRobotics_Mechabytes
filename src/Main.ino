@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <Arm.h>
+#include <DriveBase.h>
+#include <Intake.h>
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
 
@@ -15,6 +18,15 @@ byte checkSumTX;    // check sum for transmitting data
 byte checkSumRX;    // check sum for recieving data
 unsigned long read_time;
 
+#define DriveL1 2
+#define DriveL2 3
+#define DriveR1 4
+#define DriveR2 5
+#define intake 6
+#define lift 7
+#define arm 8
+#define wrist 9
+
 void failsafe(){
     // write the code below that you want to run
     // when the robot loses a signal here
@@ -26,7 +38,6 @@ void setup(){
     //declare the serial port for comms
     //the paramater of the begin function is the baudrate
     Serial1.begin(9600);
-
     // initialize the variables to 0
     memset(controller,0,sizeof(controller));
     memset(feedback,0,sizeof(feedback));
