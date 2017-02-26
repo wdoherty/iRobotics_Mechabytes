@@ -8,15 +8,19 @@ class Arm
 {
 public:
 
-  Arm(int PWM1, int PWM2);
-  void setArm();
+  Arm(int armPWM1, int armPWM2, int clawPWM1, int clawPWM2);
+  void setArm(int lTrigger, int rTrigger, int rButton, int lButton);
 
 private:
 
   int _PWM1;
   int _PWM2;
-  int speed;
-
+  int _PWM3;
+  int _PWM4;
+  int armSpeed;
+  int clawSpeed;
+  void setArmSpeed(int state);
+  void setClawSpeed(int state);
 };
 
 #endif
