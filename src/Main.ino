@@ -27,10 +27,12 @@ unsigned long read_time;
 #define arm 8
 #define wrist 9
 
+#define omniSolenoid 15
+
 void failsafe(){
     // write the code below that you want to run
     // when the robot loses a signal here
-
+    arm.armFailsafe();
     connection = false;
 }
 
@@ -41,6 +43,7 @@ void setup(){
     // initialize the variables to 0
     memset(controller,0,sizeof(controller));
     memset(feedback,0,sizeof(feedback));
+    Arm arm = Arm(arm, wrist);
     connection = true;
     failsafe();
     read_time = millis();
