@@ -39,6 +39,15 @@ void Arm::setClawSpeed(int state)
     analogWrite(_PWM4, -clawSpeed);
 }
 
+void Arm::armFailsafe()
+{
+  analogWrite(_PWM1, 0);
+  analogWrite(_PWM2, 0);
+
+  analogWrite(_PWM3, 0);
+  analogWrite(_PWM4, 0);
+}
+
 void Arm::setArm(int lTrigger, int rTrigger, int rButton, int lButton)
 {
 //if left trigger held, run intake out

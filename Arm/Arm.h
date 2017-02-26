@@ -10,6 +10,7 @@ public:
 
   Arm(int armPWM1, int armPWM2, int clawPWM1, int clawPWM2);
   void setArm(int lTrigger, int rTrigger, int rButton, int lButton);
+  void armFailsafe();
 
 private:
 
