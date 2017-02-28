@@ -12,6 +12,7 @@ public:
 
   DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, int omniSolenoid);
   void updateDrive(double lStickY, double rStickX, bool propToggle);
+  void driveBaseFailsafe();
 
 private:
 

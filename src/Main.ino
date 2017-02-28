@@ -22,17 +22,20 @@ unsigned long read_time;
 #define DriveL2 3
 #define DriveR1 4
 #define DriveR2 5
-#define intake 6
+#define rollers 6
 #define lift 7
 #define arm 8
 #define wrist 9
 
 #define omniSolenoid 15
+#define doorSolenoid 16
 
 void failsafe(){
     // write the code below that you want to run
     // when the robot loses a signal here
     arm.armFailsafe();
+    intake.StopAllMotors();
+    drive.driveBaseFailsafe();
     connection = false;
 }
 
@@ -45,7 +48,7 @@ void setup(){
     memset(feedback,0,sizeof(feedback));
     Arm arm = Arm(arm, wrist);
     DriveBase drive = DriveBase(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
-    
+    Intake intake = Intake(rollers, doorSolenoid);
     connection = true;
     failsafe();
     read_time = millis();

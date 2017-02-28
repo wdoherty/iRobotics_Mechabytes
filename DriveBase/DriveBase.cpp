@@ -21,6 +21,14 @@ DriveBase::DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, i
   pinMode(_omniSolenoid, OUTPUT);
 }
 
+void DriveBase::driveBaseFailsafe()
+{
+  analogWrite(lPWM1, 0);
+  analogWrite(lPWM2, 0);
+  analogWrite(rPWM1, 0);
+  analogWrite(rPWM2, 0);
+}
+
 void DriveBase::setThrottle()
 {
 //maps decimal 0.00-1.00 to 0-255 for PWM control
