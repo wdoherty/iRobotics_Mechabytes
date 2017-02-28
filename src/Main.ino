@@ -45,6 +45,7 @@ void setup(){
     memset(feedback,0,sizeof(feedback));
     Arm arm = Arm(arm, wrist);
     DriveBase drive = DriveBase(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
+
     connection = true;
     failsafe();
     read_time = millis();

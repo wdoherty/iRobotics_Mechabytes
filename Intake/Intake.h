@@ -8,14 +8,18 @@ class Intake
 {
 public:
 
-  Intake(int PWM);
-  void runIntake(bool lTrigger, bool rTrigger);
+  Intake(int PWM, int pistonIO);
+  void runIntake(bool lTrigger, bool rTrigger, bool piston);
+  void StopAllMotors();
 
 private:
-
+  bool piston_out = false;
+  int _PISTON;
   int _PWM;
   int speed;
+  bool prevState = false;
   void setSpeed(int state);
+  void runPiston(bool piston);
 };
 
 #endif
