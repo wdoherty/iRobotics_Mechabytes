@@ -19,6 +19,7 @@ byte checkSumRX;    // check sum for recieving data
 
 byte driveThrottle;
 byte driveHeading;
+bool omniTrigger
 
 unsigned long read_time;
 
@@ -112,8 +113,8 @@ void loop(){
         // basically all the motor control stuff
         driveThrottle = data[3];
         driveHeading = data[4];
-
-
+        omniTrigger = (1B == ((data[0] & 10000) >> 4));
+        drive.updateDrive(driveThrottle, driveHeading, omniTrigger);
 
 
 

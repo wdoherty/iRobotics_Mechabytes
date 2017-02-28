@@ -40,6 +40,7 @@ void DriveBase::setThrottle()
 
   if(abs(lSpeed) > 255) lSpeed = 255*(abs(lSpeed)/lSpeed);
   if(abs(rSpeed) > 255) rSpeed = 255*(abs(rSpeed)/rSpeed);
+  
 
 //sends value to speed controller
 
