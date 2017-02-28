@@ -33,13 +33,13 @@ void DriveBase::setThrottle()
 {
 //maps decimal 0.00-1.00 to 0-255 for PWM control
 
-  lSpeed = (int) _lStickY;
-  rSpeed = (int) _rStickX;
+  lSpeed = (int) _lStickY + (int) _rStickX;
+  rSpeed = (int) _lStickY - (int) _rStickX;
 
 //constrains motor values to within the PWM limits
 
-  //if(abs(lSpeed) > 255) lSpeed = 255*(abs(lSpeed)/lSpeed);
-  //if(abs(rSpeed) > 255) rSpeed = 255*(abs(rSpeed)/rSpeed);
+  if(abs(lSpeed) > 255) lSpeed = 255*(abs(lSpeed)/lSpeed);
+  if(abs(rSpeed) > 255) rSpeed = 255*(abs(rSpeed)/rSpeed);
 
 //sends value to speed controller
 

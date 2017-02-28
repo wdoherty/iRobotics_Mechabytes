@@ -17,6 +17,9 @@ byte size;
 byte checkSumTX;    // check sum for transmitting data
 byte checkSumRX;    // check sum for recieving data
 
+byte driveThrottle;
+byte driveHeading;
+
 unsigned long read_time;
 
 #define DriveL1 2
@@ -107,7 +110,8 @@ void loop(){
         // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
-
+        driveThrottle = data[3];
+        driveHeading = data[4];
 
 
 
