@@ -17,9 +17,18 @@ byte size;
 byte checkSumTX;    // check sum for transmitting data
 byte checkSumRX;    // check sum for recieving data
 
-byte driveThrottle;
+byte driveThrottle; //drive variables
 byte driveHeading;
-bool omniTrigger
+bool omniTrigger;
+
+bool doorTrigger;   //intake variables
+bool intakeTrigger;
+bool scoreTrigger;
+
+byte lTrigger;      //arm variables
+byte rTrigger;
+bool clawCW;
+bool clawCCW;
 
 unsigned long read_time;
 
@@ -113,10 +122,19 @@ void loop(){
         // basically all the motor control stuff
         driveThrottle = data[3];
         driveHeading = data[4];
-        omniTrigger = (1B == ((data[0] & 10000) >> 4));
+        omniTrigger = (1B == ((data[0] & 10000B) >> 4));
         drive.updateDrive(driveThrottle, driveHeading, omniTrigger);
 
+        intakeTrigger = (1B == ((data[0] & 100000B) >> 5));
+        doorTrigger = (1B == ((data[0] & 1000B) >> 3));
+        scoreTrigger = (1B == ((data[0] & 10B) >> 1));
+        intake.runIntake(scoreTrigger, intakeTrigger, doorTrigger);
 
+        lTrigger = data[6];
+        rTrigger = data[7];
+        clawCW = (1B == ((data[0] & 100B) >> 2));
+        clawCCW = (1B == ((data[0] & 1B) ));
+        arm.setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
         // below is the code for sending feedback to the driver station
 

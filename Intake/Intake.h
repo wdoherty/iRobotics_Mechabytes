@@ -4,6 +4,8 @@
 #ifndef DriveBase_h
 #define DriveBase_h
 
+#include <Arduino.h>
+
 class Intake
 {
 public:

@@ -12,15 +12,18 @@ Arm::Arm(int armPWM, int wristPWM)
   pinMode(_PWM2, OUTPUT);
 }
 
-void Arm::setArmSpeed(int state)
+void Arm::setArmSpeed(byte _lTrigger, byte _rTrigger)
 {
 //for input -1, 0, 1, sets speed to half forward, half reverse, or off
 
-  armSpeed = 125 * state;
+  // armSpeed = 125 * state;
+  armSpeed = 127 + (int) _rTrigger - (int) _lTrigger;
+  // if(abs(armSpeed) > 255) armSpeed = 255 * (abs(armSpeed) / armSpeed);
 
 //sends value to speed controller
 
-  analogWrite(_PWM1, armSpeed);
+   analogWrite(_PWM1, armSpeed);
+
 }
 
 void Arm::setWristSpeed(int state)
@@ -39,17 +42,18 @@ void Arm::armFailsafe()
   analogWrite(_PWM2, 0);
 }
 
-void Arm::setArm(int lTrigger, int rTrigger, int rButton, int lButton)
+void Arm::setArm(byte lTrigger, byte rTrigger, bool rButton, bool lButton)
 {
 //if left trigger held, run intake out
 //if right trigger held, run intake in
 //right trigger takes priority
-if(rTrigger) setArmSpeed(1);
-else if(lTrigger) setArmSpeed(-1);
-else setArmSpeed(0);
+// if(rTrigger) setArmSpeed();
+// else if(lTrigger) setArmSpeed(-1);
+// else setArmSpeed(0);
+setArmSpeed((lTrigger >> 1), (rTrigger >> 1));
 
 if(rButton) setWristSpeed(1);
 else if(lButton) setWristSpeed(-1);
-else setArmSpeed(0);
+else setWristSpeed(0);
 
 }

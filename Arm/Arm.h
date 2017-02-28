@@ -4,12 +4,14 @@
 #ifndef Arm_h
 #define Arm_h
 
+#include <Arduino.h>
+
 class Arm
 {
 public:
 
   Arm(int armPWM, int wristPWM);
-  void setArm(int lTrigger, int rTrigger, int rButton, int lButton);
+  void setArm(byte lTrigger, byte rTrigger, bool rButton, bool lButton);
   void armFailsafe();
 
 private:
@@ -18,7 +20,7 @@ private:
   int _PWM2;
   int armSpeed;
   int wristSpeed;
-  void setArmSpeed(int state);
+  void setArmSpeed(byte _lTrigger, byte _rTrigger);
   void setWristSpeed(int state);
 };
 
