@@ -33,13 +33,13 @@ void DriveBase::setThrottle()
 {
 //maps decimal 0.00-1.00 to 0-255 for PWM control
 
-  lSpeed = (int)floor((_lStickY - _rStickX)*255);
-  rSpeed = (int)floor((_lStickY + _rStickX)*255);
+  lSpeed = (int) _lStickY;
+  rSpeed = (int) _rStickX;
 
 //constrains motor values to within the PWM limits
 
-  if(abs(lSpeed) > 255) lSpeed = 255*(abs(lSpeed)/lSpeed);
-  if(abs(rSpeed) > 255) rSpeed = 255*(abs(rSpeed)/rSpeed);
+  //if(abs(lSpeed) > 255) lSpeed = 255*(abs(lSpeed)/lSpeed);
+  //if(abs(rSpeed) > 255) rSpeed = 255*(abs(rSpeed)/rSpeed);
 
 //sends value to speed controller
 
@@ -55,7 +55,7 @@ void DriveBase::setOmniDrop(boolean state)
   digitalWrite(_omniSolenoid, state);
 }
 
-void DriveBase::updateDrive(double lStickY, double rStickX, bool propToggle)
+void DriveBase::updateDrive(byte lStickY, byte rStickX, bool propToggle)
 {
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,
@@ -65,8 +65,8 @@ void DriveBase::updateDrive(double lStickY, double rStickX, bool propToggle)
   _rStickX = rStickX;
 
 //deadband control to prevent non-significant power output
-  if(_lStickY < .1) _lStickY = 0;
-  if(_rStickX < .1) _rStickX = 0;
+  if(_lStickY > 102 && _lStickY < 152) _lStickY = 0;
+  if(_rStickX > 102 && _rStickX < 152) _rStickX = 0;
 
   if(_propToggle != propToggle)
   {

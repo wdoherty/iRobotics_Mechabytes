@@ -16,6 +16,7 @@ byte i;
 byte size;
 byte checkSumTX;    // check sum for transmitting data
 byte checkSumRX;    // check sum for recieving data
+
 unsigned long read_time;
 
 #define DriveL1 2
@@ -43,12 +44,13 @@ void setup(){
     //declare the serial port for comms
     //the paramater of the begin function is the baudrate
     Serial1.begin(9600);
-    // initialize the variables to 0
-    memset(controller,0,sizeof(controller));
-    memset(feedback,0,sizeof(feedback));
+    //initialize subsystems
     Arm arm = Arm(arm, wrist);
     DriveBase drive = DriveBase(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
     Intake intake = Intake(rollers, doorSolenoid);
+    // initialize the variables to 0
+    memset(controller,0,sizeof(controller));
+    memset(feedback,0,sizeof(feedback));
     connection = true;
     failsafe();
     read_time = millis();
