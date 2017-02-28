@@ -65,8 +65,8 @@ void DriveBase::updateDrive(byte lStickY, byte rStickX, bool propToggle)
   _rStickX = rStickX;
 
 //deadband control to prevent non-significant power output
-  if(_lStickY > 102 && _lStickY < 152) _lStickY = 0;
-  if(_rStickX > 102 && _rStickX < 152) _rStickX = 0;
+  if(_lStickY > 102 && _lStickY < 152) _lStickY = 127;
+  if(_rStickX > 102 && _rStickX < 152) _rStickX = 127;
 
   if(_propToggle != propToggle)
   {
