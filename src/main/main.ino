@@ -58,9 +58,9 @@ void failsafe(){
 }
 
 void setup(){
-    //declare the serial port for comms
+    //declare the Serial1 port for comms
     //the paramater of the begin function is the baudrate
-    Serial.begin(9600);
+    Serial1.begin(9600);
     //initialize subsystems
     // Arm arm = Arm(arm, wrist);
     // DriveBase drive = DriveBase(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
@@ -80,25 +80,25 @@ void loop(){
     // this while block of code might not need the "packet_index == 0" condition
     // it causes the robot to be more tolerant of old data which can be bad
     // you might want to deleting that condition
-    while(packet_index == 0 && Serial.available() >= 22){
-        Serial.read();
+    while(packet_index == 0 && Serial1.available() >= 22){
+        Serial1.read();
     }
 
-    size = Serial.available();
+    size = Serial1.available();
 
     while(size > 0){
         if(packet_index == 0){
-            if(Serial.read()==255){
+            if(Serial1.read()==255){
                 packet_index++;
             }
         }
         else if(packet_index < 9){
-            data[packet_index-1] = Serial.read();
+            data[packet_index-1] = Serial1.read();
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
         else if(packet_index == 9){
-            if(Serial.read() == checkSumRX){
+            if(Serial1.read() == checkSumRX){
                 packet_index++;
             }else{
                 packet_index=0;
@@ -106,7 +106,7 @@ void loop(){
             checkSumRX = 0;
         }
         else if(packet_index == 10){
-            if(Serial.read() == 240){
+            if(Serial1.read() == 240){
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
                 }
@@ -142,14 +142,14 @@ void loop(){
 
         // below is the code for sending feedback to the driver station
 
-        Serial.write(255);
+        Serial1.write(255);
         checkSumTX = 0;
         for(i=0; i<10; i++){
-            Serial.write(feedback[i]);
+            Serial1.write(feedback[i]);
             checkSumTX += feedback[i];
         }
-        Serial.write(checkSumTX);
-        Serial.write(240);
+        Serial1.write(checkSumTX);
+        Serial1.write(240);
 
         read_time = millis();
     }
