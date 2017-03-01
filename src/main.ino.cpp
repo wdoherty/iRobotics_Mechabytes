@@ -1,9 +1,12 @@
+# 1 "c:\\users\\billy\\appdata\\local\\temp\\tmpejegv9"
+#include <Arduino.h>
+# 1 "C:/Users/Billy/Desktop/Mechabytes/RobotCode/src/main.ino"
 #include <Arduino.h>
 #include <Arm.h>
 #include <DriveBase.h>
 #include <Intake.h>
-#define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
-#define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
+#define baudrate 9600
+#define time_out 500
 
 byte feedback[10];
 byte controller[8];
@@ -14,18 +17,18 @@ byte x;
 byte packet_index;
 byte i;
 byte size;
-byte checkSumTX;    // check sum for transmitting data
-byte checkSumRX;    // check sum for recieving data
+byte checkSumTX;
+byte checkSumRX;
 
-byte driveThrottle; //drive variables
+byte driveThrottle;
 byte driveHeading;
 bool omniTrigger;
 
-bool doorTrigger;   //intake variables
+bool doorTrigger;
 bool intakeTrigger;
 bool scoreTrigger;
 
-byte lTrigger;      //arm variables
+byte lTrigger;
 byte rTrigger;
 bool clawCW;
 bool clawCCW;
@@ -47,10 +50,13 @@ unsigned long read_time;
 Arm arm(armMotor, wrist);
 Intake intake(rollers, doorSolenoid);
 DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
-
+void failsafe();
+void setup();
+void loop();
+#line 51 "C:/Users/Billy/Desktop/Mechabytes/RobotCode/src/main.ino"
 void failsafe(){
-    // write the code below that you want to run
-    // when the robot loses a signal here
+
+
     arm.armFailsafe();
     intake.StopAllMotors();
     drive.driveBaseFailsafe();
@@ -58,14 +64,14 @@ void failsafe(){
 }
 
 void setup(){
-    //declare the serial port for comms
-    //the paramater of the begin function is the baudrate
-    Serial.begin(9600);
-    //initialize subsystems
-    // Arm arm = Arm(arm, wrist);
-    // DriveBase drive = DriveBase(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
-    // Intake intake = Intake(rollers, doorSolenoid);
-    // initialize the variables to 0
+
+
+    Serial1.begin(9600);
+
+
+
+
+
     memset(controller,0,sizeof(controller));
     memset(feedback,0,sizeof(feedback));
     connection = true;
@@ -77,28 +83,28 @@ void setup(){
 }
 
 void loop(){
-    // this while block of code might not need the "packet_index == 0" condition
-    // it causes the robot to be more tolerant of old data which can be bad
-    // you might want to deleting that condition
-    while(packet_index == 0 && Serial.available() >= 22){
-        Serial.read();
+
+
+
+    while(packet_index == 0 && Serial1.available() >= 22){
+        Serial1.read();
     }
 
-    size = Serial.available();
+    size = Serial1.available();
 
     while(size > 0){
         if(packet_index == 0){
-            if(Serial.read()==255){
+            if(Serial1.read()==255){
                 packet_index++;
             }
         }
         else if(packet_index < 9){
-            data[packet_index-1] = Serial.read();
+            data[packet_index-1] = Serial1.read();
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
         else if(packet_index == 9){
-            if(Serial.read() == checkSumRX){
+            if(Serial1.read() == checkSumRX){
                 packet_index++;
             }else{
                 packet_index=0;
@@ -106,7 +112,7 @@ void loop(){
             checkSumRX = 0;
         }
         else if(packet_index == 10){
-            if(Serial.read() == 240){
+            if(Serial1.read() == 240){
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
                 }
@@ -121,9 +127,9 @@ void loop(){
     }
 
     if(connection){
-        // write the code below that you want to run
-        // when the robot recieves valid data of the xbox controller
-        // basically all the motor control stuff
+
+
+
         driveThrottle = data[3];
         driveHeading = data[4];
         omniTrigger = (B1 == ((data[0] & B10000) >> 4));
@@ -140,18 +146,17 @@ void loop(){
         clawCCW = (B1 == ((data[0] & B1) ));
         arm.setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
-        // below is the code for sending feedback to the driver station
 
-        Serial.write(255);
+
+        Serial1.write(255);
         checkSumTX = 0;
         for(i=0; i<10; i++){
-            Serial.write(feedback[i]);
+            Serial1.write(feedback[i]);
             checkSumTX += feedback[i];
         }
-        Serial.write(checkSumTX);
-        Serial.write(240);
+        Serial1.write(checkSumTX);
+        Serial1.write(240);
 
         read_time = millis();
     }
 }
-

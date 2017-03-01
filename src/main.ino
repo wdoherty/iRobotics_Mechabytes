@@ -126,18 +126,18 @@ void loop(){
         // basically all the motor control stuff
         driveThrottle = data[3];
         driveHeading = data[4];
-        omniTrigger = (1B == ((data[0] & 10000B) >> 4));
+        omniTrigger = (B1 == ((data[0] & B10000) >> 4));
         drive.updateDrive(driveThrottle, driveHeading, omniTrigger);
 
-        intakeTrigger = (1B == ((data[0] & 100000B) >> 5));
-        doorTrigger = (1B == ((data[0] & 1000B) >> 3));
-        scoreTrigger = (1B == ((data[0] & 10B) >> 1));
+        intakeTrigger = (B1 == ((data[0] & B100000) >> 5));
+        doorTrigger = (B1 == ((data[0] & B1000) >> 3));
+        scoreTrigger = (B1 == ((data[0] & B10) >> 1));
         intake.runIntake(scoreTrigger, intakeTrigger, doorTrigger);
 
         lTrigger = data[6];
         rTrigger = data[7];
-        clawCW = (1B == ((data[0] & 100B) >> 2));
-        clawCCW = (1B == ((data[0] & 1B) ));
+        clawCW = (B1 == ((data[0] & B100) >> 2));
+        clawCCW = (B1 == ((data[0] & B1) ));
         arm.setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
         // below is the code for sending feedback to the driver station
@@ -154,4 +154,3 @@ void loop(){
         read_time = millis();
     }
 }
-
