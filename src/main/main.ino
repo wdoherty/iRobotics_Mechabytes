@@ -38,13 +38,13 @@ unsigned long read_time;
 #define DriveR2 5
 #define rollers 6
 #define lift 7
-#define arm 8
+#define armMotor 8
 #define wrist 9
 
 #define omniSolenoid 15
 #define doorSolenoid 16
 
-Arm arm(arm, wrist);
+Arm arm(armMotor, wrist);
 Intake intake(rollers, doorSolenoid);
 DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
 
@@ -154,3 +154,4 @@ void loop(){
         read_time = millis();
     }
 }
+
