@@ -1,8 +1,8 @@
 //Drive base code for 2017 Mechabytes MRDC team
 //Relay-style control for external and internal ball control rollers
 
-#ifndef DriveBase_h
-#define DriveBase_h
+#ifndef Intake_h
+#define Intake_h
 
 #include <Arduino.h>
 
