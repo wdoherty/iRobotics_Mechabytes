@@ -2,6 +2,7 @@
 #include <Arm.h>
 #include <DriveBase.h>
 #include <Intake.h>
+#include <Servo.h>
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
 

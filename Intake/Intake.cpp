@@ -9,18 +9,20 @@ Intake::Intake(int PWM, int pistonIO)
   _PWM = PWM;
   _PISTON = pistonIO;
   pinMode(_PISTON, OUTPUT);//pin for piston control
-  pinMode(_PWM, OUTPUT);
+  // pinMode(_PWM, OUTPUT);
+  intake1.attach(PWM);
 }
 
 void Intake::setSpeed(int state)
 {
 //for input -1, 0, 1, sets speed to full forward, full reverse, or off
 
-  speed = 127 * state;
+  speed = (90 * state)+90;
 
 //sends value to speed controller
+  intake1.write(speed);
+  // analogWrite(_PWM, speed);
 
-  analogWrite(_PWM, speed);
 }
 
 void Intake::runPiston(bool piston)//accepts piston as state of button
@@ -30,7 +32,8 @@ void Intake::runPiston(bool piston)//accepts piston as state of button
 
 void Intake::StopAllMotors()
 {
-  analogWrite(_PWM, 0);
+  // analogWrite(_PWM, 0);
+  intake1.write(90);
 }
 
 void Intake::runIntake(bool lTrigger, bool rTrigger, bool piston)

@@ -14,40 +14,53 @@ DriveBase::DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, i
   rPWM2 = rightPWM2;
   _omniSolenoid = omniSolenoid;
 
-  pinMode(lPWM1, OUTPUT);
-  pinMode(rPWM1, OUTPUT);
-  pinMode(lPWM2, OUTPUT);
-  pinMode(rPWM2, OUTPUT);
+  // pinMode(lPWM1, OUTPUT);
+  // pinMode(rPWM1, OUTPUT);
+  // pinMode(lPWM2, OUTPUT);
+  // pinMode(rPWM2, OUTPUT);
+  DriveL1.attach(lPWM1);
+  DriveL2.attach(lPWM2);
+  DriveR1.attach(rPWM1);
+  DriveR2.attach(rPWM2);
   pinMode(_omniSolenoid, OUTPUT);
 }
 
 void DriveBase::driveBaseFailsafe()
 {
-  analogWrite(lPWM1, 0);
-  analogWrite(lPWM2, 0);
-  analogWrite(rPWM1, 0);
-  analogWrite(rPWM2, 0);
+  // analogWrite(lPWM1, 0);
+  // analogWrite(lPWM2, 0);
+  // analogWrite(rPWM1, 0);
+  // analogWrite(rPWM2, 0);
+  DriveL1.write(90);
+  DriveL2.write(90);
+  DriveR1.write(90);
+  DriveR2.write(90);
 }
 
 void DriveBase::setThrottle()
 {
 //maps decimal 0.00-1.00 to 0-255 for PWM control
 
-  lSpeed = (int) _lStickY + (int) _rStickX;
-  rSpeed = (int) _lStickY - (int) _rStickX;
+  lSpeed = ((int) _lStickY + (int) _rStickX)*(180/255);
+  rSpeed = ((int) _lStickY - (int) _rStickX)*(180/255);
 
 //constrains motor values to within the PWM limits
 
-  if(abs(lSpeed) > 255) lSpeed = 255*(abs(lSpeed)/lSpeed);
-  if(abs(rSpeed) > 255) rSpeed = 255*(abs(rSpeed)/rSpeed);
-  
+  if(abs(lSpeed) > 180) lSpeed = 180*(abs(lSpeed)/lSpeed);
+  if(abs(rSpeed) > 180) rSpeed = 180*(abs(rSpeed)/rSpeed);
+
 
 //sends value to speed controller
 
-  analogWrite(lPWM1, lSpeed);
-  analogWrite(lPWM2, lSpeed);
-  analogWrite(rPWM1, rSpeed);
-  analogWrite(rPWM2, rSpeed);
+  // analogWrite(lPWM1, lSpeed);
+  // analogWrite(lPWM2, lSpeed);
+  // analogWrite(rPWM1, rSpeed);
+  // analogWrite(rPWM2, rSpeed);
+  DriveL1.write(lSpeed);
+  DriveL2.write(lSpeed);
+  DriveR1.write(rSpeed);
+  DriveR2.write(rSpeed);
+
 }
 
 void DriveBase::setOmniDrop(boolean state)

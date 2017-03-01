@@ -5,6 +5,7 @@
 #define Intake_h
 
 #include <Arduino.h>
+#include <Servo.h>
 
 class Intake
 {
@@ -15,6 +16,8 @@ public:
   void StopAllMotors();
 
 private:
+  Servo intake1;
+  Servo intake2;
   bool piston_out = false;
   int _PISTON;
   int _PWM;
