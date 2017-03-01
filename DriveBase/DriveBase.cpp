@@ -2,6 +2,7 @@
 //Standard 8wd "Halo" drive control with passive omni drop down for pinpoint turns
 //Drivin' and Derivin' Wheely Wheely TooT TooT: Aditya Chitnis
 #include "Arduino.h"
+#include <Servo.h>
 #include "DriveBase.h"
 
 DriveBase::DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, int omniSolenoid)

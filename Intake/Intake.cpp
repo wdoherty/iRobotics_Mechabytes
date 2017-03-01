@@ -1,5 +1,6 @@
 #include "Arduino.h"
 #include "Intake.h"
+#include <Servo.h>
 //Kyle Patel
 //piston runs the arm that opens the door
 Intake::Intake(int PWM, int pistonIO)
@@ -10,14 +11,14 @@ Intake::Intake(int PWM, int pistonIO)
   _PISTON = pistonIO;
   pinMode(_PISTON, OUTPUT);//pin for piston control
   // pinMode(_PWM, OUTPUT);
-  intake1.attach(PWM);
+  intake1.attach(_PWM);
 }
 
 void Intake::setSpeed(int state)
 {
 //for input -1, 0, 1, sets speed to full forward, full reverse, or off
 
-  speed = (90 * state)+90;
+  speed = (90 * state) + 90;
 
 //sends value to speed controller
   intake1.write(speed);

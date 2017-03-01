@@ -5,6 +5,7 @@
 #define Arm_h
 
 #include <Arduino.h>
+#include <Servo.h>
 
 class Arm
 {
@@ -16,6 +17,8 @@ public:
 
 private:
 
+  Servo ArmMotor;
+  Servo WristMotor;
   int _PWM1;
   int _PWM2;
   int armSpeed;
