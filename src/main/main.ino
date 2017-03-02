@@ -14,7 +14,7 @@ boolean connection;
 byte x;
 byte packet_index;
 byte i;
-byte size;
+byte size1;
 byte checkSumTX;    // check sum for transmitting data
 byte checkSumRX;    // check sum for recieving data
 
@@ -48,7 +48,7 @@ unsigned long read_time;
 //Arm arm(armMotor, wrist);
 //Intake intake(rollers, doorSolenoid);
 //DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
-
+//DriveBase drive(7, DriveL2, DriveR1, DriveR2, omniSolenoid);
 Servo testMotor;
 
 void failsafe(){
@@ -57,6 +57,7 @@ void failsafe(){
 //    arm.armFailsafe();
 //    intake.StopAllMotors();
 //    drive.driveBaseFailsafe();
+//testMotor.write(180);
     connection = false;
 }
 
@@ -81,26 +82,34 @@ void loop(){
     // this while block of code might not need the "packet_index == 0" condition
     // it causes the robot to be more tolerant of old data which can be bad
     // you might want to deleting that condition
-    testMotor.write(180);
+//    if(millis()%1000 == 0)
+//    {
+//      Serial1.write("Output\n");
+//    }
+    connection = false;
     while(packet_index == 0 && Serial1.available() >= 22){
         Serial1.read();
     }
 
-    size = Serial1.available();
-
-    while(size > 0){
+    size1 = Serial1.available();
+    while(size1 > 0){
+      Serial1.write(0);
         if(packet_index == 0){
             if(Serial1.read()==255){
+              Serial1.write(1);
                 packet_index++;
             }
         }
         else if(packet_index < 9){
+           Serial1.write(2);
             data[packet_index-1] = Serial1.read();
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
         else if(packet_index == 9){
+           Serial1.write(3);
             if(Serial1.read() == checkSumRX){
+              Serial1.write(4);
                 packet_index++;
             }else{
                 packet_index=0;
@@ -109,23 +118,28 @@ void loop(){
         }
         else if(packet_index == 10){
             if(Serial1.read() == 240){
+              Serial1.write(5);
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
                 }
                 connection = true;
+                 read_time = millis();
             }
             packet_index=0;
         }
-        size--;
+        size1--;
     }
     if(connection && millis() - read_time >= time_out){
         failsafe();
+//        testMotor.write(180);
     }
 
     if(connection){
         // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
+        Serial1.write(6);
+        testMotor.write(180);
         driveThrottle = data[3];
         driveHeading = data[4];
         omniTrigger = (B1 == ((data[0] & B10000) >> 4));
@@ -152,8 +166,7 @@ void loop(){
         }
         Serial1.write(checkSumTX);
         Serial1.write(240);
-
-        read_time = millis();
     }
+
 }
 
