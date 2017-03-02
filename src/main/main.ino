@@ -1,4 +1,4 @@
-#include <Arduino.h>
+//#include <Arduino.h>
 #include <Arm.h>
 #include <DriveBase.h>
 #include <Intake.h>
@@ -45,16 +45,18 @@ unsigned long read_time;
 #define omniSolenoid 15
 #define doorSolenoid 16
 
-Arm arm(armMotor, wrist);
-Intake intake(rollers, doorSolenoid);
-DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
+//Arm arm(armMotor, wrist);
+//Intake intake(rollers, doorSolenoid);
+//DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
+
+Servo testMotor;
 
 void failsafe(){
     // write the code below that you want to run
     // when the robot loses a signal here
-    arm.armFailsafe();
-    intake.StopAllMotors();
-    drive.driveBaseFailsafe();
+//    arm.armFailsafe();
+//    intake.StopAllMotors();
+//    drive.driveBaseFailsafe();
     connection = false;
 }
 
@@ -62,10 +64,8 @@ void setup(){
     //declare the Serial1 port for comms
     //the paramater of the begin function is the baudrate
     Serial1.begin(9600);
-    //initialize subsystems
-    // Arm arm = Arm(arm, wrist);
-    // DriveBase drive = DriveBase(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
-    // Intake intake = Intake(rollers, doorSolenoid);
+    testMotor.attach(2);
+//    pinMode(2, OUTPUT);
     // initialize the variables to 0
     memset(controller,0,sizeof(controller));
     memset(feedback,0,sizeof(feedback));
@@ -81,6 +81,7 @@ void loop(){
     // this while block of code might not need the "packet_index == 0" condition
     // it causes the robot to be more tolerant of old data which can be bad
     // you might want to deleting that condition
+    testMotor.write(180);
     while(packet_index == 0 && Serial1.available() >= 22){
         Serial1.read();
     }
@@ -128,18 +129,18 @@ void loop(){
         driveThrottle = data[3];
         driveHeading = data[4];
         omniTrigger = (B1 == ((data[0] & B10000) >> 4));
-        drive.updateDrive(driveThrottle, driveHeading, omniTrigger);
+//        drive.updateDrive(driveThrottle, driveHeading, omniTrigger);
 
         intakeTrigger = (B1 == ((data[0] & B100000) >> 5));
         doorTrigger = (B1 == ((data[0] & B1000) >> 3));
         scoreTrigger = (B1 == ((data[0] & B10) >> 1));
-        intake.runIntake(scoreTrigger, intakeTrigger, doorTrigger);
+//        intake.runIntake(scoreTrigger, intakeTrigger, doorTrigger);
 
         lTrigger = data[6];
         rTrigger = data[7];
         clawCW = (B1 == ((data[0] & B100) >> 2));
         clawCCW = (B1 == ((data[0] & B1) ));
-        arm.setArm(lTrigger, rTrigger, clawCW, clawCCW);
+//        arm.setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
         // below is the code for sending feedback to the driver station
 
