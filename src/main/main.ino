@@ -51,6 +51,7 @@ unsigned long read_time;
 #define wrist 9
 
 #define doorSolenoid 16
+//#define compressorPin 30
 
   Servo DriveL1;
   Servo DriveL2;
@@ -66,7 +67,7 @@ unsigned long read_time;
 //Intake intake(rollers, doorSolenoid);
 //DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
 //DriveBase drive(7, DriveL2, DriveR1, DriveR2, omniSolenoid);
-Servo testMotor;
+//Servo testMotor;
 
 void failsafe(){
     // write the code below that you want to run
@@ -74,13 +75,14 @@ void failsafe(){
     driveBaseFailsafe();
     IntakeFailsafe();
     armFailsafe();
+//    digitalWrite(compressorPin, LOW);
     connection = false;
 }
 
 void setup(){
     //declare the Serial1 port for comms
     //the paramater of the begin function is the baudrate
-    Serial.begin(9600);
+//    Serial.begin(9600);
     Serial1.begin(9600);
     // initialize the variables to 0
     memset(controller,0,sizeof(controller));
@@ -91,7 +93,7 @@ void setup(){
     DriveBaseInit(DriveML1, DriveML2, DriveMR1, DriveMR2);
     IntakeInit(rollers, doorSolenoid);
     ArmInit(armMotor, wrist);
-    
+//    pinMode(compressorPin, OUTPUT);
     failsafe();
     read_time = millis();
     checkSumRX = 0;
@@ -111,25 +113,25 @@ void loop(){
 
     size1 = Serial1.available();
     while(size1 > 0){
-      Serial1.write(0);
+//      Serial1.write(0);
         if(packet_index == 0){
             if(Serial1.read()==255){
-              Serial1.write(1);
+//              Serial1.write(1);
                 packet_index++;
             }
             else badPacket = true; // may have to take out later
         }
         else if(packet_index < 9){
-           Serial1.write(2);
+//           Serial1.write(2);
             data[packet_index-1] = Serial1.read();
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
         else if(packet_index == 9){
-           Serial1.write(3);
+//           Serial1.write(3);
            Serial1.write(checkSumRX);
             if(Serial1.read() == checkSumRX){
-              Serial1.write(4);
+//              Serial1.write(4);
                 packet_index++;
             }else{
                 packet_index=0;
@@ -138,7 +140,7 @@ void loop(){
         }
         else if(packet_index == 10){
             if(Serial1.read() == 240){
-              Serial1.write(5);
+//              Serial1.write(5);
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
                 }
@@ -151,7 +153,7 @@ void loop(){
         size1--;
     }
     if((connection && millis() - read_time >= time_out) || badPacket){
-        Serial1.write(7);
+//        Serial1.write(7);
         failsafe();
     }
 
@@ -159,7 +161,7 @@ void loop(){
         // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
-        Serial1.write(6);
+//        Serial1.write(6);
 //        testMotor.write(180);
         driveThrottle = data[3];
         driveHeading = data[4];
