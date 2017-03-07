@@ -4,19 +4,27 @@
 #ifndef Arm_h
 #define Arm_h
 
+#include <Arduino.h>
+#include <Servo.h>
+
 class Arm
 {
 public:
 
-  Arm(int PWM1, int PWM2);
-  void setArm();
+  Arm(int armPWM, int wristPWM);
+  void setArm(byte lTrigger, byte rTrigger, bool rButton, bool lButton);
+  void armFailsafe();
 
 private:
 
+  Servo ArmMotor;
+  Servo WristMotor;
   int _PWM1;
   int _PWM2;
-  int speed;
-
+  int armSpeed;
+  int wristSpeed;
+  void setArmSpeed(byte _lTrigger, byte _rTrigger);
+  void setWristSpeed(int state);
 };
 
 #endif

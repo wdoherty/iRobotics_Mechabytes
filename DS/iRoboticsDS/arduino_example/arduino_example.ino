@@ -1,4 +1,4 @@
-#include <Arduino.h>
+
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
 
@@ -12,15 +12,8 @@ byte packet_index;
 byte i;
 byte size;
 byte checkSumTX;    // check sum for transmitting data
-byte checkSumRX;    // check sum for recieving data
+byte checkSumRX;    // check sum for recieving data 
 unsigned long read_time;
-
-void failsafe(){
-    // write the code below that you want to run
-    // when the robot loses a signal here
-
-    connection = false;
-}
 
 void setup(){
     //declare the serial port for comms
@@ -83,14 +76,14 @@ void loop(){
     }
 
     if(connection){
-        // write the code below that you want to run
+        // write the code below that you want to run 
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
 
+        
 
-
-
-
+        
+        
 
         // below is the code for sending feedback to the driver station
 
@@ -105,4 +98,11 @@ void loop(){
 
         read_time = millis();
     }
+}
+
+void failsafe(){
+    // write the code below that you want to run
+    // when the robot loses a signal here
+
+    connection = false;
 }

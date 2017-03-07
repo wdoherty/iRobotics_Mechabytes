@@ -5,21 +5,29 @@
 #define DriveBase_h
 
 #include "Arduino.h"
+#include <Servo.h>
 
 class DriveBase
 {
 public:
 
-  DriveBase(int leftPWM, int rightPWM, bool omniSolenoid);
-  void updateDrive(double lStickY, double rStickX, bool propToggle);
+  DriveBase(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2, int omniSolenoid);
+  void updateDrive(byte lStickY, byte rStickX, bool propToggle);
+  void driveBaseFailsafe();
 
 private:
 
-  int lPWM;
-  int rPWM;
-  bool _omniSolenoid;
-  double _lStickY = 0.0;
-  double _rStickX = 0.0;
+  int lPWM1;
+  int lPWM2;
+  int rPWM1;
+  int rPWM2;
+  Servo DriveL1;
+  Servo DriveL2;
+  Servo DriveR1;
+  Servo DriveR2;
+  int _omniSolenoid;
+  byte _lStickY = 0;
+  byte _rStickX = 0;
   bool _propToggle = false;
   int lSpeed = 0;
   int rSpeed = 0;
