@@ -842,7 +842,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(172, 393);
+            this.label13.Location = new System.Drawing.Point(224, 396);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 17);
             this.label13.TabIndex = 77;
@@ -852,7 +852,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(170, 334);
+            this.label12.Location = new System.Drawing.Point(224, 339);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 17);
             this.label12.TabIndex = 76;
@@ -863,7 +863,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(170, 285);
+            this.label11.Location = new System.Drawing.Point(224, 285);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 17);
             this.label11.TabIndex = 75;
@@ -873,7 +873,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(170, 233);
+            this.label10.Location = new System.Drawing.Point(224, 230);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 17);
             this.label10.TabIndex = 74;
@@ -883,7 +883,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(172, 180);
+            this.label9.Location = new System.Drawing.Point(224, 183);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 17);
             this.label9.TabIndex = 73;
@@ -893,7 +893,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(172, 126);
+            this.label8.Location = new System.Drawing.Point(224, 127);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 17);
             this.label8.TabIndex = 72;
@@ -903,7 +903,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(172, 78);
+            this.label6.Location = new System.Drawing.Point(224, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 17);
             this.label6.TabIndex = 71;
@@ -913,7 +913,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(172, 31);
+            this.label4.Location = new System.Drawing.Point(224, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 70;

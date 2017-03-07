@@ -265,8 +265,8 @@ void updateDrive(byte lStickY, byte rStickX)
 //lStickY assigns throttle, rStickX assigns rotation,
 //propToggle sets omni wheel position
 
-  _lStickY = ((lStickY)*180/255) & B11111111;
-  _rStickX = (rStickX)*180/255 & B11111111;
+  _lStickY = ((lStickY)*180/200) & B11111111;
+  _rStickX = ((rStickX)*180/200) & B11111111;
 
 //  Serial.println(lStickY);
 //  Serial.println(_lStickY);
