@@ -1,7 +1,7 @@
 //#include <Arduino.h>
 //#include <Arm.h>
 //#include <DriveBase.h>
-#include <Intake.h>
+//#include <Intake.h>
 #include <Servo.h>
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
@@ -21,7 +21,7 @@ byte checkSumRX;    // check sum for recieving data
 
 byte driveThrottle; //drive variables
 byte driveHeading;
-bool omniTrigger;
+//bool omniTrigger;
 
 int _lStickY;
 int _rStickX;
@@ -82,7 +82,7 @@ void failsafe(){
 void setup(){
     //declare the Serial1 port for comms
     //the paramater of the begin function is the baudrate
-//    Serial.begin(9600);
+    Serial.begin(9600);
     Serial1.begin(9600);
     // initialize the variables to 0
     memset(controller,0,sizeof(controller));
@@ -116,14 +116,17 @@ void loop(){
 //      Serial1.write(0);
         if(packet_index == 0){
             if(Serial1.read()==255){
+              Serial.println("Valid lead");
 //              Serial1.write(1);
                 packet_index++;
             }
-            else badPacket = true; // may have to take out later
+            else Serial.println("Invalid lead");
+//            badPacket = true; // may have to take out later
         }
         else if(packet_index < 9){
 //           Serial1.write(2);
             data[packet_index-1] = Serial1.read();
+//            Serial.println(data[packet_index-1]);
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
@@ -140,14 +143,17 @@ void loop(){
         }
         else if(packet_index == 10){
             if(Serial1.read() == 240){
+              Serial.println("Valid end packet");
 //              Serial1.write(5);
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
+//                    Serial.println(data[i]);
                 }
                 connection = true;
                  read_time = millis();
             }
-            else badPacket = true; //may have to take out later
+            else Serial.println("Invalid end packet");
+//            badPacket = true; //may have to take out later
             packet_index=0;
         }
         size1--;
@@ -165,7 +171,7 @@ void loop(){
 //        testMotor.write(180);
         driveThrottle = data[3];
         driveHeading = data[4];
-        omniTrigger = (B1 == ((data[0] & B10000) >> 4));
+//        omniTrigger = (B1 == ((data[0] & B10000) >> 4));
 //        Serial1.write(driveThrottle);
         updateDrive(driveThrottle, driveHeading);
         
