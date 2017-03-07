@@ -130,9 +130,9 @@
             this.label3.Location = new System.Drawing.Point(735, 45);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(281, 31);
+            this.label3.Size = new System.Drawing.Size(269, 31);
             this.label3.TabIndex = 1;
-            this.label3.Text = "MuTan(Clan) Edition";
+            this.label3.Text = "Mechabytes Edition";
             // 
             // label7
             // 
@@ -166,9 +166,9 @@
             this.label2.Location = new System.Drawing.Point(715, 14);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(318, 31);
+            this.label2.Size = new System.Drawing.Size(323, 31);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Big Papa Driver Station";
+            this.label2.Text = "iRobotics Driver Station";
             // 
             // refresh_button
             // 

@@ -21,3 +21,6 @@ C:\Users\Billy\Desktop\Mechabytes\RobotCode\DriverStation\BigPapaDS\iRoboticsDS\
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\DriverStation\BigPapaDS\iRoboticsDS\iRoboticsDS\obj\Release\iRoboticsDS.DriverStation.resources
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\DriverStation\BigPapaDS\iRoboticsDS\iRoboticsDS\obj\Release\iRoboticsDS.Properties.Resources.resources
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\DriverStation\BigPapaDS\iRoboticsDS\iRoboticsDS\obj\Release\iRoboticsDS.csproj.GenerateResource.Cache
+C:\Users\Billy\Desktop\Mechabytes\RobotCode\DS\iRoboticsDS\iRoboticsDS\bin\Release\iRoboticsDS.exe.config
+C:\Users\Billy\Desktop\Mechabytes\RobotCode\DS\iRoboticsDS\iRoboticsDS\obj\Release\iRoboticsDS.exe
+C:\Users\Billy\Desktop\Mechabytes\RobotCode\DS\iRoboticsDS\iRoboticsDS\obj\Release\iRoboticsDS.pdb
