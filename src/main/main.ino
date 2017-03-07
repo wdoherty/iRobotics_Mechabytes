@@ -188,6 +188,12 @@ void loop(){
         setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
         // below is the code for sending feedback to the driver station
+        feedback[4] = 0;
+        feedback[5] = 0;
+        feedback[6] = 0;
+        feedback[7] = 0;
+        feedback[8] = 0;
+        feedback[9] = 0;
 
         Serial1.write(255);
         checkSumTX = 0;
