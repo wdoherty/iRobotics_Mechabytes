@@ -1,0 +1,4 @@
+There's now iRoboticsDS which is a refined version of BigPapaDS.  
+If you want to use iRoboticsDS, there is example arduino code for recieving controller data from iRoboticsDS.
+There's a pdf that include the packet structure for the controller data and feedback.  
+It's fairly rugged and includes a failsafe and also has a smaller packet from using checksums.
