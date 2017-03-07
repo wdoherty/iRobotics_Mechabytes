@@ -115,7 +115,7 @@ namespace iRoboticsDS
                     packet_index = 0;
                 }
             }
-
+            updateArduinoReturnGUI();
             signal_integrity = 0;
             for (i=0; i<25; i++)
             {
@@ -389,6 +389,18 @@ namespace iRoboticsDS
             ControllerData6.Text = (controller_packet[5].ToString());
             ControllerData7.Text = (controller_packet[6].ToString());
             ControllerData8.Text = (controller_packet[7].ToString());
+        }
+
+        private void updateArduinoReturnGUI()
+        {
+            Arduino0.Text = (data[0].ToString());
+            Arduino1.Text = (data[1].ToString());
+            Arduino2.Text = (data[2].ToString());
+            Arduino3.Text = (data[3].ToString());
+            Arduino4.Text = (data[4].ToString());
+            Arduino5.Text = (data[5].ToString());
+            Arduino6.Text = (data[6].ToString());
+            Arduino7.Text = (data[7].ToString());
         }
 
         private void open_button_Click(object sender, EventArgs e)

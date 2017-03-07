@@ -96,6 +96,22 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Arduino0 = new System.Windows.Forms.TextBox();
+            this.Arduino1 = new System.Windows.Forms.TextBox();
+            this.Arduino2 = new System.Windows.Forms.TextBox();
+            this.Arduino3 = new System.Windows.Forms.TextBox();
+            this.Arduino4 = new System.Windows.Forms.TextBox();
+            this.Arduino5 = new System.Windows.Forms.TextBox();
+            this.Arduino6 = new System.Windows.Forms.TextBox();
+            this.Arduino7 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel5.SuspendLayout();
@@ -817,6 +833,22 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.Arduino7);
+            this.panel1.Controls.Add(this.Arduino6);
+            this.panel1.Controls.Add(this.Arduino5);
+            this.panel1.Controls.Add(this.Arduino4);
+            this.panel1.Controls.Add(this.Arduino3);
+            this.panel1.Controls.Add(this.Arduino2);
+            this.panel1.Controls.Add(this.Arduino1);
+            this.panel1.Controls.Add(this.Arduino0);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
@@ -842,7 +874,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(172, 393);
+            this.label13.Location = new System.Drawing.Point(282, 373);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(107, 17);
             this.label13.TabIndex = 77;
@@ -852,7 +884,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(172, 339);
+            this.label12.Location = new System.Drawing.Point(282, 318);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(107, 17);
             this.label12.TabIndex = 76;
@@ -863,7 +895,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(172, 285);
+            this.label11.Location = new System.Drawing.Point(282, 265);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 17);
             this.label11.TabIndex = 75;
@@ -873,7 +905,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(172, 233);
+            this.label10.Location = new System.Drawing.Point(282, 210);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 17);
             this.label10.TabIndex = 74;
@@ -883,7 +915,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(172, 185);
+            this.label9.Location = new System.Drawing.Point(282, 160);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 17);
             this.label9.TabIndex = 73;
@@ -893,7 +925,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(172, 130);
+            this.label8.Location = new System.Drawing.Point(282, 105);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(107, 17);
             this.label8.TabIndex = 72;
@@ -903,7 +935,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(172, 75);
+            this.label6.Location = new System.Drawing.Point(282, 54);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 17);
             this.label6.TabIndex = 71;
@@ -913,12 +945,148 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(172, 29);
+            this.label4.Location = new System.Drawing.Point(282, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 17);
             this.label4.TabIndex = 70;
             this.label4.Text = "ControllerData0";
             this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // Arduino0
+            // 
+            this.Arduino0.Location = new System.Drawing.Point(66, 26);
+            this.Arduino0.Name = "Arduino0";
+            this.Arduino0.Size = new System.Drawing.Size(100, 22);
+            this.Arduino0.TabIndex = 78;
+            // 
+            // Arduino1
+            // 
+            this.Arduino1.Location = new System.Drawing.Point(66, 75);
+            this.Arduino1.Name = "Arduino1";
+            this.Arduino1.Size = new System.Drawing.Size(100, 22);
+            this.Arduino1.TabIndex = 79;
+            // 
+            // Arduino2
+            // 
+            this.Arduino2.Location = new System.Drawing.Point(66, 130);
+            this.Arduino2.Name = "Arduino2";
+            this.Arduino2.Size = new System.Drawing.Size(100, 22);
+            this.Arduino2.TabIndex = 80;
+            // 
+            // Arduino3
+            // 
+            this.Arduino3.Location = new System.Drawing.Point(66, 180);
+            this.Arduino3.Name = "Arduino3";
+            this.Arduino3.Size = new System.Drawing.Size(100, 22);
+            this.Arduino3.TabIndex = 81;
+            // 
+            // Arduino4
+            // 
+            this.Arduino4.Location = new System.Drawing.Point(66, 236);
+            this.Arduino4.Name = "Arduino4";
+            this.Arduino4.Size = new System.Drawing.Size(100, 22);
+            this.Arduino4.TabIndex = 82;
+            // 
+            // Arduino5
+            // 
+            this.Arduino5.Location = new System.Drawing.Point(66, 285);
+            this.Arduino5.Name = "Arduino5";
+            this.Arduino5.Size = new System.Drawing.Size(100, 22);
+            this.Arduino5.TabIndex = 83;
+            // 
+            // Arduino6
+            // 
+            this.Arduino6.Location = new System.Drawing.Point(66, 336);
+            this.Arduino6.Name = "Arduino6";
+            this.Arduino6.Size = new System.Drawing.Size(100, 22);
+            this.Arduino6.TabIndex = 84;
+            // 
+            // Arduino7
+            // 
+            this.Arduino7.Location = new System.Drawing.Point(66, 393);
+            this.Arduino7.Name = "Arduino7";
+            this.Arduino7.Size = new System.Drawing.Size(100, 22);
+            this.Arduino7.TabIndex = 85;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(63, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 17);
+            this.label14.TabIndex = 86;
+            this.label14.Text = "Arduino0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(63, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 17);
+            this.label15.TabIndex = 87;
+            this.label15.Text = "Arduino1";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(63, 105);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 17);
+            this.label16.TabIndex = 88;
+            this.label16.Text = "Arduino2";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(63, 160);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 17);
+            this.label17.TabIndex = 89;
+            this.label17.Text = "Arduino3";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(63, 372);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 17);
+            this.label18.TabIndex = 90;
+            this.label18.Text = "Arduino7";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(63, 316);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(65, 17);
+            this.label19.TabIndex = 91;
+            this.label19.Text = "Arduino6";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(63, 265);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 17);
+            this.label20.TabIndex = 92;
+            this.label20.Text = "Arduino5";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(63, 214);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 17);
+            this.label21.TabIndex = 93;
+            this.label21.Text = "Arduino4";
             // 
             // DriverStation
             // 
@@ -1027,6 +1195,22 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox Arduino7;
+        private System.Windows.Forms.TextBox Arduino6;
+        private System.Windows.Forms.TextBox Arduino5;
+        private System.Windows.Forms.TextBox Arduino4;
+        private System.Windows.Forms.TextBox Arduino3;
+        private System.Windows.Forms.TextBox Arduino2;
+        private System.Windows.Forms.TextBox Arduino1;
+        private System.Windows.Forms.TextBox Arduino0;
     }
 }
 
