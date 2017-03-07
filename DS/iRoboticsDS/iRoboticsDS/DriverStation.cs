@@ -106,7 +106,7 @@ namespace iRoboticsDS
                     {
                         for (i = 0; i < 8; i++)
                         {
-                            gui_packet[i] += data[i];
+                            gui_packet[i] = data[i];
                         }
                         packet_state[packet_time] = true;
                     }

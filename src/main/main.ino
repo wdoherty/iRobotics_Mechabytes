@@ -31,6 +31,7 @@ bool intakeTrigger;
 bool scoreTrigger;
 bool prevState = false;
 bool piston_out = false;
+bool firstTime = true;
 
 int _PISTON;
 
@@ -72,6 +73,7 @@ unsigned long read_time;
 void failsafe(){
     // write the code below that you want to run
     // when the robot loses a signal here
+    firstTime = false;
     driveBaseFailsafe();
     IntakeFailsafe();
     armFailsafe();
@@ -131,8 +133,8 @@ void loop(){
             packet_index++;
         }
         else if(packet_index == 9){
-//           Serial1.write(3);
-           Serial1.write(checkSumRX);
+//           Serial1.write(3);.
+//           Serial1.write(checkSumRX);
             if(Serial1.read() == checkSumRX){
 //              Serial1.write(4);
                 packet_index++;
@@ -151,26 +153,34 @@ void loop(){
                 }
                 connection = true;
                  read_time = millis();
+                 firstTime = true;
+                 mainCode();
             }
             else Serial.println("Invalid end packet");
+            
 //            badPacket = true; //may have to take out later
             packet_index=0;
         }
         size1--;
     }
-    if((connection && millis() - read_time >= time_out) || badPacket){
+    if((firstTime && millis() - read_time >= time_out)){
 //        Serial1.write(7);
         failsafe();
     }
 
     if(connection){
-        // write the code below that you want to run
+
+}
+}
+void mainCode()
+{
+          // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
 //        Serial1.write(6);
 //        testMotor.write(180);
-        driveThrottle = data[3];
-        driveHeading = data[4];
+        driveThrottle = controller[3];
+        driveHeading = controller[4];
 //        omniTrigger = (B1 == ((data[0] & B10000) >> 4));
 //        Serial1.write(driveThrottle);
         updateDrive(driveThrottle, driveHeading);
@@ -180,17 +190,17 @@ void loop(){
 //        else if(driveThrottle == B00001111) testMotor.write(0);
 //        else testMotor.write(90);
 
-        intakeTrigger = (B1 == ((data[0] & B100000) >> 5));
-        doorTrigger = (B1 == ((data[0] & B1000) >> 3));
-        scoreTrigger = (B1 == ((data[0] & B10) >> 1));
+        intakeTrigger = (B1 == ((controller[0] & B100000) >> 5));
+        doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
+        scoreTrigger = (B1 == ((controller[0] & B10) >> 1));
         runIntake(scoreTrigger, intakeTrigger, doorTrigger);
         
 //        digitalWrite(doorSolenoid, doorTrigger?HIGH:LOW);
         
-        lTrigger = data[6];
-        rTrigger = data[7];
-        clawCW = (B1 == ((data[0] & B100) >> 2));
-        clawCCW = (B1 == ((data[0] & B1) ));
+        lTrigger = controller[6];
+        rTrigger = controller[7];
+        clawCW = (B1 == ((controller[0] & B100) >> 2));
+        clawCCW = (B1 == ((controller[0] & B1) ));
         setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
         // below is the code for sending feedback to the driver station
@@ -209,7 +219,6 @@ void loop(){
         }
         Serial1.write(checkSumTX);
         Serial1.write(240);
-    }
 }
 
 //DriveBase subsystem
@@ -254,19 +263,13 @@ void setThrottle(int _lStickY, int _rStickX)
 
 //constrains motor values to within the PWM limits
 
-// if(lSpeed > 180) lSpeed = 180;
-// if(lSpeed < 0) lSpeed = 0;
-// if(rSpeed > 180) rSpeed = 180;
-// if(rSpeed < 0) rSpeed = 0;
-
 //sends value to speed controller
-//  Serial1.write(lSpeed);
-//  Serial1.write(rSpeed);
-//  Serial.println(lSpeed);
-//  Serial.println(rSpeed);
 
-feedback[0] = (byte)lSpeed;
-feedback[1] = (byte)rSpeed;
+
+//feedback[0] = (byte)lSpeed;
+//feedback[1] = (byte)rSpeed;
+feedback[0] = controller[3];
+feedback[1] = controller[4];
   
   DriveL1.write(lSpeed);
   DriveL2.write(lSpeed);
@@ -280,8 +283,8 @@ void updateDrive(byte lStickY, byte rStickX)
 //lStickY assigns throttle, rStickX assigns rotation,
 //propToggle sets omni wheel position
 
-feedback[2] = lStickY;
-feedback[3] = rStickX;
+feedback[2] = 0;
+feedback[3] = 0;
 
   _lStickY = ((lStickY)*180/200) & B11111111;
   _rStickX = ((rStickX)*180/200) & B11111111;
