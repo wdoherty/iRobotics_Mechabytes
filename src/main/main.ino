@@ -252,6 +252,9 @@ void setThrottle(int _lStickY, int _rStickX)
 //  Serial1.write(rSpeed);
 //  Serial.println(lSpeed);
 //  Serial.println(rSpeed);
+
+feedback[0] = (byte)lSpeed;
+feedback[1] = (byte)rSpeed;
   
   DriveL1.write(lSpeed);
   DriveL2.write(lSpeed);
@@ -264,6 +267,9 @@ void updateDrive(byte lStickY, byte rStickX)
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,
 //propToggle sets omni wheel position
+
+feedback[2] = lStickY;
+feedback[3] = rStickX;
 
   _lStickY = ((lStickY)*180/200) & B11111111;
   _rStickX = ((rStickX)*180/200) & B11111111;
