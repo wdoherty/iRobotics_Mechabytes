@@ -60,11 +60,13 @@ namespace iRoboticsDS
             {
                 controller1_textBox.Text = "Connected";
                 controller1_textBox.ForeColor = System.Drawing.Color.Green;
+                //updateControllerGUI();
             }
             else
             {
                 controller1_textBox.Text = "Disconnected";
                 controller1_textBox.ForeColor = System.Drawing.Color.DarkRed;
+                //updateControllerGUI();
             }
         }
 
@@ -159,8 +161,7 @@ namespace iRoboticsDS
                     (Convert.ToInt32(controller.Start) << 6);
 
                 controller_packet[0] = Convert.ToByte(i);
-                ControllerData1.Text = (controller_packet[0].ToString());
-
+                
                 i = (Convert.ToInt32(controller.DPad.Up)) |
                     (Convert.ToInt32(controller.DPad.Down) << 1) |
                     (Convert.ToInt32(controller.DPad.Left) << 2) |
@@ -170,25 +171,20 @@ namespace iRoboticsDS
                     (Convert.ToInt32(controller.Back) << 6);
 
                 controller_packet[1] = Convert.ToByte(i);
-                ControllerData2.Text = (controller_packet[1].ToString());
-
+                
                 controller_packet[2] = Convert.ToByte(controller.LeftStick.Position.X * 100 + 100);
-                ControllerData3.Text = (controller_packet[2].ToString());
-
+                
                 controller_packet[3] = Convert.ToByte(controller.LeftStick.Position.Y * 100 + 100);
-                ControllerData4.Text = (controller_packet[3].ToString());
-
+                
                 controller_packet[4] = Convert.ToByte(controller.RightStick.Position.X * 100 + 100);
-                ControllerData5.Text = (controller_packet[4].ToString());
-
+                
                 controller_packet[5] = Convert.ToByte(controller.RightStick.Position.Y * 100 + 100);
-                ControllerData6.Text = (controller_packet[5].ToString());
-
+                
                 controller_packet[6] = Convert.ToByte(controller.LeftTrigger * 100);
-                ControllerData7.Text = (controller_packet[6].ToString());
-
+                
                 controller_packet[7] = Convert.ToByte(controller.RightTrigger * 100);
-                ControllerData8.Text = (controller_packet[7].ToString());
+
+                updateControllerGUI();
 
             }
             else
@@ -216,7 +212,6 @@ namespace iRoboticsDS
         
         private void updateGUIState()
         {
-
             connection_textBox.Text = "     " + Convert.ToString(signal_integrity) + "%";
 
             if (Convert.ToInt32(gui_packet[0] & 3) == 0)
@@ -382,6 +377,18 @@ namespace iRoboticsDS
                 br_trackBar.Value = Convert.ToInt32(gui_packet[9]);
             }*/
 
+        }
+
+        private void updateControllerGUI()
+        {
+            ControllerData1.Text = (controller_packet[0].ToString());
+            ControllerData2.Text = (controller_packet[1].ToString());
+            ControllerData3.Text = (controller_packet[2].ToString());
+            ControllerData4.Text = (controller_packet[3].ToString());
+            ControllerData5.Text = (controller_packet[4].ToString());
+            ControllerData6.Text = (controller_packet[5].ToString());
+            ControllerData7.Text = (controller_packet[6].ToString());
+            ControllerData8.Text = (controller_packet[7].ToString());
         }
 
         private void open_button_Click(object sender, EventArgs e)
