@@ -64,12 +64,6 @@ unsigned long read_time;
   Servo ArmMotor;
   Servo WristMotor;
 
-//Arm arm(armMotor, wrist);
-//Intake intake(rollers, doorSolenoid);
-//DriveBase drive(DriveL1, DriveL2, DriveR1, DriveR2, omniSolenoid);
-//DriveBase drive(7, DriveL2, DriveR1, DriveR2, omniSolenoid);
-//Servo testMotor;
-
 void failsafe(){
     // write the code below that you want to run
     // when the robot loses a signal here
@@ -77,7 +71,6 @@ void failsafe(){
     driveBaseFailsafe();
     IntakeFailsafe();
     armFailsafe();
-//    digitalWrite(compressorPin, LOW);
     connection = false;
 }
 
@@ -95,7 +88,6 @@ void setup(){
     DriveBaseInit(DriveML1, DriveML2, DriveMR1, DriveMR2);
     IntakeInit(rollers, doorSolenoid);
     ArmInit(armMotor, wrist);
-//    pinMode(compressorPin, OUTPUT);
     failsafe();
     read_time = millis();
     checkSumRX = 0;
@@ -108,35 +100,26 @@ void loop(){
     // it causes the robot to be more tolerant of old data which can be bad
     // you might want to deleting that condition
     connection = false;
-    badPacket = false;
     while(packet_index == 0 && Serial1.available() >= 22){
         Serial1.read();
     }
 
     size1 = Serial1.available();
     while(size1 > 0){
-//      Serial1.write(0);
         if(packet_index == 0){
             if(Serial1.read()==255){
               Serial.println("Valid lead");
-//              Serial1.write(1);
                 packet_index++;
             }
             else Serial.println("Invalid lead");
-//            badPacket = true; // may have to take out later
         }
         else if(packet_index < 9){
-//           Serial1.write(2);
             data[packet_index-1] = Serial1.read();
-//            Serial.println(data[packet_index-1]);
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
         else if(packet_index == 9){
-//           Serial1.write(3);.
-//           Serial1.write(checkSumRX);
             if(Serial1.read() == checkSumRX){
-//              Serial1.write(4);
                 packet_index++;
             }else{
                 packet_index=0;
@@ -146,10 +129,8 @@ void loop(){
         else if(packet_index == 10){
             if(Serial1.read() == 240){
               Serial.println("Valid end packet");
-//              Serial1.write(5);
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
-//                    Serial.println(data[i]);
                 }
                 connection = true;
                  read_time = millis();
@@ -157,14 +138,11 @@ void loop(){
                  mainCode();
             }
             else Serial.println("Invalid end packet");
-            
-//            badPacket = true; //may have to take out later
             packet_index=0;
         }
         size1--;
     }
     if((firstTime && millis() - read_time >= time_out)){
-//        Serial1.write(7);
         failsafe();
     }
 
@@ -177,25 +155,14 @@ void mainCode()
           // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
-//        Serial1.write(6);
-//        testMotor.write(180);
         driveThrottle = controller[3];
         driveHeading = controller[4];
-//        omniTrigger = (B1 == ((data[0] & B10000) >> 4));
-//        Serial1.write(driveThrottle);
         updateDrive(driveThrottle, driveHeading);
-        
-//        if(driveThrottle == B11111111) testMotor.write(180);
-//        
-//        else if(driveThrottle == B00001111) testMotor.write(0);
-//        else testMotor.write(90);
 
         intakeTrigger = (B1 == ((controller[0] & B100000) >> 5));
         doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
         scoreTrigger = (B1 == ((controller[0] & B10) >> 1));
         runIntake(scoreTrigger, intakeTrigger, doorTrigger);
-        
-//        digitalWrite(doorSolenoid, doorTrigger?HIGH:LOW);
         
         lTrigger = controller[6];
         rTrigger = controller[7];
@@ -204,12 +171,6 @@ void mainCode()
         setArm(lTrigger, rTrigger, clawCW, clawCCW);
 
         // below is the code for sending feedback to the driver station
-        feedback[4] = 0;
-        feedback[5] = 0;
-        feedback[6] = 0;
-        feedback[7] = 0;
-        feedback[8] = 0;
-        feedback[9] = 0;
 
         Serial1.write(255);
         checkSumTX = 0;
@@ -244,33 +205,15 @@ void setThrottle(int _lStickY, int _rStickX)
 
    int throttle = abs(_lStickY-90) * (_lStickY < 90 ? -1 : 1);    //// = magnitude & direction of throttle
    int heading = abs(_rStickX-90) * (_rStickX < 90 ? -1 : 1);    //// = magnitude and direction of heading
-
-//   Serial.println(_lStickY);
-//   Serial1.write(throttle);
-//   Serial1.write(heading);
-//   Serial.println(throttle);
-//   Serial.println(heading);
    
    int lSpeed = (throttle + heading) + 90;
    int rSpeed = throttle - heading + 90;
- 
-
-// int lSpeed = ( _lStickY +  _rStickX);
-// int rSpeed = ( _lStickY -  _rStickX);
-
-// if(abs(lSpeed - 90) < 5) lSpeed = 90;
-// if(abs(rSpeed - 90) < 5) rSpeed = 90;
 
 //constrains motor values to within the PWM limits
 
 //sends value to speed controller
-
-
-//feedback[0] = (byte)lSpeed;
-//feedback[1] = (byte)rSpeed;
-feedback[0] = controller[3];
-feedback[1] = controller[4];
-  
+  feedback[0] = lSpeed;
+  feedback[1] = rSpeed;
   DriveL1.write(lSpeed);
   DriveL2.write(lSpeed);
   DriveR1.write(rSpeed);
@@ -281,22 +224,17 @@ void updateDrive(byte lStickY, byte rStickX)
 {
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,
-//propToggle sets omni wheel position
 
-feedback[2] = 0;
-feedback[3] = 0;
+  _lStickY = (((lStickY)*180)/200) & B11111111;
+  _rStickX = (((rStickX)*180)/200) & B11111111;
 
-  _lStickY = ((lStickY)*180/200) & B11111111;
-  _rStickX = ((rStickX)*180/200) & B11111111;
 
-//  Serial.println(lStickY);
-//  Serial.println(_lStickY);
 
 //deadband control to prevent non-significant power output
   if(_lStickY > 80 && _lStickY < 100) _lStickY = 90;
   if(_rStickX > 80 && _rStickX < 100) _rStickX = 90;
-//  Serial1.write(_lStickY);
-//  Serial1.write(_rStickX);
+  feedback[5] = _lStickY;
+  feedback[6] = _rStickX;
   setThrottle(_lStickY, _rStickX);
 }
 
@@ -308,7 +246,6 @@ void IntakeInit(int PWM, int pistonIO)
   int _PWM = PWM;
   _PISTON = pistonIO;
   pinMode(_PISTON, OUTPUT);//pin for piston control
-  // pinMode(_PWM, OUTPUT);
   intake1.attach(_PWM);
 }
 
@@ -319,18 +256,20 @@ void setIntakeSpeed(int state)
   int IntakeSpeed = (90 * state) + 90;
 
 //sends value to speed controller
+  feedback[2] = IntakeSpeed;
   intake1.write(IntakeSpeed);
   // analogWrite(_PWM, speed);
 }
 
 void runPiston(bool piston)//accepts piston as state of button
 {
+  if(piston) feedback[3] = 1;
+  else feedback[3] = 0;
     digitalWrite(_PISTON, piston?HIGH:LOW);//send 'pressed' to _PISTON
 }
 
 void IntakeFailsafe()
 {
-  // analogWrite(_PWM, 0);
   intake1.write(90);
 }
 
@@ -376,10 +315,12 @@ void ArmInit(int armPWM, int wristPWM)
 void setArmSpeed(byte _lTrigger, byte _rTrigger)
 {
 //for input -1, 0, 1, sets speed to half forward, half reverse, or off
-  int armSpeed = (127 + (int) _rTrigger - (int) _lTrigger)*(180/255);
+//  int armSpeed = (127 + (int) _rTrigger - (int) _lTrigger)*(180/255);
+  int armSpeed = (90 + (int) _rTrigger - (int) _lTrigger)*(180/255);
   if(abs(90 - armSpeed) < 10) armSpeed = 90;
 
 //sends value to speed controller
+//  feedback[4] = armSpeed;
   ArmMotor.write(armSpeed);
 }
 
@@ -404,9 +345,6 @@ void setArm(byte lTrigger, byte rTrigger, bool rButton, bool lButton)
 //if right trigger held, run intake in
 //right trigger takes priority
 
-// if(rTrigger) setArmSpeed();
-// else if(lTrigger) setArmSpeed(-1);
-// else setArmSpeed(0);
 setArmSpeed((lTrigger >> 1), (rTrigger >> 1));
 
 if(rButton) setWristSpeed(1);
