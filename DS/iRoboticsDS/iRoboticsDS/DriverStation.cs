@@ -60,13 +60,11 @@ namespace iRoboticsDS
             {
                 controller1_textBox.Text = "Connected";
                 controller1_textBox.ForeColor = System.Drawing.Color.Green;
-                //updateControllerGUI();
             }
             else
             {
                 controller1_textBox.Text = "Disconnected";
                 controller1_textBox.ForeColor = System.Drawing.Color.DarkRed;
-                //updateControllerGUI();
             }
         }
 
@@ -108,7 +106,7 @@ namespace iRoboticsDS
                     {
                         for (i = 0; i < 8; i++)
                         {
-                            gui_packet[i] += data[i];
+                            gui_packet[i] = data[i];
                         }
                         packet_state[packet_time] = true;
                     }
@@ -393,14 +391,14 @@ namespace iRoboticsDS
 
         private void updateArduinoReturnGUI()
         {
-            Arduino0.Text = (data[0].ToString());
-            Arduino1.Text = (data[1].ToString());
-            Arduino2.Text = (data[2].ToString());
-            Arduino3.Text = (data[3].ToString());
-            Arduino4.Text = (data[4].ToString());
-            Arduino5.Text = (data[5].ToString());
-            Arduino6.Text = (data[6].ToString());
-            Arduino7.Text = (data[7].ToString());
+            Arduino0.Text = (gui_packet[0].ToString());
+            Arduino1.Text = (gui_packet[1].ToString());
+            Arduino2.Text = (gui_packet[2].ToString());
+            Arduino3.Text = (gui_packet[3].ToString());
+            Arduino4.Text = (gui_packet[4].ToString());
+            Arduino5.Text = (gui_packet[5].ToString());
+            Arduino6.Text = (gui_packet[6].ToString());
+            Arduino7.Text = (gui_packet[7].ToString());
         }
 
         private void open_button_Click(object sender, EventArgs e)
