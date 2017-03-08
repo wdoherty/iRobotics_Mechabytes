@@ -28,7 +28,7 @@ unsigned int _rStickX;
 
 bool doorTrigger;   //intake variables
 bool intakeTrigger;
-bool scoreTrigger;
+bool reverseTrigger;
 bool prevState = false;
 bool piston_out = false;
 bool firstTime = true;
@@ -161,8 +161,8 @@ void mainCode()
 
         intakeTrigger = (B1 == ((controller[0] & B100000) >> 5));
         doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
-        scoreTrigger = (B1 == ((controller[0] & B10) >> 1));
-        runIntake(scoreTrigger, intakeTrigger, doorTrigger);
+        reverseTrigger = (B1 == ((controller[0] & B10000) >> 4));
+        runIntake(reverseTrigger, intakeTrigger, doorTrigger);
         
         lTrigger = controller[6];
         rTrigger = controller[7];
@@ -324,12 +324,17 @@ void ArmInit(int armPWM, int wristPWM)
 void setArmSpeed(byte _lTrigger, byte _rTrigger)
 {
 //for input -1, 0, 1, sets speed to half forward, half reverse, or off
-//  int armSpeed = (127 + (int) _rTrigger - (int) _lTrigger)*(180/255);
-  int armSpeed = (90 + (int) _rTrigger - (int) _lTrigger)*(180/255);
+int lTrigger = _lTrigger;
+int rTrigger = _rTrigger;
+
+  int armSpeed = lTrigger - rTrigger;
+  armSpeed *= 180;
+  armSpeed /= 100;
+  armSpeed += 90;
   if(abs(90 - armSpeed) < 10) armSpeed = 90;
 
 //sends value to speed controller
-//  feedback[4] = armSpeed;
+  feedback[4] = armSpeed;
   ArmMotor.write(armSpeed);
 }
 
