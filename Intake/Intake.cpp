@@ -1,9 +1,14 @@
 #include "Arduino.h"
 #include "Intake.h"
+<<<<<<< HEAD
+//Kyle Patel
+Intake::Intake(int PWM)
+=======
 #include <Servo.h>
 //Kyle Patel
 //piston runs the arm that opens the door
 Intake::Intake(int PWM, int pistonIO)
+>>>>>>> 7e4bf86c1cce765c411ef1c001ad684d2726a134
 {
 //subsystem setup, assigns pin number and initializes pin
 
@@ -42,6 +47,10 @@ void Intake::runIntake(bool lTrigger, bool rTrigger, bool piston)
 //if left trigger held, run intake out
 //if right trigger held, run intake in
 //right trigger takes priority
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7e4bf86c1cce765c411ef1c001ad684d2726a134
 if(rTrigger)
 {
   setSpeed(1);//run intake in
