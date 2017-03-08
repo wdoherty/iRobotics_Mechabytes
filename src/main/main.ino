@@ -20,8 +20,8 @@ byte checkSumTX;    // check sum for transmitting data
 byte checkSumRX;    // check sum for recieving data
 
 byte driveThrottle; //drive variables
+byte revThrottle;
 byte driveHeading;
-//bool omniTrigger;
 
 unsigned int _lStickY;
 unsigned int _rStickX;
@@ -35,10 +35,7 @@ bool firstTime = true;
 
 int _PISTON;
 
-byte lTrigger;      //arm variables
-byte rTrigger;
-bool clawCW;
-bool clawCCW;
+byte armVal;    //arm variables
 
 unsigned long read_time;
 
@@ -49,7 +46,6 @@ unsigned long read_time;
 #define rollers 6
 #define lift 7
 #define armMotor 8
-#define wrist 9
 
 #define doorSolenoid 16
 //#define compressorPin 30
@@ -62,7 +58,6 @@ unsigned long read_time;
   Servo intake1;
 
   Servo ArmMotor;
-  Servo WristMotor;
 
 void failsafe(){
     // write the code below that you want to run
@@ -87,7 +82,7 @@ void setup(){
     //subsystem initialization
     DriveBaseInit(DriveML1, DriveML2, DriveMR1, DriveMR2);
     IntakeInit(rollers, doorSolenoid);
-    ArmInit(armMotor, wrist);
+    ArmInit(armMotor);
     failsafe();
     read_time = millis();
     checkSumRX = 0;
@@ -145,30 +140,26 @@ void loop(){
     if((firstTime && millis() - read_time >= time_out)){
         failsafe();
     }
-
-    if(connection){
-
-}
 }
 void mainCode()
 {
           // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
-        driveThrottle = controller[3];
+        
+        driveThrottle = controller[7];
+        revThrottle = controller[6];
         driveHeading = controller[4];
-        updateDrive(driveThrottle, driveHeading);
+        updateDrive(driveThrottle, revThrottle, driveHeading);
 
         intakeTrigger = (B1 == ((controller[0] & B100000) >> 5));
         doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
         reverseTrigger = (B1 == ((controller[0] & B10000) >> 4));
         runIntake(reverseTrigger, intakeTrigger, doorTrigger);
         
-        lTrigger = controller[6];
-        rTrigger = controller[7];
-        clawCW = (B1 == ((controller[0] & B100) >> 2));
-        clawCCW = (B1 == ((controller[0] & B1) ));
-        setArm(lTrigger, rTrigger, clawCW, clawCCW);
+        armVal = controller[3];
+
+        setArm(armVal);
 
         // below is the code for sending feedback to the driver station
 
@@ -192,14 +183,6 @@ void DriveBaseInit(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2)
   DriveR2.attach(rightPWM2);
 }
 
-void driveBaseFailsafe()
-{
-  DriveL1.write(90);
-  DriveL2.write(90);
-  DriveR1.write(90);
-  DriveR2.write(90);
-}
-
 void setThrottle(int _lStickY, int _rStickX)
 {
 
@@ -220,32 +203,52 @@ void setThrottle(int _lStickY, int _rStickX)
   DriveR2.write(rSpeed);
 }
 
-void updateDrive(byte lStickY, byte rStickX)
+void updateDrive(byte throttle, byte reverse, byte rStickX)
 {
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,
+int _throttle = (throttle >> 1);
+_throttle *= 180;
+_throttle /= 100;
 
-_lStickY = lStickY;
+int _reverse = (reverse >> 1);
+_reverse *= 180;
+_reverse /= 100;
+
+int throttleMag = _throttle - _reverse;
+//  throttleMag *= 180;
+//  throttleMag /= 100;
+  throttleMag += 90;
+
+//_lStickY = lStickY;
 _rStickX = rStickX;
 
-_lStickY *= 180;
-_lStickY /= 200;
+//_lStickY *= 180;
+//_lStickY /= 200;
 
 _rStickX *= 180;
 _rStickX /= 200;
 
-_lStickY = _lStickY & B11111111;
-_rStickX = _rStickX & B11111111;
-
-//  Serial.println(_lStickY);
+//_lStickY = _lStickY & B11111111;
+//_rStickX = _rStickX & B11111111;
 
 //deadband control to prevent non-significant power output
-  if(_lStickY > 80 && _lStickY < 100) _lStickY = 90;
+//  if(_lStickY > 80 && _lStickY < 100) _lStickY = 90;
+  if(throttleMag > 80 && throttleMag < 100) throttleMag = 90;
   if(_rStickX > 80 && _rStickX < 100) _rStickX = 90;
-  feedback[5] = _lStickY;
+  feedback[5] = throttleMag;
   feedback[6] = _rStickX;
-  setThrottle(_lStickY, _rStickX);
+  setThrottle(throttleMag, _rStickX);
 }
+
+void driveBaseFailsafe()
+{
+  DriveL1.write(90);
+  DriveL2.write(90);
+  DriveR1.write(90);
+  DriveR2.write(90);
+}
+
 
 //intake subsystem
 void IntakeInit(int PWM, int pistonIO)
@@ -277,11 +280,6 @@ void runPiston(bool piston)//accepts piston as state of button
     digitalWrite(_PISTON, piston?HIGH:LOW);//send 'pressed' to _PISTON
 }
 
-void IntakeFailsafe()
-{
-  intake1.write(90);
-}
-
 void runIntake(bool lTrigger, bool rTrigger, bool piston)
 {
 //if left trigger held, run intake out
@@ -309,59 +307,49 @@ else if(!piston)
 }
 }
 
+void IntakeFailsafe()
+{
+  intake1.write(90);
+}
+
+
 //arm subsystem
-void ArmInit(int armPWM, int wristPWM)
+void ArmInit(int armPWM)
 {
 //subsystem setup, assigns pin number and initializes pin
 
   int _PWM1 = armPWM;
-  int _PWM2 = wristPWM;
 
   ArmMotor.attach(_PWM1);
-  WristMotor.attach(_PWM2);
 }
 
-void setArmSpeed(byte _lTrigger, byte _rTrigger)
+void setArmSpeed(byte _speed)
 {
 //for input -1, 0, 1, sets speed to half forward, half reverse, or off
-int lTrigger = _lTrigger;
-int rTrigger = _rTrigger;
+unsigned int motorSpeed = _speed;
 
-  int armSpeed = lTrigger - rTrigger;
-  armSpeed *= 180;
-  armSpeed /= 100;
-  armSpeed += 90;
-  if(abs(90 - armSpeed) < 10) armSpeed = 90;
+motorSpeed *= 180;
+motorSpeed /= 200;
+
+//  int armSpeed = lTrigger - rTrigger;
+//  armSpeed *= 180;
+//  armSpeed /= 100;
+//  armSpeed += 90;
+//  if(abs(90 - armSpeed) < 10) armSpeed = 90;
 
 //sends value to speed controller
-  feedback[4] = armSpeed;
-  ArmMotor.write(armSpeed);
+  feedback[4] = motorSpeed;
+  ArmMotor.write(motorSpeed);
 }
 
-void setWristSpeed(int state)
+void setArm(byte _speed)
 {
-//for input -1, 0, 1, sets speed to half forward, half reverse, or off
-  int wristSpeed = (50 * state) + 90;
-
-  //sends value to speed controller
-  WristMotor.write(wristSpeed);
+//setArmSpeed((lTrigger >> 1), (rTrigger >> 1));
+setArmSpeed(_speed);
 }
 
 void armFailsafe()
 {
   ArmMotor.write(90);
-  WristMotor.write(90);
 }
 
-void setArm(byte lTrigger, byte rTrigger, bool rButton, bool lButton)
-{
-//if left trigger held, run intake out
-//if right trigger held, run intake in
-//right trigger takes priority
-
-setArmSpeed((lTrigger >> 1), (rTrigger >> 1));
-
-if(rButton) setWristSpeed(1);
-else if(lButton) setWristSpeed(-1);
-else setWristSpeed(0);
-}
