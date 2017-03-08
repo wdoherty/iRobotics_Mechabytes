@@ -23,7 +23,7 @@ byte driveThrottle; //drive variables
 byte driveHeading;
 //bool omniTrigger;
 
-int _lStickY;
+unsigned int _lStickY;
 int _rStickX;
 
 bool doorTrigger;   //intake variables
