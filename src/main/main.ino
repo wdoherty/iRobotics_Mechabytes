@@ -24,7 +24,7 @@ byte driveHeading;
 //bool omniTrigger;
 
 unsigned int _lStickY;
-int _rStickX;
+unsigned int _rStickX;
 
 bool doorTrigger;   //intake variables
 bool intakeTrigger;
@@ -108,10 +108,10 @@ void loop(){
     while(size1 > 0){
         if(packet_index == 0){
             if(Serial1.read()==255){
-              Serial.println("Valid lead");
+//              Serial.println("Valid lead");
                 packet_index++;
             }
-            else Serial.println("Invalid lead");
+//            else Serial.println("Invalid lead");
         }
         else if(packet_index < 9){
             data[packet_index-1] = Serial1.read();
@@ -128,7 +128,7 @@ void loop(){
         }
         else if(packet_index == 10){
             if(Serial1.read() == 240){
-              Serial.println("Valid end packet");
+//              Serial.println("Valid end packet");
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
                 }
@@ -137,7 +137,7 @@ void loop(){
                  firstTime = true;
                  mainCode();
             }
-            else Serial.println("Invalid end packet");
+//            else Serial.println("Invalid end packet");
             packet_index=0;
         }
         size1--;
@@ -225,10 +225,19 @@ void updateDrive(byte lStickY, byte rStickX)
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,
 
-  _lStickY = (((lStickY)*180)/200) & B11111111;
-  _rStickX = (((rStickX)*180)/200) & B11111111;
+_lStickY = lStickY;
+_rStickX = rStickX;
 
+_lStickY *= 180;
+_lStickY /= 200;
 
+_rStickX *= 180;
+_rStickX /= 200;
+
+_lStickY = _lStickY & B11111111;
+_rStickX = _rStickX & B11111111;
+
+//  Serial.println(_lStickY);
 
 //deadband control to prevent non-significant power output
   if(_lStickY > 80 && _lStickY < 100) _lStickY = 90;
