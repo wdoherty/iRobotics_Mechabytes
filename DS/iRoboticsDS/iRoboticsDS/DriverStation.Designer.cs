@@ -47,37 +47,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.connection_textBox = new System.Windows.Forms.TextBox();
             this.connection_label = new System.Windows.Forms.Label();
-            this.wheelType_textBox = new System.Windows.Forms.TextBox();
+            this.BallRelease_textbox = new System.Windows.Forms.TextBox();
             this.wheelType_label = new System.Windows.Forms.Label();
-            this.drivingSpeed_textBox = new System.Windows.Forms.TextBox();
+            this.doorPiston_textbox = new System.Windows.Forms.TextBox();
             this.drivingSpeed_label = new System.Windows.Forms.Label();
-            this.computerVision_textBox = new System.Windows.Forms.TextBox();
-            this.computerVision_label = new System.Windows.Forms.Label();
-            this.ballsBad_progressBar = new System.Windows.Forms.ProgressBar();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.ballsScored_textBox = new System.Windows.Forms.TextBox();
-            this.ballsScored_label = new System.Windows.Forms.Label();
-            this.ballsScored_progressBar = new System.Windows.Forms.ProgressBar();
-            this.ballsBad_textBox = new System.Windows.Forms.TextBox();
-            this.ballsGood_textBox = new System.Windows.Forms.TextBox();
-            this.ballsBad_label = new System.Windows.Forms.Label();
-            this.ballsGood_label = new System.Windows.Forms.Label();
-            this.ballsGood_progressBar = new System.Windows.Forms.ProgressBar();
-            this.sortingStatus_textBox = new System.Windows.Forms.TextBox();
-            this.sortingStatus_label = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.intake_textBox = new System.Windows.Forms.TextBox();
-            this.intake_label = new System.Windows.Forms.Label();
-            this.shooter_textBox = new System.Windows.Forms.TextBox();
+            this.armSpeed_textbox = new System.Windows.Forms.TextBox();
             this.shooter_label = new System.Windows.Forms.Label();
-            this.manipulatorAngle_textBox = new System.Windows.Forms.TextBox();
-            this.manipulatorAngle_label = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.autoCompress_textBox = new System.Windows.Forms.TextBox();
+            this.Intake_textbox = new System.Windows.Forms.TextBox();
             this.autoCompress_label = new System.Windows.Forms.Label();
-            this.compressorStatus_textBox = new System.Windows.Forms.TextBox();
+            this.DriveRight_textbox = new System.Windows.Forms.TextBox();
             this.compressorStatus_label = new System.Windows.Forms.Label();
-            this.pressure_textBox = new System.Windows.Forms.TextBox();
+            this.DriveLeft_textbox = new System.Windows.Forms.TextBox();
             this.pressure_label = new System.Windows.Forms.Label();
             this.ControllerData1 = new System.Windows.Forms.TextBox();
             this.ControllerData2 = new System.Windows.Forms.TextBox();
@@ -88,6 +71,22 @@
             this.ControllerData7 = new System.Windows.Forms.TextBox();
             this.ControllerData8 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Arduino7 = new System.Windows.Forms.TextBox();
+            this.Arduino6 = new System.Windows.Forms.TextBox();
+            this.Arduino5 = new System.Windows.Forms.TextBox();
+            this.Arduino4 = new System.Windows.Forms.TextBox();
+            this.Arduino3 = new System.Windows.Forms.TextBox();
+            this.Arduino2 = new System.Windows.Forms.TextBox();
+            this.Arduino1 = new System.Windows.Forms.TextBox();
+            this.Arduino0 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -96,26 +95,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Arduino0 = new System.Windows.Forms.TextBox();
-            this.Arduino1 = new System.Windows.Forms.TextBox();
-            this.Arduino2 = new System.Windows.Forms.TextBox();
-            this.Arduino3 = new System.Windows.Forms.TextBox();
-            this.Arduino4 = new System.Windows.Forms.TextBox();
-            this.Arduino5 = new System.Windows.Forms.TextBox();
-            this.Arduino6 = new System.Windows.Forms.TextBox();
-            this.Arduino7 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -317,21 +299,21 @@
             this.connection_label.TabIndex = 68;
             this.connection_label.Text = "Signal Integrity:";
             // 
-            // wheelType_textBox
+            // BallRelease_textbox
             // 
-            this.wheelType_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.wheelType_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.wheelType_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.wheelType_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wheelType_textBox.ForeColor = System.Drawing.Color.White;
-            this.wheelType_textBox.Location = new System.Drawing.Point(196, 288);
-            this.wheelType_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.wheelType_textBox.Multiline = true;
-            this.wheelType_textBox.Name = "wheelType_textBox";
-            this.wheelType_textBox.ReadOnly = true;
-            this.wheelType_textBox.Size = new System.Drawing.Size(181, 41);
-            this.wheelType_textBox.TabIndex = 42;
-            this.wheelType_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BallRelease_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.BallRelease_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BallRelease_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BallRelease_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BallRelease_textbox.ForeColor = System.Drawing.Color.White;
+            this.BallRelease_textbox.Location = new System.Drawing.Point(196, 288);
+            this.BallRelease_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.BallRelease_textbox.Multiline = true;
+            this.BallRelease_textbox.Name = "BallRelease_textbox";
+            this.BallRelease_textbox.ReadOnly = true;
+            this.BallRelease_textbox.Size = new System.Drawing.Size(181, 41);
+            this.BallRelease_textbox.TabIndex = 42;
+            this.BallRelease_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // wheelType_label
             // 
@@ -341,25 +323,25 @@
             this.wheelType_label.Location = new System.Drawing.Point(23, 295);
             this.wheelType_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.wheelType_label.Name = "wheelType_label";
-            this.wheelType_label.Size = new System.Drawing.Size(139, 26);
+            this.wheelType_label.Size = new System.Drawing.Size(129, 26);
             this.wheelType_label.TabIndex = 41;
-            this.wheelType_label.Text = "Omni Status:";
+            this.wheelType_label.Text = "BallRelease";
             // 
-            // drivingSpeed_textBox
+            // doorPiston_textbox
             // 
-            this.drivingSpeed_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.drivingSpeed_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.drivingSpeed_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.drivingSpeed_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drivingSpeed_textBox.ForeColor = System.Drawing.Color.White;
-            this.drivingSpeed_textBox.Location = new System.Drawing.Point(196, 223);
-            this.drivingSpeed_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.drivingSpeed_textBox.Multiline = true;
-            this.drivingSpeed_textBox.Name = "drivingSpeed_textBox";
-            this.drivingSpeed_textBox.ReadOnly = true;
-            this.drivingSpeed_textBox.Size = new System.Drawing.Size(181, 41);
-            this.drivingSpeed_textBox.TabIndex = 40;
-            this.drivingSpeed_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.doorPiston_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.doorPiston_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.doorPiston_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.doorPiston_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doorPiston_textbox.ForeColor = System.Drawing.Color.White;
+            this.doorPiston_textbox.Location = new System.Drawing.Point(196, 223);
+            this.doorPiston_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.doorPiston_textbox.Multiline = true;
+            this.doorPiston_textbox.Name = "doorPiston_textbox";
+            this.doorPiston_textbox.ReadOnly = true;
+            this.doorPiston_textbox.Size = new System.Drawing.Size(181, 41);
+            this.doorPiston_textbox.TabIndex = 40;
+            this.doorPiston_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // drivingSpeed_label
             // 
@@ -369,262 +351,45 @@
             this.drivingSpeed_label.Location = new System.Drawing.Point(23, 230);
             this.drivingSpeed_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.drivingSpeed_label.Name = "drivingSpeed_label";
-            this.drivingSpeed_label.Size = new System.Drawing.Size(155, 26);
+            this.drivingSpeed_label.Size = new System.Drawing.Size(120, 26);
             this.drivingSpeed_label.TabIndex = 0;
-            this.drivingSpeed_label.Text = "Driving Speed:";
-            // 
-            // computerVision_textBox
-            // 
-            this.computerVision_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.computerVision_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.computerVision_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.computerVision_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.computerVision_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.computerVision_textBox.Location = new System.Drawing.Point(273, 222);
-            this.computerVision_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.computerVision_textBox.Multiline = true;
-            this.computerVision_textBox.Name = "computerVision_textBox";
-            this.computerVision_textBox.ReadOnly = true;
-            this.computerVision_textBox.Size = new System.Drawing.Size(99, 41);
-            this.computerVision_textBox.TabIndex = 61;
-            this.computerVision_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // computerVision_label
-            // 
-            this.computerVision_label.AutoSize = true;
-            this.computerVision_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.computerVision_label.ForeColor = System.Drawing.Color.White;
-            this.computerVision_label.Location = new System.Drawing.Point(21, 229);
-            this.computerVision_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.computerVision_label.Name = "computerVision_label";
-            this.computerVision_label.Size = new System.Drawing.Size(180, 26);
-            this.computerVision_label.TabIndex = 60;
-            this.computerVision_label.Text = "Computer Vision:";
-            // 
-            // ballsBad_progressBar
-            // 
-            this.ballsBad_progressBar.Location = new System.Drawing.Point(21, 225);
-            this.ballsBad_progressBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ballsBad_progressBar.Maximum = 48;
-            this.ballsBad_progressBar.Name = "ballsBad_progressBar";
-            this.ballsBad_progressBar.Size = new System.Drawing.Size(591, 28);
-            this.ballsBad_progressBar.TabIndex = 52;
+            this.drivingSpeed_label.Text = "DoorPiston";
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel6.Controls.Add(this.ballsScored_textBox);
-            this.panel6.Controls.Add(this.ballsScored_label);
-            this.panel6.Controls.Add(this.ballsScored_progressBar);
-            this.panel6.Controls.Add(this.ballsBad_textBox);
-            this.panel6.Controls.Add(this.ballsGood_textBox);
-            this.panel6.Controls.Add(this.ballsBad_label);
-            this.panel6.Controls.Add(this.ballsGood_label);
-            this.panel6.Controls.Add(this.ballsGood_progressBar);
-            this.panel6.Controls.Add(this.ballsBad_progressBar);
             this.panel6.Location = new System.Drawing.Point(453, 463);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(796, 283);
             this.panel6.TabIndex = 53;
             // 
-            // ballsScored_textBox
-            // 
-            this.ballsScored_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ballsScored_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ballsScored_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ballsScored_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballsScored_textBox.ForeColor = System.Drawing.Color.White;
-            this.ballsScored_textBox.Location = new System.Drawing.Point(629, 41);
-            this.ballsScored_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.ballsScored_textBox.Multiline = true;
-            this.ballsScored_textBox.Name = "ballsScored_textBox";
-            this.ballsScored_textBox.ReadOnly = true;
-            this.ballsScored_textBox.Size = new System.Drawing.Size(149, 50);
-            this.ballsScored_textBox.TabIndex = 62;
-            this.ballsScored_textBox.Text = "0 / 16";
-            this.ballsScored_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ballsScored_label
-            // 
-            this.ballsScored_label.AutoSize = true;
-            this.ballsScored_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballsScored_label.ForeColor = System.Drawing.Color.White;
-            this.ballsScored_label.Location = new System.Drawing.Point(21, 17);
-            this.ballsScored_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ballsScored_label.Name = "ballsScored_label";
-            this.ballsScored_label.Size = new System.Drawing.Size(135, 26);
-            this.ballsScored_label.TabIndex = 61;
-            this.ballsScored_label.Text = "Scored Balls";
-            // 
-            // ballsScored_progressBar
-            // 
-            this.ballsScored_progressBar.Location = new System.Drawing.Point(21, 50);
-            this.ballsScored_progressBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ballsScored_progressBar.MarqueeAnimationSpeed = 0;
-            this.ballsScored_progressBar.Maximum = 16;
-            this.ballsScored_progressBar.Name = "ballsScored_progressBar";
-            this.ballsScored_progressBar.Size = new System.Drawing.Size(591, 28);
-            this.ballsScored_progressBar.TabIndex = 60;
-            // 
-            // ballsBad_textBox
-            // 
-            this.ballsBad_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ballsBad_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ballsBad_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ballsBad_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballsBad_textBox.ForeColor = System.Drawing.Color.White;
-            this.ballsBad_textBox.Location = new System.Drawing.Point(629, 213);
-            this.ballsBad_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.ballsBad_textBox.Multiline = true;
-            this.ballsBad_textBox.Name = "ballsBad_textBox";
-            this.ballsBad_textBox.ReadOnly = true;
-            this.ballsBad_textBox.Size = new System.Drawing.Size(149, 50);
-            this.ballsBad_textBox.TabIndex = 57;
-            this.ballsBad_textBox.Text = "0 / 48";
-            this.ballsBad_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ballsGood_textBox
-            // 
-            this.ballsGood_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ballsGood_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ballsGood_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ballsGood_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballsGood_textBox.ForeColor = System.Drawing.Color.White;
-            this.ballsGood_textBox.Location = new System.Drawing.Point(629, 128);
-            this.ballsGood_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.ballsGood_textBox.Multiline = true;
-            this.ballsGood_textBox.Name = "ballsGood_textBox";
-            this.ballsGood_textBox.ReadOnly = true;
-            this.ballsGood_textBox.Size = new System.Drawing.Size(149, 50);
-            this.ballsGood_textBox.TabIndex = 56;
-            this.ballsGood_textBox.Text = "0 / 16";
-            this.ballsGood_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ballsBad_label
-            // 
-            this.ballsBad_label.AutoSize = true;
-            this.ballsBad_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballsBad_label.ForeColor = System.Drawing.Color.White;
-            this.ballsBad_label.Location = new System.Drawing.Point(21, 192);
-            this.ballsBad_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ballsBad_label.Name = "ballsBad_label";
-            this.ballsBad_label.Size = new System.Drawing.Size(105, 26);
-            this.ballsBad_label.TabIndex = 55;
-            this.ballsBad_label.Text = "Bad Balls";
-            // 
-            // ballsGood_label
-            // 
-            this.ballsGood_label.AutoSize = true;
-            this.ballsGood_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballsGood_label.ForeColor = System.Drawing.Color.White;
-            this.ballsGood_label.Location = new System.Drawing.Point(21, 105);
-            this.ballsGood_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ballsGood_label.Name = "ballsGood_label";
-            this.ballsGood_label.Size = new System.Drawing.Size(197, 26);
-            this.ballsGood_label.TabIndex = 54;
-            this.ballsGood_label.Text = "Current Good Balls";
-            // 
-            // ballsGood_progressBar
-            // 
-            this.ballsGood_progressBar.Location = new System.Drawing.Point(21, 138);
-            this.ballsGood_progressBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ballsGood_progressBar.MarqueeAnimationSpeed = 0;
-            this.ballsGood_progressBar.Maximum = 16;
-            this.ballsGood_progressBar.Name = "ballsGood_progressBar";
-            this.ballsGood_progressBar.Size = new System.Drawing.Size(591, 28);
-            this.ballsGood_progressBar.TabIndex = 53;
-            // 
-            // sortingStatus_textBox
-            // 
-            this.sortingStatus_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.sortingStatus_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sortingStatus_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.sortingStatus_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortingStatus_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.sortingStatus_textBox.Location = new System.Drawing.Point(224, 85);
-            this.sortingStatus_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.sortingStatus_textBox.Multiline = true;
-            this.sortingStatus_textBox.Name = "sortingStatus_textBox";
-            this.sortingStatus_textBox.ReadOnly = true;
-            this.sortingStatus_textBox.Size = new System.Drawing.Size(149, 41);
-            this.sortingStatus_textBox.TabIndex = 59;
-            this.sortingStatus_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // sortingStatus_label
-            // 
-            this.sortingStatus_label.AutoSize = true;
-            this.sortingStatus_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortingStatus_label.ForeColor = System.Drawing.Color.White;
-            this.sortingStatus_label.Location = new System.Drawing.Point(21, 92);
-            this.sortingStatus_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.sortingStatus_label.Name = "sortingStatus_label";
-            this.sortingStatus_label.Size = new System.Drawing.Size(155, 26);
-            this.sortingStatus_label.TabIndex = 58;
-            this.sortingStatus_label.Text = "Sorting Status:";
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel7.Controls.Add(this.intake_textBox);
-            this.panel7.Controls.Add(this.intake_label);
-            this.panel7.Controls.Add(this.shooter_textBox);
-            this.panel7.Controls.Add(this.sortingStatus_textBox);
-            this.panel7.Controls.Add(this.sortingStatus_label);
+            this.panel7.Controls.Add(this.armSpeed_textbox);
             this.panel7.Controls.Add(this.shooter_label);
-            this.panel7.Controls.Add(this.manipulatorAngle_textBox);
-            this.panel7.Controls.Add(this.manipulatorAngle_label);
-            this.panel7.Controls.Add(this.computerVision_label);
-            this.panel7.Controls.Add(this.computerVision_textBox);
             this.panel7.Location = new System.Drawing.Point(859, 107);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(391, 342);
             this.panel7.TabIndex = 54;
             // 
-            // intake_textBox
+            // armSpeed_textbox
             // 
-            this.intake_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.intake_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.intake_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.intake_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.intake_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.intake_textBox.Location = new System.Drawing.Point(273, 154);
-            this.intake_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.intake_textBox.Multiline = true;
-            this.intake_textBox.Name = "intake_textBox";
-            this.intake_textBox.ReadOnly = true;
-            this.intake_textBox.Size = new System.Drawing.Size(99, 41);
-            this.intake_textBox.TabIndex = 69;
-            this.intake_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // intake_label
-            // 
-            this.intake_label.AutoSize = true;
-            this.intake_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.intake_label.ForeColor = System.Drawing.Color.White;
-            this.intake_label.Location = new System.Drawing.Point(21, 161);
-            this.intake_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.intake_label.Name = "intake_label";
-            this.intake_label.Size = new System.Drawing.Size(77, 26);
-            this.intake_label.TabIndex = 68;
-            this.intake_label.Text = "Intake:";
-            // 
-            // shooter_textBox
-            // 
-            this.shooter_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.shooter_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.shooter_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.shooter_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shooter_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.shooter_textBox.Location = new System.Drawing.Point(273, 14);
-            this.shooter_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.shooter_textBox.Multiline = true;
-            this.shooter_textBox.Name = "shooter_textBox";
-            this.shooter_textBox.ReadOnly = true;
-            this.shooter_textBox.Size = new System.Drawing.Size(99, 41);
-            this.shooter_textBox.TabIndex = 67;
-            this.shooter_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.armSpeed_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.armSpeed_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.armSpeed_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.armSpeed_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.armSpeed_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.armSpeed_textbox.Location = new System.Drawing.Point(273, 14);
+            this.armSpeed_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.armSpeed_textbox.Multiline = true;
+            this.armSpeed_textbox.Name = "armSpeed_textbox";
+            this.armSpeed_textbox.ReadOnly = true;
+            this.armSpeed_textbox.Size = new System.Drawing.Size(99, 41);
+            this.armSpeed_textbox.TabIndex = 67;
+            this.armSpeed_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // shooter_label
             // 
@@ -634,51 +399,22 @@
             this.shooter_label.Location = new System.Drawing.Point(21, 21);
             this.shooter_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.shooter_label.Name = "shooter_label";
-            this.shooter_label.Size = new System.Drawing.Size(94, 26);
+            this.shooter_label.Size = new System.Drawing.Size(116, 26);
             this.shooter_label.TabIndex = 66;
-            this.shooter_label.Text = "Shooter:";
-            // 
-            // manipulatorAngle_textBox
-            // 
-            this.manipulatorAngle_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.manipulatorAngle_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.manipulatorAngle_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.manipulatorAngle_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.manipulatorAngle_textBox.ForeColor = System.Drawing.Color.White;
-            this.manipulatorAngle_textBox.Location = new System.Drawing.Point(273, 281);
-            this.manipulatorAngle_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.manipulatorAngle_textBox.Multiline = true;
-            this.manipulatorAngle_textBox.Name = "manipulatorAngle_textBox";
-            this.manipulatorAngle_textBox.ReadOnly = true;
-            this.manipulatorAngle_textBox.Size = new System.Drawing.Size(99, 41);
-            this.manipulatorAngle_textBox.TabIndex = 63;
-            this.manipulatorAngle_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // manipulatorAngle_label
-            // 
-            this.manipulatorAngle_label.AutoSize = true;
-            this.manipulatorAngle_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.manipulatorAngle_label.ForeColor = System.Drawing.Color.White;
-            this.manipulatorAngle_label.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.manipulatorAngle_label.Location = new System.Drawing.Point(21, 288);
-            this.manipulatorAngle_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.manipulatorAngle_label.Name = "manipulatorAngle_label";
-            this.manipulatorAngle_label.Size = new System.Drawing.Size(193, 26);
-            this.manipulatorAngle_label.TabIndex = 62;
-            this.manipulatorAngle_label.Text = "Manipulator Angle:";
+            this.shooter_label.Text = "ArmSpeed";
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel8.Controls.Add(this.autoCompress_textBox);
+            this.panel8.Controls.Add(this.Intake_textbox);
             this.panel8.Controls.Add(this.autoCompress_label);
-            this.panel8.Controls.Add(this.wheelType_textBox);
+            this.panel8.Controls.Add(this.BallRelease_textbox);
             this.panel8.Controls.Add(this.wheelType_label);
-            this.panel8.Controls.Add(this.compressorStatus_textBox);
-            this.panel8.Controls.Add(this.drivingSpeed_textBox);
+            this.panel8.Controls.Add(this.DriveRight_textbox);
+            this.panel8.Controls.Add(this.doorPiston_textbox);
             this.panel8.Controls.Add(this.compressorStatus_label);
             this.panel8.Controls.Add(this.drivingSpeed_label);
-            this.panel8.Controls.Add(this.pressure_textBox);
+            this.panel8.Controls.Add(this.DriveLeft_textbox);
             this.panel8.Controls.Add(this.pressure_label);
             this.panel8.Location = new System.Drawing.Point(453, 107);
             this.panel8.Margin = new System.Windows.Forms.Padding(4);
@@ -686,21 +422,21 @@
             this.panel8.Size = new System.Drawing.Size(393, 342);
             this.panel8.TabIndex = 55;
             // 
-            // autoCompress_textBox
+            // Intake_textbox
             // 
-            this.autoCompress_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.autoCompress_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.autoCompress_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.autoCompress_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoCompress_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.autoCompress_textBox.Location = new System.Drawing.Point(239, 158);
-            this.autoCompress_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.autoCompress_textBox.Multiline = true;
-            this.autoCompress_textBox.Name = "autoCompress_textBox";
-            this.autoCompress_textBox.ReadOnly = true;
-            this.autoCompress_textBox.Size = new System.Drawing.Size(138, 41);
-            this.autoCompress_textBox.TabIndex = 67;
-            this.autoCompress_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Intake_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.Intake_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Intake_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Intake_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.Intake_textbox.Location = new System.Drawing.Point(239, 158);
+            this.Intake_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.Intake_textbox.Multiline = true;
+            this.Intake_textbox.Name = "Intake_textbox";
+            this.Intake_textbox.ReadOnly = true;
+            this.Intake_textbox.Size = new System.Drawing.Size(138, 41);
+            this.Intake_textbox.TabIndex = 67;
+            this.Intake_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // autoCompress_label
             // 
@@ -710,25 +446,25 @@
             this.autoCompress_label.Location = new System.Drawing.Point(23, 165);
             this.autoCompress_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.autoCompress_label.Name = "autoCompress_label";
-            this.autoCompress_label.Size = new System.Drawing.Size(181, 26);
+            this.autoCompress_label.Size = new System.Drawing.Size(71, 26);
             this.autoCompress_label.TabIndex = 66;
-            this.autoCompress_label.Text = "Pressure Control:";
+            this.autoCompress_label.Text = "Intake";
             // 
-            // compressorStatus_textBox
+            // DriveRight_textbox
             // 
-            this.compressorStatus_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.compressorStatus_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.compressorStatus_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.compressorStatus_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compressorStatus_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.compressorStatus_textBox.Location = new System.Drawing.Point(277, 89);
-            this.compressorStatus_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.compressorStatus_textBox.Multiline = true;
-            this.compressorStatus_textBox.Name = "compressorStatus_textBox";
-            this.compressorStatus_textBox.ReadOnly = true;
-            this.compressorStatus_textBox.Size = new System.Drawing.Size(99, 41);
-            this.compressorStatus_textBox.TabIndex = 65;
-            this.compressorStatus_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DriveRight_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DriveRight_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DriveRight_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DriveRight_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriveRight_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.DriveRight_textbox.Location = new System.Drawing.Point(277, 89);
+            this.DriveRight_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.DriveRight_textbox.Multiline = true;
+            this.DriveRight_textbox.Name = "DriveRight_textbox";
+            this.DriveRight_textbox.ReadOnly = true;
+            this.DriveRight_textbox.Size = new System.Drawing.Size(99, 41);
+            this.DriveRight_textbox.TabIndex = 65;
+            this.DriveRight_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // compressorStatus_label
             // 
@@ -738,25 +474,25 @@
             this.compressorStatus_label.Location = new System.Drawing.Point(23, 96);
             this.compressorStatus_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.compressorStatus_label.Name = "compressorStatus_label";
-            this.compressorStatus_label.Size = new System.Drawing.Size(205, 26);
+            this.compressorStatus_label.Size = new System.Drawing.Size(114, 26);
             this.compressorStatus_label.TabIndex = 64;
-            this.compressorStatus_label.Text = "Compressor Status:";
+            this.compressorStatus_label.Text = "DriveRight";
             // 
-            // pressure_textBox
+            // DriveLeft_textbox
             // 
-            this.pressure_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.pressure_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pressure_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pressure_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pressure_textBox.ForeColor = System.Drawing.Color.White;
-            this.pressure_textBox.Location = new System.Drawing.Point(277, 21);
-            this.pressure_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pressure_textBox.Multiline = true;
-            this.pressure_textBox.Name = "pressure_textBox";
-            this.pressure_textBox.ReadOnly = true;
-            this.pressure_textBox.Size = new System.Drawing.Size(99, 41);
-            this.pressure_textBox.TabIndex = 63;
-            this.pressure_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DriveLeft_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DriveLeft_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DriveLeft_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DriveLeft_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriveLeft_textbox.ForeColor = System.Drawing.Color.White;
+            this.DriveLeft_textbox.Location = new System.Drawing.Point(277, 21);
+            this.DriveLeft_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.DriveLeft_textbox.Multiline = true;
+            this.DriveLeft_textbox.Name = "DriveLeft_textbox";
+            this.DriveLeft_textbox.ReadOnly = true;
+            this.DriveLeft_textbox.Size = new System.Drawing.Size(99, 41);
+            this.DriveLeft_textbox.TabIndex = 63;
+            this.DriveLeft_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pressure_label
             // 
@@ -766,9 +502,9 @@
             this.pressure_label.Location = new System.Drawing.Point(23, 28);
             this.pressure_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pressure_label.Name = "pressure_label";
-            this.pressure_label.Size = new System.Drawing.Size(105, 26);
+            this.pressure_label.Size = new System.Drawing.Size(99, 26);
             this.pressure_label.TabIndex = 62;
-            this.pressure_label.Text = "Pressure:";
+            this.pressure_label.Text = "DriveLeft";
             // 
             // ControllerData1
             // 
@@ -866,6 +602,142 @@
             this.panel1.Size = new System.Drawing.Size(423, 463);
             this.panel1.TabIndex = 71;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(63, 214);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 17);
+            this.label21.TabIndex = 93;
+            this.label21.Text = "Arduino4";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(63, 265);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 17);
+            this.label20.TabIndex = 92;
+            this.label20.Text = "Arduino5";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(63, 316);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(65, 17);
+            this.label19.TabIndex = 91;
+            this.label19.Text = "Arduino6";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(63, 372);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 17);
+            this.label18.TabIndex = 90;
+            this.label18.Text = "Arduino7";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(63, 160);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 17);
+            this.label17.TabIndex = 89;
+            this.label17.Text = "Arduino3";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(63, 105);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 17);
+            this.label16.TabIndex = 88;
+            this.label16.Text = "Arduino2";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(63, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 17);
+            this.label15.TabIndex = 87;
+            this.label15.Text = "Arduino1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(63, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 17);
+            this.label14.TabIndex = 86;
+            this.label14.Text = "Arduino0";
+            // 
+            // Arduino7
+            // 
+            this.Arduino7.Location = new System.Drawing.Point(66, 393);
+            this.Arduino7.Name = "Arduino7";
+            this.Arduino7.Size = new System.Drawing.Size(100, 22);
+            this.Arduino7.TabIndex = 85;
+            // 
+            // Arduino6
+            // 
+            this.Arduino6.Location = new System.Drawing.Point(66, 336);
+            this.Arduino6.Name = "Arduino6";
+            this.Arduino6.Size = new System.Drawing.Size(100, 22);
+            this.Arduino6.TabIndex = 84;
+            // 
+            // Arduino5
+            // 
+            this.Arduino5.Location = new System.Drawing.Point(66, 285);
+            this.Arduino5.Name = "Arduino5";
+            this.Arduino5.Size = new System.Drawing.Size(100, 22);
+            this.Arduino5.TabIndex = 83;
+            // 
+            // Arduino4
+            // 
+            this.Arduino4.Location = new System.Drawing.Point(66, 236);
+            this.Arduino4.Name = "Arduino4";
+            this.Arduino4.Size = new System.Drawing.Size(100, 22);
+            this.Arduino4.TabIndex = 82;
+            // 
+            // Arduino3
+            // 
+            this.Arduino3.Location = new System.Drawing.Point(66, 180);
+            this.Arduino3.Name = "Arduino3";
+            this.Arduino3.Size = new System.Drawing.Size(100, 22);
+            this.Arduino3.TabIndex = 81;
+            // 
+            // Arduino2
+            // 
+            this.Arduino2.Location = new System.Drawing.Point(66, 130);
+            this.Arduino2.Name = "Arduino2";
+            this.Arduino2.Size = new System.Drawing.Size(100, 22);
+            this.Arduino2.TabIndex = 80;
+            // 
+            // Arduino1
+            // 
+            this.Arduino1.Location = new System.Drawing.Point(66, 75);
+            this.Arduino1.Name = "Arduino1";
+            this.Arduino1.Size = new System.Drawing.Size(100, 22);
+            this.Arduino1.TabIndex = 79;
+            // 
+            // Arduino0
+            // 
+            this.Arduino0.Location = new System.Drawing.Point(66, 26);
+            this.Arduino0.Name = "Arduino0";
+            this.Arduino0.Size = new System.Drawing.Size(100, 22);
+            this.Arduino0.TabIndex = 78;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -948,142 +820,6 @@
             this.label4.Text = "ControllerData0";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // Arduino0
-            // 
-            this.Arduino0.Location = new System.Drawing.Point(66, 26);
-            this.Arduino0.Name = "Arduino0";
-            this.Arduino0.Size = new System.Drawing.Size(100, 22);
-            this.Arduino0.TabIndex = 78;
-            // 
-            // Arduino1
-            // 
-            this.Arduino1.Location = new System.Drawing.Point(66, 75);
-            this.Arduino1.Name = "Arduino1";
-            this.Arduino1.Size = new System.Drawing.Size(100, 22);
-            this.Arduino1.TabIndex = 79;
-            // 
-            // Arduino2
-            // 
-            this.Arduino2.Location = new System.Drawing.Point(66, 130);
-            this.Arduino2.Name = "Arduino2";
-            this.Arduino2.Size = new System.Drawing.Size(100, 22);
-            this.Arduino2.TabIndex = 80;
-            // 
-            // Arduino3
-            // 
-            this.Arduino3.Location = new System.Drawing.Point(66, 180);
-            this.Arduino3.Name = "Arduino3";
-            this.Arduino3.Size = new System.Drawing.Size(100, 22);
-            this.Arduino3.TabIndex = 81;
-            // 
-            // Arduino4
-            // 
-            this.Arduino4.Location = new System.Drawing.Point(66, 236);
-            this.Arduino4.Name = "Arduino4";
-            this.Arduino4.Size = new System.Drawing.Size(100, 22);
-            this.Arduino4.TabIndex = 82;
-            // 
-            // Arduino5
-            // 
-            this.Arduino5.Location = new System.Drawing.Point(66, 285);
-            this.Arduino5.Name = "Arduino5";
-            this.Arduino5.Size = new System.Drawing.Size(100, 22);
-            this.Arduino5.TabIndex = 83;
-            // 
-            // Arduino6
-            // 
-            this.Arduino6.Location = new System.Drawing.Point(66, 336);
-            this.Arduino6.Name = "Arduino6";
-            this.Arduino6.Size = new System.Drawing.Size(100, 22);
-            this.Arduino6.TabIndex = 84;
-            // 
-            // Arduino7
-            // 
-            this.Arduino7.Location = new System.Drawing.Point(66, 393);
-            this.Arduino7.Name = "Arduino7";
-            this.Arduino7.Size = new System.Drawing.Size(100, 22);
-            this.Arduino7.TabIndex = 85;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(63, 6);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 17);
-            this.label14.TabIndex = 86;
-            this.label14.Text = "Arduino0";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(63, 51);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 17);
-            this.label15.TabIndex = 87;
-            this.label15.Text = "Arduino1";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(63, 105);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 17);
-            this.label16.TabIndex = 88;
-            this.label16.Text = "Arduino2";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(63, 160);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 17);
-            this.label17.TabIndex = 89;
-            this.label17.Text = "Arduino3";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(63, 372);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 17);
-            this.label18.TabIndex = 90;
-            this.label18.Text = "Arduino7";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(63, 316);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(65, 17);
-            this.label19.TabIndex = 91;
-            this.label19.Text = "Arduino6";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(63, 265);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(65, 17);
-            this.label20.TabIndex = 92;
-            this.label20.Text = "Arduino5";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(63, 214);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(65, 17);
-            this.label21.TabIndex = 93;
-            this.label21.Text = "Arduino4";
-            // 
             // DriverStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1112,8 +848,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -1137,40 +871,23 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox wheelType_textBox;
+        private System.Windows.Forms.TextBox BallRelease_textbox;
         private System.Windows.Forms.Label wheelType_label;
-        private System.Windows.Forms.TextBox drivingSpeed_textBox;
+        private System.Windows.Forms.TextBox doorPiston_textbox;
         private System.Windows.Forms.Label drivingSpeed_label;
-        private System.Windows.Forms.ProgressBar ballsBad_progressBar;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label ballsGood_label;
-        private System.Windows.Forms.ProgressBar ballsGood_progressBar;
-        private System.Windows.Forms.Label ballsBad_label;
-        private System.Windows.Forms.TextBox ballsBad_textBox;
-        private System.Windows.Forms.TextBox ballsGood_textBox;
-        private System.Windows.Forms.TextBox sortingStatus_textBox;
-        private System.Windows.Forms.Label sortingStatus_label;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox manipulatorAngle_textBox;
-        private System.Windows.Forms.Label manipulatorAngle_label;
-        private System.Windows.Forms.TextBox computerVision_textBox;
-        private System.Windows.Forms.Label computerVision_label;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox compressorStatus_textBox;
+        private System.Windows.Forms.TextBox DriveRight_textbox;
         private System.Windows.Forms.Label compressorStatus_label;
-        private System.Windows.Forms.TextBox pressure_textBox;
+        private System.Windows.Forms.TextBox DriveLeft_textbox;
         private System.Windows.Forms.Label pressure_label;
-        private System.Windows.Forms.TextBox autoCompress_textBox;
+        private System.Windows.Forms.TextBox Intake_textbox;
         private System.Windows.Forms.Label autoCompress_label;
-        private System.Windows.Forms.TextBox ballsScored_textBox;
-        private System.Windows.Forms.Label ballsScored_label;
-        private System.Windows.Forms.ProgressBar ballsScored_progressBar;
         private System.Windows.Forms.TextBox connection_textBox;
         private System.Windows.Forms.Label connection_label;
-        private System.Windows.Forms.TextBox shooter_textBox;
+        private System.Windows.Forms.TextBox armSpeed_textbox;
         private System.Windows.Forms.Label shooter_label;
-        private System.Windows.Forms.TextBox intake_textBox;
-        private System.Windows.Forms.Label intake_label;
         private System.Windows.Forms.TextBox controller1_textBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;

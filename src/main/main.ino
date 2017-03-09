@@ -29,13 +29,19 @@ static double headingMod = 1.6;
 bool quickTurn;
 
 bool doorTrigger;   //intake variables
+bool releaseTrigger;
 bool intakeTrigger;
 bool reverseTrigger;
 bool prevState = false;
+bool releasePrev = false;
+bool releaseState = false;
 bool piston_out = false;
 bool firstTime = true;
 
-int _PISTON;
+int _DoorOne;
+int _DoorTwo;
+int _ReleaseOne;
+int _ReleaseTwo;
 
 byte armVal;    //arm variables
 
@@ -50,6 +56,9 @@ unsigned long read_time;
 #define armMotor 8
 
 #define doorSolenoid 16
+#define doorSolenoidRev 17
+#define releaseSolenoid 18
+#define releaseSolenoidRev 19
 //#define compressorPin 30
 
   Servo DriveL1;
@@ -83,7 +92,7 @@ void setup(){
 
     //subsystem initialization
     DriveBaseInit(DriveML1, DriveML2, DriveMR1, DriveMR2);
-    IntakeInit(rollers, doorSolenoid);
+    IntakeInit(rollers, doorSolenoid, doorSolenoidRev, releaseSolenoid, releaseSolenoidRev);
     ArmInit(armMotor);
     failsafe();
     read_time = millis();
@@ -155,9 +164,11 @@ void mainCode()
         updateDrive(driveThrottle, revThrottle, driveHeading);
 
         intakeTrigger = (B1 == ((controller[0] & B100000) >> 5));
-        doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
         reverseTrigger = (B1 == ((controller[0] & B10000) >> 4));
-        runIntake(reverseTrigger, intakeTrigger, doorTrigger);
+        doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
+        releaseTrigger = (B1 == ((controller[0] & B10) >> 1));
+        
+        runIntake(reverseTrigger, intakeTrigger, doorTrigger, releaseTrigger);
         
         armVal = controller[3];
 
@@ -200,14 +211,8 @@ void setThrottle(int _lStickY, int _rStickX)
 
    double angularPower = fabs(throttle/90)*(heading)*(headingMod);
 
-//   feedback[5] = throttle;
-//   feedback[6] = heading;
-//   feedback[7] = angularPower;
    setQuickTurn(throttle, heading);
-//   Serial.println(throttle);
-//   Serial.println(heading);
-//   Serial.println(angularPower);
-//   Serial.println(quickTurn);
+
    if(quickTurn) 
    {
    lSpeed = throttle + heading + 90;
@@ -268,13 +273,19 @@ void driveBaseFailsafe()
 
 
 //intake subsystem
-void IntakeInit(int PWM, int pistonIO)
+void IntakeInit(int PWM, int pistonOne, int pistonTwo, int pistonThree, int pistonFour)
 {
 //subsystem setup, assigns pin number and initializes pin
   
   int _PWM = PWM;
-  _PISTON = pistonIO;
-  pinMode(_PISTON, OUTPUT);//pin for piston control
+  _DoorOne = pistonOne;
+  _DoorTwo = pistonTwo;
+  _ReleaseOne = pistonThree;
+  _ReleaseTwo = pistonFour;
+  pinMode(_DoorOne, OUTPUT);//pin for piston control
+  pinMode(_DoorTwo, OUTPUT);
+  pinMode(_ReleaseOne, OUTPUT);
+  pinMode(_ReleaseTwo, OUTPUT);
   intake1.attach(_PWM);
 }
 
@@ -287,17 +298,25 @@ void setIntakeSpeed(int state)
 //sends value to speed controller
   feedback[2] = IntakeSpeed;
   intake1.write(IntakeSpeed);
-  // analogWrite(_PWM, speed);
 }
 
-void runPiston(bool piston)//accepts piston as state of button
+void runDoorPiston(bool piston)//accepts piston as state of button
 {
   if(piston) feedback[3] = 1;
   else feedback[3] = 0;
-    digitalWrite(_PISTON, piston?HIGH:LOW);//send 'pressed' to _PISTON
+    digitalWrite(_DoorOne, piston?HIGH:LOW);//send 'pressed' to _PISTON
+    digitalWrite(_DoorTwo, piston?LOW:HIGH);//opposite of paired solenoid
 }
 
-void runIntake(bool lTrigger, bool rTrigger, bool piston)
+void runReleasePiston(bool piston)
+{
+  if(piston) feedback[5] = 1;
+  else feedback[5] = 0;
+    digitalWrite(_ReleaseOne, piston?HIGH:LOW);//send 'pressed' to _PISTON
+    digitalWrite(_ReleaseTwo, piston?LOW:HIGH);//opposite of paired solenoid
+}
+
+void runIntake(bool lTrigger, bool rTrigger, bool doorPiston, bool releasePiston)
 {
 //if left trigger held, run intake out
 //if right trigger held, run intake in
@@ -312,15 +331,26 @@ else if(lTrigger)
 }
 else setIntakeSpeed(0);//do nothing
 
-if(piston && piston != prevState)
+if(doorPiston && doorPiston != prevState)
 {
-  runPiston(!piston_out);
+  runDoorPiston(!piston_out);
   piston_out = !piston_out;
-  prevState = piston;
+  prevState = doorPiston;
 }
-else if(!piston)
+else if(!doorPiston)
 {
-  prevState = piston;
+  prevState = doorPiston;
+}
+
+if(releasePiston && releasePiston != releasePrev)
+{
+  runReleasePiston(!releaseState);
+  releaseState = !releaseState;
+  releasePrev = releasePiston;
+}
+else if(!doorPiston)
+{
+  releasePrev = releasePiston;
 }
 }
 

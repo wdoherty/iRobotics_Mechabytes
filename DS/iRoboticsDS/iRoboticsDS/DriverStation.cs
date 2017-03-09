@@ -209,7 +209,7 @@ namespace iRoboticsDS
         }
         
         private void updateGUIState()
-        {
+        {/*
             connection_textBox.Text = "     " + Convert.ToString(signal_integrity) + "%";
 
             if (Convert.ToInt32(gui_packet[0] & 3) == 0)
@@ -248,33 +248,33 @@ namespace iRoboticsDS
 
             if (Convert.ToBoolean(gui_packet[0] & 8))
             {
-                autoCompress_textBox.Text = "Auto";
-                autoCompress_textBox.ForeColor = System.Drawing.Color.DodgerBlue;
+                Intake_textbox.Text = "Auto";
+                Intake_textbox.ForeColor = System.Drawing.Color.DodgerBlue;
             }
             else
             {
-                autoCompress_textBox.Text = "Manual";
-                autoCompress_textBox.ForeColor = System.Drawing.Color.DarkOrange;
+                Intake_textbox.Text = "Manual";
+                Intake_textbox.ForeColor = System.Drawing.Color.DarkOrange;
             }
             if (Convert.ToBoolean(gui_packet[0] & 16))
             {
-                compressorStatus_textBox.Text = "ON";
-                compressorStatus_textBox.ForeColor = System.Drawing.Color.Green;
+                DriveRight_textbox.Text = "ON";
+                DriveRight_textbox.ForeColor = System.Drawing.Color.Green;
             }
             else
             {
-                compressorStatus_textBox.Text = "OFF";
-                compressorStatus_textBox.ForeColor = System.Drawing.Color.DarkRed;
+                DriveRight_textbox.Text = "OFF";
+                DriveRight_textbox.ForeColor = System.Drawing.Color.DarkRed;
             }
             if (Convert.ToBoolean(gui_packet[0] & 64))
             {
-                shooter_textBox.Text = "ON";
-                shooter_textBox.ForeColor = System.Drawing.Color.Green;
+                armSpeed_textbox.Text = "ON";
+                armSpeed_textbox.ForeColor = System.Drawing.Color.Green;
             }
             else
             {
-                shooter_textBox.Text = "OFF";
-                shooter_textBox.ForeColor = System.Drawing.Color.DarkRed;
+                armSpeed_textbox.Text = "OFF";
+                armSpeed_textbox.ForeColor = System.Drawing.Color.DarkRed;
             }
 
             if (Convert.ToBoolean(gui_packet[0] & 32))
@@ -292,36 +292,36 @@ namespace iRoboticsDS
 
             if (Convert.ToInt32(gui_packet[2] & 96) == 0)
             {
-                wheelType_textBox.Text = "Mecanum";
-                wheelType_textBox.ForeColor = System.Drawing.Color.DodgerBlue;
+                BallRelease_textbox.Text = "Mecanum";
+                BallRelease_textbox.ForeColor = System.Drawing.Color.DodgerBlue;
             }
             else if (Convert.ToInt32(gui_packet[2] & 96) == 32)
             {
-                wheelType_textBox.Text = "Traction";
-                wheelType_textBox.ForeColor = System.Drawing.Color.DarkOrange;
+                BallRelease_textbox.Text = "Traction";
+                BallRelease_textbox.ForeColor = System.Drawing.Color.DarkOrange;
             }
             else if (Convert.ToInt32(gui_packet[2] & 96) >= 64)
             {
-                wheelType_textBox.Text = "Quick Turn";
-                wheelType_textBox.ForeColor = System.Drawing.Color.Green;
+                BallRelease_textbox.Text = "Quick Turn";
+                BallRelease_textbox.ForeColor = System.Drawing.Color.Green;
             }
 
             /////////////////////////////////////////////////////////////
 
             if (Convert.ToInt32(gui_packet[1] & 96) == 0)
             {
-                drivingSpeed_textBox.Text = "Precision";
-                drivingSpeed_textBox.ForeColor = System.Drawing.Color.DarkOrange;
+                doorPiston_textbox.Text = "Precision";
+                doorPiston_textbox.ForeColor = System.Drawing.Color.DarkOrange;
             }
             else if (Convert.ToInt32(gui_packet[1] & 96) == 32)
             {
-                drivingSpeed_textBox.Text = "Normal";
-                drivingSpeed_textBox.ForeColor = System.Drawing.Color.White;
+                doorPiston_textbox.Text = "Normal";
+                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
             }
             else if (Convert.ToInt32(gui_packet[1] & 96) == 64)
             {
-                drivingSpeed_textBox.Text = "Turbo";
-                drivingSpeed_textBox.ForeColor = System.Drawing.Color.DodgerBlue;
+                doorPiston_textbox.Text = "Turbo";
+                doorPiston_textbox.ForeColor = System.Drawing.Color.DodgerBlue;
             }
 
             ///////////////////////////////////////////////////////////////////
@@ -346,14 +346,14 @@ namespace iRoboticsDS
 
             manipulatorAngle_textBox.Text = Convert.ToString(gui_packet[4]);
 
-            pressure_textBox.Text = Convert.ToString(gui_packet[5]);
+            DriveLeft_textbox.Text = Convert.ToString(gui_packet[5]);
             if (Convert.ToInt32(gui_packet[5]) >= 40 && Convert.ToInt32(gui_packet[5]) <= 110)
             {
-                pressure_textBox.ForeColor = System.Drawing.Color.Green;
+                DriveLeft_textbox.ForeColor = System.Drawing.Color.Green;
             }
             else
             {
-                pressure_textBox.ForeColor = System.Drawing.Color.DarkRed;
+                DriveLeft_textbox.ForeColor = System.Drawing.Color.DarkRed;
             }
 
             //////////////////////////////////////////////////////////////
@@ -374,7 +374,6 @@ namespace iRoboticsDS
             {
                 br_trackBar.Value = Convert.ToInt32(gui_packet[9]);
             }*/
-
         }
 
         private void updateControllerGUI()
@@ -391,12 +390,75 @@ namespace iRoboticsDS
 
         private void updateArduinoReturnGUI()
         {
+            //displays status of left drive train
             Arduino0.Text = (gui_packet[0].ToString());
+            DriveLeft_textbox.Text = (gui_packet[0].ToString());
+            DriveLeft_textbox.ForeColor = System.Drawing.Color.White;
+
+            //displays status of right drive train
             Arduino1.Text = (gui_packet[1].ToString());
+            DriveRight_textbox.Text = (gui_packet[1].ToString());
+            DriveRight_textbox.ForeColor = System.Drawing.Color.White;
+
+            //displays status of intake system
             Arduino2.Text = (gui_packet[2].ToString());
+            if (gui_packet[2] == 180)
+            {
+                Intake_textbox.Text = ("IN");
+                Intake_textbox.ForeColor = System.Drawing.Color.Green;
+            }
+            else if(gui_packet[2] == 0)
+            {
+                Intake_textbox.Text = ("OUT");
+                Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            }
+            else
+            {
+                Intake_textbox.Text = ("OFF");
+                Intake_textbox.ForeColor = System.Drawing.Color.White;
+            }
+
+            //displays state of door arm
             Arduino3.Text = (gui_packet[3].ToString());
+            if (gui_packet[3] == 1)
+            {
+                doorPiston_textbox.Text = ("UP");
+                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else if (gui_packet[3] == 0)
+            {
+                doorPiston_textbox.Text = ("DOWN");
+                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                doorPiston_textbox.Text = ("Comm Error");
+                doorPiston_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            }
+
+            //displays status of arm speed
             Arduino4.Text = (gui_packet[4].ToString());
+            armSpeed_textbox.Text = (gui_packet[4].ToString());
+            armSpeed_textbox.ForeColor = System.Drawing.Color.White;
+
+            //displays status of ball release piston
             Arduino5.Text = (gui_packet[5].ToString());
+            if (gui_packet[5] == 1)
+            {
+                BallRelease_textbox.Text = ("UP");
+                BallRelease_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else if (gui_packet[5] == 0)
+            {
+                BallRelease_textbox.Text = ("DOWN");
+                BallRelease_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                BallRelease_textbox.Text = ("Comm Error");
+                BallRelease_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            }
+
             Arduino6.Text = (gui_packet[6].ToString());
             Arduino7.Text = (gui_packet[7].ToString());
         }
