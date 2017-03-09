@@ -23,8 +23,10 @@ byte driveThrottle; //drive variables
 byte revThrottle;
 byte driveHeading;
 
-unsigned int _lStickY;
 unsigned int _rStickX;
+
+static double headingMod = 1.6;
+bool quickTurn;
 
 bool doorTrigger;   //intake variables
 bool intakeTrigger;
@@ -183,17 +185,44 @@ void DriveBaseInit(int leftPWM1, int leftPWM2, int rightPWM1, int rightPWM2)
   DriveR2.attach(rightPWM2);
 }
 
+void setQuickTurn(double throttle, double heading)
+{
+  if((fabs(throttle) < 5) && (fabs(heading) > 5)) quickTurn = true;
+  else quickTurn = false;  
+}
+
 void setThrottle(int _lStickY, int _rStickX)
 {
+   int lSpeed;
+   int rSpeed;
+   double throttle = abs(_lStickY-90) * (_lStickY < 90 ? -1 : 1);    //// = magnitude & direction of throttle
+   double heading = abs(_rStickX-90) * (_rStickX < 90 ? -1 : 1);    //// = magnitude and direction of heading
 
-   int throttle = abs(_lStickY-90) * (_lStickY < 90 ? -1 : 1);    //// = magnitude & direction of throttle
-   int heading = abs(_rStickX-90) * (_rStickX < 90 ? -1 : 1);    //// = magnitude and direction of heading
-   
-   int lSpeed = (throttle + heading) + 90;
-   int rSpeed = throttle - heading + 90;
+   double angularPower = fabs(throttle/90)*(heading)*(headingMod);
 
+//   feedback[5] = throttle;
+//   feedback[6] = heading;
+//   feedback[7] = angularPower;
+   setQuickTurn(throttle, heading);
+//   Serial.println(throttle);
+//   Serial.println(heading);
+//   Serial.println(angularPower);
+//   Serial.println(quickTurn);
+   if(quickTurn) 
+   {
+   lSpeed = throttle + heading + 90;
+   rSpeed = throttle - heading + 90;
+   }
+   else
+   {
+   lSpeed = throttle + angularPower + 90;
+   rSpeed = throttle - angularPower + 90; 
+   }
 //constrains motor values to within the PWM limits
-
+if(lSpeed > 180) lSpeed = 180;
+if(rSpeed > 180) rSpeed = 180;
+if(lSpeed < 0) lSpeed = 0;
+if(rSpeed < 0) rSpeed = 0;
 //sends value to speed controller
   feedback[0] = lSpeed;
   feedback[1] = rSpeed;
@@ -206,7 +235,7 @@ void setThrottle(int _lStickY, int _rStickX)
 void updateDrive(byte throttle, byte reverse, byte rStickX)
 {
 //run every cycle to set drive motor value and piston state
-//lStickY assigns throttle, rStickX assigns rotation,
+//l/r triggers assigns throttle, rStickX assigns rotation,
 int _throttle = (throttle >> 1);
 _throttle *= 180;
 _throttle /= 100;
@@ -216,28 +245,16 @@ _reverse *= 180;
 _reverse /= 100;
 
 int throttleMag = _throttle - _reverse;
-//  throttleMag *= 180;
-//  throttleMag /= 100;
   throttleMag += 90;
 
-//_lStickY = lStickY;
 _rStickX = rStickX;
-
-//_lStickY *= 180;
-//_lStickY /= 200;
 
 _rStickX *= 180;
 _rStickX /= 200;
 
-//_lStickY = _lStickY & B11111111;
-//_rStickX = _rStickX & B11111111;
-
 //deadband control to prevent non-significant power output
-//  if(_lStickY > 80 && _lStickY < 100) _lStickY = 90;
-  if(throttleMag > 80 && throttleMag < 100) throttleMag = 90;
-  if(_rStickX > 80 && _rStickX < 100) _rStickX = 90;
-  feedback[5] = throttleMag;
-  feedback[6] = _rStickX;
+  if(throttleMag > 85 && throttleMag < 95) throttleMag = 90;
+  if(_rStickX > 85 && _rStickX < 95) _rStickX = 90;
   setThrottle(throttleMag, _rStickX);
 }
 
@@ -335,7 +352,7 @@ motorSpeed /= 200;
 //  armSpeed *= 180;
 //  armSpeed /= 100;
 //  armSpeed += 90;
-//  if(abs(90 - armSpeed) < 10) armSpeed = 90;
+  if(abs(90 - motorSpeed) < 5) motorSpeed = 90;
 
 //sends value to speed controller
   feedback[4] = motorSpeed;
