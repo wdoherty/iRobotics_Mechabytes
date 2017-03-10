@@ -56,8 +56,10 @@ unsigned long read_time;
 #define armMotor 8
 
 #define doorSolenoid 16
-#define doorSolenoidRev 17
-#define releaseSolenoid 18
+#define releaseSolenoid 17
+
+//unused
+#define doorSolenoidRev 18
 #define releaseSolenoidRev 19
 //#define compressorPin 30
 
@@ -161,17 +163,17 @@ void mainCode()
         
         driveThrottle = controller[7];
         revThrottle = controller[6];
-        driveHeading = controller[4];
+        driveHeading = controller[2];
         updateDrive(driveThrottle, revThrottle, driveHeading);
 
-        intakeTrigger = (B1 == ((controller[0] & B100000) >> 5));
-        reverseTrigger = (B1 == ((controller[0] & B10000) >> 4));
+        intakeTrigger = (B1 == ((controller[0] & B1)));
+        reverseTrigger = (B1 == ((controller[0] & B10) >> 1));
         doorTrigger = (B1 == ((controller[0] & B1000) >> 3));
-        releaseTrigger = (B1 == ((controller[0] & B10) >> 1));
+        releaseTrigger = (B1 == ((controller[0] & B100) >> 2));
         
         runIntake(reverseTrigger, intakeTrigger, doorTrigger, releaseTrigger);
         
-        armVal = controller[3];
+        armVal = controller[5];
 
         setArm(armVal);
 
@@ -206,6 +208,7 @@ void setQuickTurn(double throttle, double heading)
 void setThrottle(int _lStickY, int _rStickX)
 {
    int lSpeed;
+   int lSpeedMag;
    int rSpeed;
    double throttle = abs(_lStickY-90) * (_lStickY < 90 ? -1 : 1);    //// = magnitude & direction of throttle
    double heading = abs(_rStickX-90) * (_rStickX < 90 ? -1 : 1);    //// = magnitude and direction of heading
@@ -230,10 +233,17 @@ if(rSpeed > 180) rSpeed = 180;
 if(lSpeed < 0) lSpeed = 0;
 if(rSpeed < 0) rSpeed = 0;
 //sends value to speed controller
+lSpeedMag = abs(90 - lSpeed);
+lSpeedMag *= 13;
+lSpeedMag /= 20;
+if(lSpeed > 90) lSpeed = 90 + lSpeedMag;
+else lSpeed = 90 - lSpeedMag;
+
   feedback[0] = lSpeed;
   feedback[1] = rSpeed;
   lSpeed = 180 - lSpeed;
   rSpeed = 180 - rSpeed;
+  
   DriveL1.write(lSpeed);
   DriveL2.write(lSpeed);
   DriveR1.write(rSpeed);
@@ -386,12 +396,8 @@ unsigned int motorSpeed = _speed;
 motorSpeed *= 180;
 motorSpeed /= 200;
 
-//  int armSpeed = lTrigger - rTrigger;
-//  armSpeed *= 180;
-//  armSpeed /= 100;
-//  armSpeed += 90;
   if(abs(90 - motorSpeed) < 5) motorSpeed = 90;
-//
+
 //  int magnitude = abs(90 - motorSpeed);
 //  magnitude /= 4;
 //  if(_speed > 100) motorSpeed = 90 + magnitude;
