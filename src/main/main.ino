@@ -67,6 +67,7 @@ unsigned long read_time;
   Servo DriveR2;
 
   Servo intake1;
+  Servo intake2;
 
   Servo ArmMotor;
 
@@ -92,7 +93,7 @@ void setup(){
 
     //subsystem initialization
     DriveBaseInit(DriveML1, DriveML2, DriveMR1, DriveMR2);
-    IntakeInit(rollers, doorSolenoid, doorSolenoidRev, releaseSolenoid, releaseSolenoidRev);
+    IntakeInit(rollers, lift, doorSolenoid, doorSolenoidRev, releaseSolenoid, releaseSolenoidRev);
     ArmInit(armMotor);
     failsafe();
     read_time = millis();
@@ -231,6 +232,8 @@ if(rSpeed < 0) rSpeed = 0;
 //sends value to speed controller
   feedback[0] = lSpeed;
   feedback[1] = rSpeed;
+  lSpeed = 180 - lSpeed;
+  rSpeed = 180 - rSpeed;
   DriveL1.write(lSpeed);
   DriveL2.write(lSpeed);
   DriveR1.write(rSpeed);
@@ -273,11 +276,12 @@ void driveBaseFailsafe()
 
 
 //intake subsystem
-void IntakeInit(int PWM, int pistonOne, int pistonTwo, int pistonThree, int pistonFour)
+void IntakeInit(int PWM, int PWMTwo, int pistonOne, int pistonTwo, int pistonThree, int pistonFour)
 {
 //subsystem setup, assigns pin number and initializes pin
   
   int _PWM = PWM;
+  int _PWM2 = PWMTwo;
   _DoorOne = pistonOne;
   _DoorTwo = pistonTwo;
   _ReleaseOne = pistonThree;
@@ -287,17 +291,20 @@ void IntakeInit(int PWM, int pistonOne, int pistonTwo, int pistonThree, int pist
   pinMode(_ReleaseOne, OUTPUT);
   pinMode(_ReleaseTwo, OUTPUT);
   intake1.attach(_PWM);
+  intake2.attach(_PWM2);
 }
 
 void setIntakeSpeed(int state)
 {
 //for input -1, 0, 1, sets speed to full forward, full reverse, or off
 
-  int IntakeSpeed = (90 * state) + 90;
+  int IntakeSpeed1 = (40 * state) + 90;
+  int IntakeSpeed2 = 90 - (40*state);
 
 //sends value to speed controller
-  feedback[2] = IntakeSpeed;
-  intake1.write(IntakeSpeed);
+  feedback[2] = IntakeSpeed1;
+  intake1.write(IntakeSpeed1);
+  intake2.write(IntakeSpeed2);
 }
 
 void runDoorPiston(bool piston)//accepts piston as state of button
@@ -357,6 +364,7 @@ else if(!doorPiston)
 void IntakeFailsafe()
 {
   intake1.write(90);
+  intake2.write(90);
 }
 
 
@@ -383,6 +391,11 @@ motorSpeed /= 200;
 //  armSpeed /= 100;
 //  armSpeed += 90;
   if(abs(90 - motorSpeed) < 5) motorSpeed = 90;
+//
+//  int magnitude = abs(90 - motorSpeed);
+//  magnitude /= 4;
+//  if(_speed > 100) motorSpeed = 90 + magnitude;
+//  else motorSpeed = 90 - magnitude;
 
 //sends value to speed controller
   feedback[4] = motorSpeed;

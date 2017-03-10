@@ -209,9 +209,9 @@ namespace iRoboticsDS
         }
         
         private void updateGUIState()
-        {/*
+        {
             connection_textBox.Text = "     " + Convert.ToString(signal_integrity) + "%";
-
+            /**
             if (Convert.ToInt32(gui_packet[0] & 3) == 0)
             {
                 sortingStatus_textBox.Text = "Reset";
