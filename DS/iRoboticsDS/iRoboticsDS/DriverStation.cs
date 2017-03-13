@@ -358,7 +358,7 @@ namespace iRoboticsDS
 
             //////////////////////////////////////////////////////////////
 
-  /*          if (Convert.ToInt32(gui_packet[6]) <= 200)
+            if (Convert.ToInt32(gui_packet[6]) <= 200)
             {
                 fl_trackBar.Value = Convert.ToInt32(gui_packet[6]);
             }
@@ -373,7 +373,8 @@ namespace iRoboticsDS
             if (Convert.ToInt32(gui_packet[9]) <= 200)
             {
                 br_trackBar.Value = Convert.ToInt32(gui_packet[9]);
-            }*/
+            }
+            */
         }
 
         private void updateControllerGUI()
@@ -402,12 +403,12 @@ namespace iRoboticsDS
 
             //displays status of intake system
             Arduino2.Text = (gui_packet[2].ToString());
-            if (gui_packet[2] == 180)
+            if (gui_packet[2] > 90)
             {
                 Intake_textbox.Text = ("IN");
                 Intake_textbox.ForeColor = System.Drawing.Color.Green;
             }
-            else if(gui_packet[2] == 0)
+            else if(gui_packet[2] < 90)
             {
                 Intake_textbox.Text = ("OUT");
                 Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;

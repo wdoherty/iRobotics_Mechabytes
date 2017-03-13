@@ -52,8 +52,8 @@ unsigned long read_time;
 #define DriveMR1 4
 #define DriveMR2 5
 #define rollers 6
-#define lift 7
-#define armMotor 8
+#define lift 8
+#define armMotor 7
 
 #define doorSolenoid 16
 #define releaseSolenoid 17
@@ -308,7 +308,7 @@ void setIntakeSpeed(int state)
 {
 //for input -1, 0, 1, sets speed to full forward, full reverse, or off
 
-  int IntakeSpeed1 = (40 * state) + 90;
+  int IntakeSpeed1 = (70 * state) + 90;
   int IntakeSpeed2 = 90 - (40*state);
 
 //sends value to speed controller
@@ -391,17 +391,18 @@ void ArmInit(int armPWM)
 void setArmSpeed(byte _speed)
 {
 //for input -1, 0, 1, sets speed to half forward, half reverse, or off
-unsigned int motorSpeed = _speed;
+long motorSpeed = _speed;
 
 motorSpeed *= 180;
 motorSpeed /= 200;
 
   if(abs(90 - motorSpeed) < 5) motorSpeed = 90;
 
-//  int magnitude = abs(90 - motorSpeed);
-//  magnitude /= 4;
-//  if(_speed > 100) motorSpeed = 90 + magnitude;
-//  else motorSpeed = 90 - magnitude;
+  int magnitude = abs(90 - motorSpeed);
+  magnitude *=3;
+  magnitude /= 10;
+  if(motorSpeed > 90) motorSpeed = 90 + magnitude;
+  else motorSpeed = 90 - magnitude;
 
 //sends value to speed controller
   feedback[4] = motorSpeed;
