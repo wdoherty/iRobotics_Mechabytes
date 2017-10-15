@@ -6,6 +6,7 @@ class VICTOR_H
 public:
 
 private:
+  int address;
 };
 
 
