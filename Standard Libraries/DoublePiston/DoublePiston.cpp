@@ -21,7 +21,7 @@ DoublePiston(int address1, int address2, bool initState)
   setPistons();
 }
 
-bool setPistons()
+void DoublePiston::setPistons()
 {
   // digitalWrite(pin1, state);
   // digitalWrite(pin2, !state);
