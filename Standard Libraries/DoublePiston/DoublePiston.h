@@ -8,9 +8,9 @@ public:
   DoublePiston(int address1, int address2, bool initState);
   bool switchState();
   bool setState(bool newState);
-  bool setPistons();
 
 private:
+  void setPistons();
   int pin1, pin2;
   bool state;
 };
