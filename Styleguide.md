@@ -386,8 +386,8 @@ Sometimes arguments form a structure that is important for readability. In those
 ```c++
 // Transform the widget by a 3x3 matrix.
 myWidget.Transform(x1, x2, x3,
-                    y1, y2, y3,
-                    z1, z2, z3);
+                   y1, y2, y3,
+                   z1, z2, z3);
 ```
 
 ### Conditionals
@@ -550,14 +550,14 @@ class MyClass : public OtherClass {
     void SomeFunctionThatDoesNothing() {
     }
 
-    void setSomeVar(int var) { some_var_ = var; }
-    int someVar() const { return some_var_; }
+    void setSomeVar(int var) { _some_var = var; }
+    int someVar() const { return _some_var; }
 
   private:
     bool SomeInternalFunction();
 
-    int some_var_;
-    int some_other_var_;
+    int _some_var;
+    int _some_other_var;
 };
 ```
 Things to note:
@@ -587,8 +587,8 @@ class Foo : public Bar {
   public:
     // For inline function implementations, put spaces between the braces
     // and the implementation itself.
-    Foo(int b) : Bar(), baz_(b) {}  // No spaces inside empty braces.
-    void Reset() { baz_ = 0; }  // Spaces separating braces from implementation.
+    Foo(int b) : Bar(), _baz(b) {}  // No spaces inside empty braces.
+    void Reset() { _baz = 0; }  // Spaces separating braces from implementation.
     ...
 ```
 Adding trailing whitespace can cause extra work for others editing the same file, when they merge, as can removing existing trailing whitespace. So: Don't introduce trailing whitespace. Remove it if you're already changing that line, or do it in a separate clean-up operation (preferably when no-one else is working on the file).
