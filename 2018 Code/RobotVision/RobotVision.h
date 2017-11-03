@@ -15,11 +15,12 @@ class RobotVision{
 public:
 
   RobotVision(); //Constructor
+
   ~RobotVision(); //Destructor
 
 private:
 
-  void checkLight(); //Function to detect which button is lit up on Simon Say's board
+  void checkLight(); //Detects which button is lit up on Simon Say's board
 
   void centerBoard(); //Centers camera on Simon Say's board
 
