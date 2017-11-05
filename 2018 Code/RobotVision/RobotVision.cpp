@@ -5,7 +5,7 @@
 
   Source file for robot vision for 2018 Mechabytes MRDC team
 
-  Contributers: Jason Raether
+  Contributers: Jason Raether, Marco Palella
 
 */
 
