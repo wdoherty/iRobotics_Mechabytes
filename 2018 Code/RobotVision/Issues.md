@@ -4,3 +4,8 @@
 3. Figure out how to detect which button is lit up for Simon Says
   3.1: One button lights up, press it (probably not like actual Simon Says game)
 4. Put OpenCV into standard libraries folder
+
+
+For Marco:
+
+Figure out how to detect light intensity given a video stream and map it into four squares

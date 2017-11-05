@@ -20,6 +20,8 @@ public:
 
 private:
 
+  void streamVideo(); //Sends video stream from Raspberry Pi to laptop
+
   void checkLight(); //Detects which button is lit up on Simon Say's board
 
   void centerBoard(); //Centers camera on Simon Say's board

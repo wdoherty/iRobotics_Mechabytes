@@ -33,3 +33,8 @@ RobotVision::trackMovement(){
 
 
 }
+
+RobotVision::streamVideo(){
+
+
+}
