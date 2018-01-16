@@ -3,7 +3,7 @@
 
 #include "PCA9685.h"
 
-class VICTOR_H
+class Victor
 {
 public:
   Victor(PCA9685& output, int pin1);
