@@ -2,12 +2,15 @@
 
 #include "PCA9685.h"
 
-Victor::Victor(uint8_t addr, int PWMFreq, int bus, int pin){
-  i2c = new PCA9685(bus, pin);
-  this->address = addr;
-  i2c->setPWMFreq(PWMFreq);
+Victor::Victor(PCA9685& output, int pin1){
+    //PCA9685(int bus, int address)
+  pin = pin1;
 }
 
 void Victor::setThrottle(int value){
-  i2c->setPWM(value*(4095.0/360.0))
+  output.setPWM(value*(4095.0/360.0))
+}
+
+int Victor::getThrottle(){
+  return output.getPWM(pin);
 }

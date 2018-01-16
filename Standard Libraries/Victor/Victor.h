@@ -6,11 +6,11 @@
 class VICTOR_H
 {
 public:
-  Victor(uint8_t addr, int PWMFreq, int bus, int pin);
+  Victor(PCA9685& output, int pin1);
   void setThrottle(int value);
+  int getThrottle();
 private:
-  PCA9685* i2c;
-  uint8_t address;
+  int pin;
 };
 
 
