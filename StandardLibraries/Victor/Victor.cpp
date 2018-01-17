@@ -8,7 +8,7 @@ Victor::Victor(PCA9685& output, int pin1){
 }
 
 void Victor::setThrottle(int value){
-  output.setPWM(value*(4095.0/360.0))
+  output.setPWM(pin, value*(4095/255));
 }
 
 int Victor::getThrottle(){
