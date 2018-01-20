@@ -2,15 +2,15 @@
 
 #include "PCA9685.h"
 
-Victor::Victor(PCA9685& output, int pin1){
+Victor::Victor(PCA9685& output, int pin1) : device(output), pin(pin1){
     //PCA9685(int bus, int address)
-  pin = pin1;
+    /* nothing */
 }
 
 void Victor::setThrottle(int value){
-  output.setPWM(pin, value*(4095/255));
+  device.setPWM(pin, value*(4095/255));
 }
 
 int Victor::getThrottle(){
-  return output.getPWM(pin);
+  return device.getPWM(pin);
 }

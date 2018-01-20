@@ -11,6 +11,7 @@ public:
   int getThrottle();
 private:
   int pin;
+  PCA9685& device;
 };
 
 
