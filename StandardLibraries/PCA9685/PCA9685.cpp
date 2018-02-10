@@ -48,7 +48,7 @@ PCA9685::PCA9685(int address) {
 }
 
 PCA9685::~PCA9685() {
-	delete i2c;
+//	delete i2c;
 }
 //! Sets PCA9685 mode to 00
 void PCA9685::reset() {
@@ -99,9 +99,11 @@ void PCA9685::setPWM(uint8_t led, int on_value, int off_value) {
  */
 int PCA9685::getPWM(uint8_t led){
 	int ledval = 0;
-	ledval = i2c->read_byte(LED0_OFF_H + LED_MULTIPLYER * (led-1));
+	//ledval = i2c->read_byte(LED0_OFF_H + LED_MULTIPLYER * (led-1));
+	ledval = wiringPiI2CReadReg8(i2c, LED0_OFF_H + LED_MULTIPLYER * (led-1)) ;
 	ledval = ledval & 0xf;
 	ledval <<= 8;
-	ledval += i2c->read_byte(LED0_OFF_L + LED_MULTIPLYER * (led-1));
+	//ledval += i2c->read_byte(LED0_OFF_L + LED_MULTIPLYER * (led-1));
+	ledval += wiringPiI2CReadReg8(i2c, LED0_OFF_L + LED_MULTIPLYER * (led-1)) ;
 	return ledval;
 }
