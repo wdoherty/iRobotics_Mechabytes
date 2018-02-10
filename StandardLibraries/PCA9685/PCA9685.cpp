@@ -41,7 +41,7 @@
  \param address the device address on bus
  */
 PCA9685::PCA9685(int address) {
-	
+
 	i2c = wiringPiI2CSetup(0x40);
 	reset();
 	setPWMFreq(1000);
@@ -66,10 +66,15 @@ void PCA9685::reset() {
 void PCA9685::setPWMFreq(int freq) {
 
 		uint8_t prescale_val = (CLOCK_FREQ / 4096 / freq)  - 1;
-		i2c->write_byte(MODE1, 0x10); //sleep
-		i2c->write_byte(PRE_SCALE, prescale_val); // multiplyer for PWM frequency
-		i2c->write_byte(MODE1, 0x80); //restart
-		i2c->write_byte(MODE2, 0x04); //totem pole (default)
+
+		wiringPiI2CWriteReg8      (i2c, MODE1, 0x10) ;
+		wiringPiI2CWriteReg8      (i2c, PRE_SCALE, prescale_val) ;
+		wiringPiI2CWriteReg8      (i2c, MODE1, 0x80) ;
+		wiringPiI2CWriteReg8      (i2c, MODE2, 0x04) ;
+	//	i2c->write_byte(MODE1, 0x10); //sleep
+	//	i2c->write_byte(PRE_SCALE, prescale_val); // multiplyer for PWM frequency
+	//	i2c->write_byte(MODE1, 0x80); //restart
+	//	i2c->write_byte(MODE2, 0x04); //totem pole (default)
 }
 
 //! PWM a single channel
@@ -87,10 +92,16 @@ void PCA9685::setPWM(uint8_t led, int value) {
  \param off_value 0-4095 value to turn off the pulse
  */
 void PCA9685::setPWM(uint8_t led, int on_value, int off_value) {
-		i2c->write_byte(LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF);
-		i2c->write_byte(LED0_ON_H + LED_MULTIPLYER * (led - 1), on_value >> 8);
-		i2c->write_byte(LED0_OFF_L + LED_MULTIPLYER * (led - 1), off_value & 0xFF);
-		i2c->write_byte(LED0_OFF_H + LED_MULTIPLYER * (led - 1), off_value >> 8);
+		wiringPiI2CWriteReg8      (i2c, LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_ON_H + LED_MULTIPLYER * (led - 1), on_value >> 8) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_OFF_L + LED_MULTIPLYER * (led - 1), off_value & 0xFF) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_OFF_H + LED_MULTIPLYER * (led - 1), off_value >> 8) ;
+
+
+	//	i2c->write_byte(LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF);
+	//	i2c->write_byte(LED0_ON_H + LED_MULTIPLYER * (led - 1), on_value >> 8);
+	//	i2c->write_byte(LED0_OFF_L + LED_MULTIPLYER * (led - 1), off_value & 0xFF);
+	//	i2c->write_byte(LED0_OFF_H + LED_MULTIPLYER * (led - 1), off_value >> 8);
 }
 
 //! Get current PWM value
