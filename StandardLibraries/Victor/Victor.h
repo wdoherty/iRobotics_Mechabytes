@@ -1,7 +1,7 @@
 #ifndef VICTOR_H
 #define VICTOR_H
 
-#include "PCA9685.h"
+#include "../PCA9685/PCA9685.h"
 
 class Victor
 {
