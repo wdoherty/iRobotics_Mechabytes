@@ -49,7 +49,7 @@
 //! Main class that exports features for PCA9685 chip
 class PCA9685 {
 public:
-	PCA9685(int,int);
+	PCA9685(int);
 	virtual ~PCA9685();
 
 	void setPWMFreq(int);
