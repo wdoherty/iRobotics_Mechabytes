@@ -40,8 +40,9 @@
  \param bus the bus to use in /dev/i2c-%d.
  \param address the device address on bus
  */
-PCA9685::PCA9685(int bus, int address) {
-	i2c = new I2C(bus,address);
+PCA9685::PCA9685(int address) {
+	
+	i2c = wiringPiI2CSetup(0x40);
 	reset();
 	setPWMFreq(1000);
 }
@@ -52,8 +53,10 @@ PCA9685::~PCA9685() {
 //! Sets PCA9685 mode to 00
 void PCA9685::reset() {
 
-		i2c->write_byte(MODE1, 0x00); //Normal mode
-		i2c->write_byte(MODE2, 0x04); //totem pole
+		wiringPiI2CWriteReg8      (i2c, MODE1, 0x00) ;
+		wiringPiI2CWriteReg8      (i2c, MODE2, 0x04) ;
+//		i2c->write_byte(MODE1, 0x00); //Normal mode
+//		i2c->write_byte(MODE2, 0x04); //totem pole
 
 }
 //! Set the frequency of PWM

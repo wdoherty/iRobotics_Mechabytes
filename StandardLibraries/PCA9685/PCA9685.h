@@ -24,8 +24,8 @@
 #ifndef _PCA9685_H
 #define _PCA9685_H
 #include <inttypes.h>
-#include "I2C.h"
-//#include "../wireLib/wiringPi/
+//#include "I2C.h"
+#include "../wiringPi/wiringPi/wiringPiI2C.h"
 // Register Definitions
 
 #define MODE1 0x00			//Mode  register  1
@@ -58,7 +58,7 @@ public:
 	int getPWM(uint8_t);
 
 private:
-	I2C *i2c;
+	int i2c;
 	void reset(void);
 };
 #endif
