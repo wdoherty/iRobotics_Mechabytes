@@ -1,0 +1,33 @@
+EXENAME = main
+OBJS = main.o SubsystemManager.o TestSubSystem.o PCA9685.o Victor.o wiringPiI2C.o
+
+CXX = g++
+CXXFLAGS = -Wall -c "%f" -lwiringPi
+LD = g++
+LDFLAGS = -Wall -c "%f" -lwiringPi
+
+all : $(EXENAME)
+
+$(EXENAME) : $(OBJS)
+	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
+
+main.o : main.cpp SubsystemManager.h
+	$(CXX) $(CXXFLAGS) main.cpp
+
+SubsystemManager.o : SubsystemManager/SubsystemManager.h TestSubSystem/TestSubSystem.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) SubsystemManager/SubsystemManager.cpp
+
+TestSubSystem.o : TestSubSystem/TestSubSystem.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) TestSubSystem/TestSubSystem.cpp
+
+Victor.o : ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) ../StandardLibraries/Victor/Victor.cpp
+
+PCA9685.o : ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/wiringPiLib/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) ../StandardLibraries/PCA9685/PCA9685.cpp
+
+wiringPiI2C.o : ../StandardLibraries/wiringPiLib/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) ../StandardLibraries/wiringPiLib/wiringPiI2C.c
+
+clean :
+	-rm -f *.o $(EXENAME)
