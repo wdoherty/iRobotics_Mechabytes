@@ -6,12 +6,12 @@
 class Victor
 {
 public:
-  Victor(PCA9685& output, int pin1);
+  Victor(PCA9685* output, int pin1);
   void setThrottle(int value);
   int getThrottle();
 private:
+  PCA9685* device;
   int pin;
-  PCA9685& device;
 };
 
 

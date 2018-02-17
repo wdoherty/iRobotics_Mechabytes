@@ -4,14 +4,15 @@
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/PCA9685/PCA9685.h"
 
-class TestSubSystem
+class TestSubsystem
 {
 public:
-    TestSubSystem(PCA9685& output);
+	TestSubsystem();
+    TestSubsystem(PCA9685* output);
     void setMotorSpeed(int speed);
 private:
-    PCA9685& device;
-    Victor throttle;
+    PCA9685* device;
+    Victor* throttle;
 };
 
 #endif

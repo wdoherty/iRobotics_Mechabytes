@@ -3,7 +3,7 @@
 
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/PCA9685/PCA9685.h"
-#include "../TestSubsystem/TestSubSystem.h"
+#include "../TestSubsystem/TestSubsystem.h"
 
 class SubsystemManager
 {
@@ -14,7 +14,7 @@ public:
 private:
     PCA9685* PWM1;
     //insert subsystems here
-    TestSubSystem* test;
+    TestSubsystem* test;
 
 };
 

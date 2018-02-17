@@ -25,7 +25,7 @@
 #define _PCA9685_H
 #include <inttypes.h>
 //#include "I2C.h"
-#include "../wiringPi/wiringPi/wiringPiI2C.h"
+#include "../wiringPiLib/wiringPi/wiringPiI2C.h"
 // Register Definitions
 
 #define MODE1 0x00			//Mode  register  1
