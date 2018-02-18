@@ -3,12 +3,11 @@
 
 int main()
 {
-//	SubsystemManager* Robot = new SubsystemManager();
+	SubsystemManager* Robot = new SubsystemManager();
 	
-//	Robot->initializeSubsystems();
-	TestSubsystem foo();
+	Robot->initializeSubsystems();
 	while(true)
 	{
-//		Robot->runRobot();
+		Robot->runRobot();
 	}
 }

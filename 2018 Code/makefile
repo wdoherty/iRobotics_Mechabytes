@@ -1,9 +1,9 @@
 EXENAME = main
 OBJS = wiringPiI2C.o PCA9685.o Victor.o TestSubsystem.o SubsystemManager.o main.o
 
-CXX = g++
-CXXFLAGS = -Wall -c -lwiringPi
-LD = g++
+CXX = clang++
+CXXFLAGS = -Wall -c
+LD = clang++
 LDFLAGS = -Wall -lwiringPi
 
 all : $(EXENAME)

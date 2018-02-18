@@ -1,5 +1,7 @@
 #include "SubsystemManager.h"
 
+//class TestSubsytem();
+
 SubsystemManager::SubsystemManager()
 {
     //PCA9685(bus, address)
@@ -8,11 +10,11 @@ SubsystemManager::SubsystemManager()
 
 void SubsystemManager::initializeSubsystems()
 {
-//	test = new TestSubsystem(PWM1);
+	test = new TestSubsystem(PWM1);
 //	TestSubsystem foo(PWM1);
 }
 
 void SubsystemManager::runRobot()
 {
-//	test->setMotorSpeed(255);
+	test->setMotorSpeed(255);
 }

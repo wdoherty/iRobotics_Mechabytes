@@ -1,4 +1,5 @@
 #include "TestSubsystem.h"
+#include <iostream>
 
 TestSubsystem::TestSubsystem(){
 
@@ -11,4 +12,5 @@ TestSubsystem::TestSubsystem(PCA9685* output): device(output){
 void TestSubsystem::setMotorSpeed(int speed)
 {
 	throttle->setThrottle(speed);
+	std::cout << speed << std::endl;
 }

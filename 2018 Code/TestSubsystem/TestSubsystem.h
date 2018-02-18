@@ -1,5 +1,5 @@
-#ifndef TEST_SUBSYSTEM
-#define TEST_SUBSYSTEM
+#ifndef TEST_SUBSYSTEM_H
+#define TEST_SUBSYSTEM_H
 
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/PCA9685/PCA9685.h"
