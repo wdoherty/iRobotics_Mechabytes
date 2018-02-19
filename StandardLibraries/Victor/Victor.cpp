@@ -6,9 +6,10 @@ Victor::Victor(PCA9685* output, int pin1) : device(output), pin(pin1){
 }
 
 void Victor::setThrottle(int value){
-  device->setPWM(pin, value*(4095/255));
+//  device->setPWM(pin, value*(4095/255));
+  device->setPWM(pin, value);
 }
 
 int Victor::getThrottle(){
-  return device->getPWM(pin);
+  return (device->getPWM(pin));
 }

@@ -16,5 +16,16 @@ void SubsystemManager::initializeSubsystems()
 
 void SubsystemManager::runRobot()
 {
-	test->setMotorSpeed(255);
+	int position;
+	while(true)
+	{
+	for(int i = 0; i < 400; i++)
+	{
+		position = 10 * i;
+		for(int j = 0; j < 100; j++)
+		{
+			test->setMotorSpeed(position);
+		}
+	}
+	}
 }
