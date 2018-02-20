@@ -24,7 +24,8 @@
 #ifndef _PCA9685_H
 #define _PCA9685_H
 #include <inttypes.h>
-#include "I2C.h"
+//#include "I2C.h"
+#include "../wiringPiLib/wiringPi/wiringPiI2C.h"
 // Register Definitions
 
 #define MODE1 0x00			//Mode  register  1
@@ -48,7 +49,7 @@
 //! Main class that exports features for PCA9685 chip
 class PCA9685 {
 public:
-	PCA9685(int,int);
+	PCA9685(int);
 	virtual ~PCA9685();
 
 	void setPWMFreq(int);
@@ -57,7 +58,7 @@ public:
 	int getPWM(uint8_t);
 
 private:
-	I2C *i2c;
+	int i2c;
 	void reset(void);
 };
 #endif
