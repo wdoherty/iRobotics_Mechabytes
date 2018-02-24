@@ -7,7 +7,7 @@ class TankDrive
 {
 public:
     TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2);
-    void updateDrive(byte lStickY, byte rStickX);
+    void updateDrive(char lStickY, char rStickX);
 
 private:
     void setThrottle();
@@ -21,13 +21,13 @@ private:
     Victor* right1;
     int _rightPin1;
     Victor* right2;
-    int _rightPin2
+    int _rightPin2;
 
 
     int lSpeed;
     int rSpeed;
-    byte _lStickY;
-    byte _rStickX;
+    char _lStickY;
+    char _rStickX;
 
 };
 

@@ -46,16 +46,19 @@ void failsafe(){
 int main()
 {
 //Serial init
+	wiringPiSetupGpio();
+
 	int serialId = serialOpen("/dev/ttyS0", baudrate);
 
 	memset(controller,0,sizeof(controller));
     memset(feedback,0,sizeof(feedback));
     connection = true;
-    failsafe();
-    read_time = millis();
-    checkSumRX = 0;
-    x = 0;
-    packet_index = 0;
+
+	failsafe();
+	read_time = millis();
+	checkSumRX = 0;
+	x = 0;
+	packet_index = 0;
 
 	SubsystemManager* Robot = new SubsystemManager();
 
