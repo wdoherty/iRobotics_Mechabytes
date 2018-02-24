@@ -1,18 +1,20 @@
 #ifndef SINGLEPISTON_H
 #define SINGLEPISTON_H
 
+#include "../wiringPiLib/wiringPi/wiringPi.h"
+
 class SinglePiston
 {
 public:
     SinglePiston(int address);
-    SinglePiston(int address, bool initState);
-    bool switchState();
-    bool setState(bool newState);
+    SinglePiston(int address, int initState);
+    int switchState();
+    int setState(int newState);
 
 private:
     void setPiston();
     int pin;
-    bool state;
+    int state;
 };
 
 #endif
