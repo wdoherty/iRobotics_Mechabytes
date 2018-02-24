@@ -1,4 +1,5 @@
 #include "TankDrive.h"
+#include <stdlib.h>
 
 
 TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2) : controller(PWM)
@@ -13,7 +14,7 @@ TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, in
     right2 = new Victor(controller, _rightPin2);
 }
 
-void TankDrive::updateDrive(byte lStickY, byte rStickX)
+void TankDrive::updateDrive(char lStickY, char rStickX)
 {
 //run every cycle to set drive motor value and piston state
 //lStickY assigns throttle, rStickX assigns rotation,

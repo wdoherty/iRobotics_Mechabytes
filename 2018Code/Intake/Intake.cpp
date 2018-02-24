@@ -8,7 +8,7 @@ Intake::Intake(PCA9685* PWM, int foamPin, int soccerPin) : controller(PWM)
     soccerIntake = new Victor(controller, 5);
 }
 
-void Intake::runIntake(int foamTrigger, int soccerTrigger)
+void Intake::updateIntake(int foamTrigger, int soccerTrigger)
 {
     //Driver must hold button down to use Intake
     //Soccer gets priority, always
