@@ -1,9 +1,8 @@
 #include "TankDrive.h"
 
 
-TankDrive::TankDrive(PCA9685& PWM, int bus, int address, int leftPin1, int leftPin2, int rightPin1, int rightPin2)
+TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2) : controller(PWM)
 {
-    controller = PWM;
     _leftPin1 = leftPin1;
     _leftPin2 = leftPin2;
     _rightPin1 = rightPin1;
@@ -33,13 +32,13 @@ void TankDrive::setThrottle()
 {
     //maps decimal 0.00-1.00 to 0-255 for PWM control
 
-      lSpeed = ((int) _lStickY + (int) _rStickX)*(180/255);
-      rSpeed = ((int) _lStickY - (int) _rStickX)*(180/255);
+      lSpeed = ((int) _lStickY + (int) _rStickX)*(4095/255);
+      rSpeed = ((int) _lStickY - (int) _rStickX)*(4095/255);
 
     //constrains motor values to within the PWM limits
 
-      if(abs(lSpeed) > 180) lSpeed = 180*(abs(lSpeed)/lSpeed);
-      if(abs(rSpeed) > 180) rSpeed = 180*(abs(rSpeed)/rSpeed);
+      if(abs(lSpeed) > 4095) lSpeed = 4095*(abs(lSpeed)/lSpeed);
+      if(abs(rSpeed) > 4095) rSpeed = 4095*(abs(rSpeed)/rSpeed);
 
 
     //sends value to speed controller
