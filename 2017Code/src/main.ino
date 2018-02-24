@@ -93,23 +93,23 @@ void loop(){
 
     size1 = Serial1.available();
     while(size1 > 0){
-      Serial1.write(0);
+      // Serial1.write(0);
         if(packet_index == 0){
             if(Serial1.read()==255){
-              Serial1.write(1);
+              // Serial1.write(1);
                 packet_index++;
             }
         }
         else if(packet_index < 9){
-           Serial1.write(2);
+           // Serial1.write(2);
             data[packet_index-1] = Serial1.read();
             checkSumRX += data[packet_index-1];
             packet_index++;
         }
         else if(packet_index == 9){
-           Serial1.write(3);
+           // Serial1.write(3);
             if(Serial1.read() == checkSumRX){
-              Serial1.write(4);
+              // Serial1.write(4);
                 packet_index++;
             }else{
                 packet_index=0;
@@ -118,7 +118,7 @@ void loop(){
         }
         else if(packet_index == 10){
             if(Serial1.read() == 240){
-              Serial1.write(5);
+              // Serial1.write(5);
                 for(i=0; i<8; i++){
                     controller[i] = data[i];
                 }
@@ -138,7 +138,7 @@ void loop(){
         // write the code below that you want to run
         // when the robot recieves valid data of the xbox controller
         // basically all the motor control stuff
-        Serial1.write(6);
+        // Serial1.write(6);
         testMotor.write(180);
         driveThrottle = data[3];
         driveHeading = data[4];
