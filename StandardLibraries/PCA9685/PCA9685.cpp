@@ -44,7 +44,7 @@ PCA9685::PCA9685(int address) {
 
 	i2c = wiringPiI2CSetup(0x40);
 	reset();
-	setPWMFreq(1000);
+	setPWMFreq(333);
 }
 
 PCA9685::~PCA9685() {
