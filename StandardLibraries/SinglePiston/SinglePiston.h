@@ -5,16 +5,16 @@
 
 class SinglePiston
 {
-public:
-    SinglePiston(int address);
-    SinglePiston(int address, int initState);
-    int switchState();
-    int setState(int newState);
+    public:
+        SinglePiston(int address);
+        SinglePiston(int address, int initState);
+        int switchState();
+        int setState(int newState);
 
-private:
-    void setPiston();
-    int pin;
-    int state;
+    private:
+        void setPiston();
+        int pin;
+        int state;
 };
 
 #endif
