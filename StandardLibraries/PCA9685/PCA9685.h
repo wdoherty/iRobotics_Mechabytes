@@ -62,4 +62,3 @@ private:
 	void reset(void);
 };
 #endif
-

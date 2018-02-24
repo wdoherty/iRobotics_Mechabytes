@@ -3,10 +3,10 @@
 SinglePiston::SinglePiston(int address){
     pin = address;
     // pinMode(pin, OUTPUT);
-    state = true;
+    state = 1;
     setPiston();
 }
-SinglePiston::SinglePiston(int address, bool initState){
+SinglePiston::SinglePiston(int address, int initState){
     pin = address;
     // pinMode(pin, OUTPUT);
     state = initState;
@@ -14,17 +14,21 @@ SinglePiston::SinglePiston(int address, bool initState){
 }
 
 void SinglePiston::setPiston(){
-    //digitalWrite(pin, state);
+    digitalWrite(pin, state);
 }
 
 
-bool SinglePiston::switchState(){
-    state = !state;
+int SinglePiston::switchState(){
+    if(state == 0)
+        state = 1;
+    else
+        state = 0;
+
     setPiston();
     return state;
 }
 
-bool SinglePiston::setState(bool newState){
+int SinglePiston::setState(int newState){
     if(state != newState){
         state = newState;
         setPiston();

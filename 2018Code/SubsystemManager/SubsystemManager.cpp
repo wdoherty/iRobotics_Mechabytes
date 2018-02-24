@@ -19,13 +19,13 @@ void SubsystemManager::runRobot()
 	int position;
 	while(true)
 	{
-	for(int i = 0; i < 400; i++)
-	{
-		position = 10 * i;
-		for(int j = 0; j < 100; j++)
-		{
-			test->setMotorSpeed(position);
-		}
-	}
+    	for(int i = 0; i < 400; i++)
+    	{
+    		position = 10 * i;
+    		for(int j = 0; j < 100; j++)
+    		{
+    			test->setMotorSpeed(position);
+    		}
+    	}
 	}
 }
