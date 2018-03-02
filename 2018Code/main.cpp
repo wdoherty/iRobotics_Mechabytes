@@ -7,33 +7,34 @@
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
 
-#define DriveL1 2
-#define DriveL2 3
-#define DriveR1 4
-#define DriveR2 5
-#define rollers 6
-#define lift 7
-#define armMotor 8
-#define wrist 9
+// #define DriveL1 2
+// #define DriveL2 3
+// #define DriveR1 4
+// #define DriveR2 5
+// #define rollers 6
+// #define lift 7
+// #define armMotor 8
+// #define wrist 9
+//
+// #define omniSolenoid 15
+// #define doorSolenoid 16
 
-#define omniSolenoid 15
-#define doorSolenoid 16
-
-char feedback[10];
-char controller[8];
-char data[8];
+unsigned char feedback[10];
+unsigned char controller[8];
+unsigned char data[8];
 
 bool connection;
-char x;
-char packet_index;
-char i;
-char size1;
-char checkSumTX;    // check sum for transmitting data
-char checkSumRX;    // check sum for recieving data
+bool badPacket;
+unsigned char x;
+unsigned char packet_index;
+unsigned char i;
+unsigned char size1;
+unsigned char checkSumTX;    // check sum for transmitting data
+unsigned char checkSumRX;    // check sum for recieving data
 
 unsigned long read_time;
 
-void failsafe(){
+void failsafe(SubsystemManager* subsystems){
     // write the code below that you want to run
     // when the robot loses a signal here
 //    arm.armFailsafe();
@@ -54,15 +55,14 @@ int main()
     memset(feedback,0,sizeof(feedback));
     connection = true;
 
-	failsafe();
+    SubsystemManager* Robot = new SubsystemManager();
+    Robot->initializeSubsystems();
+
+	failsafe(Robot);
 	read_time = millis();
 	checkSumRX = 0;
 	x = 0;
 	packet_index = 0;
-
-	SubsystemManager* Robot = new SubsystemManager();
-
-	Robot->initializeSubsystems();
 
 	while(true)
 	{
@@ -70,23 +70,23 @@ int main()
 
         connection = false;
         while(packet_index == 0 && serialDataAvail(serialId) >= 22){
-            serialGetChar(serialId);
+            serialGetchar(serialId);
         }
 
         size1 = serialDataAvail(serialId);
         while(size1 > 0){
             if(packet_index == 0){
-                if(serialGetChar(serialId)==255){
+                if(serialGetchar(serialId)==255){
                     packet_index++;
                 }
             }
             else if(packet_index < 9){
-                data[packet_index-1] = serialGetChar(serialId);
+                data[packet_index-1] = serialGetchar(serialId);
                 checkSumRX += data[packet_index-1];
                 packet_index++;
             }
             else if(packet_index == 9){
-                if(serialGetChar(serialId) == checkSumRX){
+                if(serialGetchar(serialId) == checkSumRX){
                     packet_index++;
                 }else{
                     packet_index=0;
@@ -94,19 +94,22 @@ int main()
                 checkSumRX = 0;
             }
             else if(packet_index == 10){
-                if(serialGetChar(serialId) == 240){
+                if(serialGetchar(serialId) == 240){
                     for(i=0; i<8; i++){
                         controller[i] = data[i];
                     }
                     connection = true;
                     read_time = millis();
+
+                    //after getting valid input, execute main code
+                    Robot->runRobot(controller);
                 }
                 packet_index=0;
             }
             size1--;
         }
         if(connection && millis() - read_time >= time_out){
-            failsafe();
+            failsafe(Robot);
         }
 
         if(connection){
