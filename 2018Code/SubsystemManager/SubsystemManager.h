@@ -4,6 +4,9 @@
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/PCA9685/PCA9685.h"
 #include "../TestSubsystem/TestSubsystem.h"
+#include "../SimonSays/SimonSays.h"
+#include "../Intake/Intake.h"
+#include "../TankDrive/TankDrive.h"
 
 class SubsystemManager
 {
@@ -15,7 +18,10 @@ public:
 private:
     PCA9685* PWM1;
     //insert subsystems here
-    TestSubsystem* test;
+    // TestSubsystem* test;
+    SimonSays* simonSays;
+    Intake* intake;
+    TankDrive* driveTrain;
 
     unsigned char driveThrottleRight;
     unsigned char driveThrottleLeft;

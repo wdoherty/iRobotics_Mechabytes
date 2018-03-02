@@ -10,30 +10,18 @@ SubsystemManager::SubsystemManager()
 
 void SubsystemManager::failsafe()
 {
-
+    simonSays->failsafe();
 }
 
 void SubsystemManager::initializeSubsystems()
 {
-	// test = new TestSubsystem(PWM1);
-
+    simonSays = new SimonSays(PWM1, 6, 0, 1, 2, 3, 4, 5, 6, 7); //Arm pin 6, GPIO 0,1,2,3,4,5,6,7 for pistons
+    intake = new Intake(PWM1, 4, 5); //Foam intake pin 4, soccer intake pin 5
+    driveTrain = new TankDrive(PWM1, 0, 1, 2, 3); //Left drive on pins 0 & 1, Right drive on pins 2 & 3
 }
 
 void SubsystemManager::runRobot(unsigned char controller[8])
 {
-	// int position;
-	// while(true)
-	// {
-    // 	for(int i = 0; i < 400; i++)
-    // 	{
-    // 		position = 10 * i;
-    // 		for(int j = 0; j < 100; j++)
-    // 		{
-    // 			test->setMotorSpeed(position);
-    // 		}
-    // 	}
-	// }
-
     start = 1 & (controller[0] >> 6);
 
     driveThrottleRight = controller[7];
@@ -56,5 +44,10 @@ void SubsystemManager::runRobot(unsigned char controller[8])
 
     FingerPosition = 1 & (controller[0] >> 1);
     SoccerDoor = 1 & (controller[0]);
+
+    simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
+                               SimonSays_LowerLeft, SimonSays_LowerRight);
+
+    intake->updateIntake(FoamIntake, SoccerIntake);
 
 }

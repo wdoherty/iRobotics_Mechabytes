@@ -11,6 +11,15 @@ SimonSays::SimonSays(PCA9685* PWM, int pivotPin, int UL_Pin1, int UL_Pin2, int U
     LR = new DoublePiston(LR_Pin1, LR_Pin2, false);
 }
 
+void SimonSays::failsafe()
+{
+    pivot->setThrottle(2048);
+    UL->setState(0);
+    UR->setState(0);
+    LL->setState(0);
+    LR->setState(0);
+}
+
 void SimonSays::updateSimonSays(unsigned char ArmSpeed, unsigned char UL_State, unsigned char UR_State, unsigned char LL_State, unsigned char LR_State)
 {
     if(UL_State == 1)

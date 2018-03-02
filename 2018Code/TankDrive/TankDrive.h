@@ -7,10 +7,12 @@ class TankDrive
 {
 public:
     TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2);
-    void updateDrive(char lStickY, char rStickX);
+    void updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX);
+    void setQuickTurn(double throttle, double heading);
+
 
 private:
-    void setThrottle();
+    void setThrottle(int lStickY, int rStickX);
 
     PCA9685* controller;
 
@@ -26,8 +28,13 @@ private:
 
     int lSpeed;
     int rSpeed;
-    char _lStickY;
-    char _rStickX;
+    int _rStickX;
+
+    int _throttle;
+    int _reverse;
+
+    double headingMod = 1.6;
+    bool quickTurn;
 
 };
 
