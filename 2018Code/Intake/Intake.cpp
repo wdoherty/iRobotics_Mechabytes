@@ -1,4 +1,4 @@
-#include "intake.h"
+#include "Intake.h"
 
 Intake::Intake(PCA9685* PWM, int foamPin, int soccerPin) : controller(PWM)
 {

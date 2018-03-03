@@ -21,7 +21,7 @@ void SubsystemManager::initializeSubsystems()
     simonSays = new SimonSays(PWM1, 6, 0, 1, 2, 3, 4, 5, 6, 7); //Arm pin 6, GPIO 0,1,2,3,4,5,6,7 for pistons
     intake = new Intake(PWM1, 4, 5); //Foam intake pin 4, soccer intake pin 5
     driveTrain = new TankDrive(PWM1, 0, 1, 2, 3); //Left drive on pins 0 & 1, Right drive on pins 2 & 3
-    foamArm = new Arm(PWM1, 7, 8, 8, 9, 10, 11); //foam arm on pwm 7, wheel on pwm 8, clamp piston GPIO 8/9, door GPIO 10/11
+    foamArm = new Arm(PWM1, 7, 8, 8, 9); //foam arm on pwm 7, wheel on pwm 8, clamp piston GPIO 8, door GPIO 9
     soccer = new SoccerOutput(12, 13);
 }
 

@@ -50,7 +50,6 @@ private:
     unsigned char SoccerDoor;
 
     unsigned char start;
-    unsigned char select;
 };
 
 #endif
