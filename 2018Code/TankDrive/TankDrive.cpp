@@ -13,6 +13,7 @@ TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, in
     left2 = new Victor(controller, _leftPin2);
     right1 = new Victor(controller, _rightPin1);
     right2 = new Victor(controller, _rightPin2);
+    headingMod = 1.6;
 }
 
 void TankDrive::failsafe()
@@ -20,7 +21,7 @@ void TankDrive::failsafe()
     left1->setThrottle(2048);
     left2->setThrottle(2048);
     right1->setThrottle(2048);
-    right2->setThrottle(2048);    
+    right2->setThrottle(2048);
 }
 
 void TankDrive::updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX)

@@ -33,7 +33,7 @@ private:
     int _throttle;
     int _reverse;
 
-    double headingMod = 1.6;
+    double headingMod;
     bool quickTurn;
 
 };

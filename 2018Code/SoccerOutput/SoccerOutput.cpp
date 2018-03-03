@@ -2,8 +2,10 @@
 
 SoccerOutput::SoccerOutput(int fingerPin, int doorPin)
 {
-    finger = new SinglePiston(fingerPin);
-    door = new SinglePiston(doorPin);
+    _fingerPin = fingerPin;
+    _doorPin = doorPin;
+    finger = new SinglePiston(_fingerPin);
+    door = new SinglePiston(_doorPin);
 }
 
 void SoccerOutput::updateSoccerOutput(unsigned char fingerPosition, unsigned char doorPosition)
