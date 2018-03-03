@@ -5,10 +5,10 @@ SimonSays::SimonSays(PCA9685* PWM, int pivotPin, int UL_Pin1, int UL_Pin2, int U
 {
     _pivotPin = pivotPin;
     pivot = new Victor(controller, _pivotPin);
-    UL = new DoublePiston(UL_Pin1, UL_Pin2, false);
-    UR = new DoublePiston(UR_Pin1, UR_Pin2, false);
-    LL = new DoublePiston(LL_Pin1, LL_Pin2, false);
-    LR = new DoublePiston(LR_Pin1, LR_Pin2, false);
+    UL = new DoublePiston(UL_Pin1, UL_Pin2, 0);
+    UR = new DoublePiston(UR_Pin1, UR_Pin2, 0);
+    LL = new DoublePiston(LL_Pin1, LL_Pin2, 0);
+    LR = new DoublePiston(LR_Pin1, LR_Pin2, 0);
 }
 
 void SimonSays::failsafe()

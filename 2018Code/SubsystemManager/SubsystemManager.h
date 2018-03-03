@@ -7,6 +7,8 @@
 #include "../SimonSays/SimonSays.h"
 #include "../Intake/Intake.h"
 #include "../TankDrive/TankDrive.h"
+#include "../Arm/Arm.h"
+#include "../SoccerOutput/SoccerOutput.h"
 
 class SubsystemManager
 {
@@ -22,6 +24,9 @@ private:
     SimonSays* simonSays;
     Intake* intake;
     TankDrive* driveTrain;
+    Arm* foamArm;
+    SoccerOutput* soccer;
+
 
     unsigned char driveThrottleRight;
     unsigned char driveThrottleLeft;

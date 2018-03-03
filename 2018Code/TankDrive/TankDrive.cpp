@@ -15,10 +15,17 @@ TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, in
     right2 = new Victor(controller, _rightPin2);
 }
 
+void TankDrive::failsafe()
+{
+    left1->setThrottle(2048);
+    left2->setThrottle(2048);
+    right1->setThrottle(2048);
+    right2->setThrottle(2048);    
+}
+
 void TankDrive::updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX)
 {
-
-//scales input signa from 
+//scales input signa from
 _throttle = (throttle >> 1);
 _throttle *= 4095;
 _throttle /= 100;

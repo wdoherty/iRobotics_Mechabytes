@@ -9,7 +9,7 @@ public:
     TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2);
     void updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX);
     void setQuickTurn(double throttle, double heading);
-
+    void failsafe();
 
 private:
     void setThrottle(int lStickY, int rStickX);
