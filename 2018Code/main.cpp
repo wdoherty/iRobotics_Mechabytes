@@ -2,7 +2,9 @@
 #include "TestSubsystem/TestSubsystem.h"
 #include "../StandardLibraries/wiringPiLib/wiringPi/wiringSerial.h"
 #include "../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h"
+#include "RobotVision/vision.h"
 #include <string.h>
+#include <unistd.h>
 
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
@@ -45,6 +47,17 @@ void failsafe(){
 
 int main()
 {
+	Vision *v = new Vision();
+
+	while(true){
+		if(v->checkBoard()){
+			std::cout << "Found board." << std::endl;
+			cout << v->analyzeBoard() << endl;
+			usleep(3000000); //3 seconds
+		}
+	}
+
+
 //Serial init
 	wiringPiSetupGpio();
 
@@ -70,23 +83,23 @@ int main()
 
         connection = false;
         while(packet_index == 0 && serialDataAvail(serialId) >= 22){
-            serialGetChar(serialId);
+            serialGetchar(serialId);
         }
 
         size1 = serialDataAvail(serialId);
         while(size1 > 0){
             if(packet_index == 0){
-                if(serialGetChar(serialId)==255){
+                if(serialGetchar(serialId)==255){
                     packet_index++;
                 }
             }
             else if(packet_index < 9){
-                data[packet_index-1] = serialGetChar(serialId);
+                data[packet_index-1] = serialGetchar(serialId);
                 checkSumRX += data[packet_index-1];
                 packet_index++;
             }
             else if(packet_index == 9){
-                if(serialGetChar(serialId) == checkSumRX){
+                if(serialGetchar(serialId) == checkSumRX){
                     packet_index++;
                 }else{
                     packet_index=0;
@@ -94,7 +107,7 @@ int main()
                 checkSumRX = 0;
             }
             else if(packet_index == 10){
-                if(serialGetChar(serialId) == 240){
+                if(serialGetchar(serialId) == 240){
                     for(i=0; i<8; i++){
                         controller[i] = data[i];
                     }
