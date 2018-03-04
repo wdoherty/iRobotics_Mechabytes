@@ -4,7 +4,7 @@ OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Victor.o SinglePiston.o
 CXX = clang++
 CXXFLAGS = -Wall -c
 LD = clang++
-LDFLAGS = -Wall -lwiringPi
+LDFLAGS = -Wall -lwiringPi -lpthread
 
 all : $(EXENAME)
 
