@@ -5,9 +5,12 @@
 #include "RobotVision/vision.h"
 #include <string.h>
 #include <unistd.h>
+#include <iostream>
 
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
+
+using namespace std;
 
 // #define DriveL1 2
 // #define DriveL2 3
@@ -48,17 +51,6 @@ void failsafe(SubsystemManager* subsystems){
 
 int main()
 {
-	Vision *v = new Vision();
-
-	while(true){
-		if(v->checkBoard()){
-			std::cout << "Found board." << std::endl;
-			cout << v->analyzeBoard() << endl;
-			usleep(3000000); //3 seconds
-		}
-	}
-
-
 //Serial init
 	wiringPiSetupGpio();
 
@@ -70,20 +62,28 @@ int main()
 
     SubsystemManager* Robot = new SubsystemManager();
     Robot->initializeSubsystems();
+    //Vision *v = new Vision();
 
 	failsafe(Robot);
 	read_time = millis();
 	checkSumRX = 0;
 	x = 0;
 	packet_index = 0;
-
+	
+	cout << "init complete" << endl;
 	while(true)
 	{
 		//Robot->runRobot();
-
+		/*if(v->checkBoard()){
+			std::cout << "Found board." << std::endl;
+			cout << v->analyzeBoard() << endl;
+			usleep(3000000); //3 seconds
+		}*/
+		cout << "loop start" << endl;
         connection = false;
         while(packet_index == 0 && serialDataAvail(serialId) >= 22){
             serialGetchar(serialId);
+            cout << "dump extra" << endl;
         }
 
         size1 = serialDataAvail(serialId);
@@ -91,11 +91,13 @@ int main()
             if(packet_index == 0){
                 if(serialGetchar(serialId)==255){
                     packet_index++;
+                    cout << "0" << endl;
                 }
             }
             else if(packet_index < 9){
                 data[packet_index-1] = serialGetchar(serialId);
                 checkSumRX += data[packet_index-1];
+                cout << packet_index << endl;
                 packet_index++;
             }
             else if(packet_index == 9){
