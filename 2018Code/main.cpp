@@ -2,7 +2,9 @@
 // #include "TestSubsystem/TestSubsystem.h"
 #include "../StandardLibraries/wiringPiLib/wiringPi/wiringSerial.h"
 #include "../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h"
+#include "RobotVision/vision.h"
 #include <string.h>
+#include <unistd.h>
 
 #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
@@ -46,6 +48,17 @@ void failsafe(SubsystemManager* subsystems){
 
 int main()
 {
+	Vision *v = new Vision();
+
+	while(true){
+		if(v->checkBoard()){
+			std::cout << "Found board." << std::endl;
+			cout << v->analyzeBoard() << endl;
+			usleep(3000000); //3 seconds
+		}
+	}
+
+
 //Serial init
 	wiringPiSetupGpio();
 

@@ -1,15 +1,18 @@
 EXENAME = main
-OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Victor.o SinglePiston.o DoublePiston.o Arm.o Intake.o SimonSays.o SoccerOutput.o TankDrive.o TestSubsystem.o SubsystemManager.o main.o
+OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Victor.o SinglePiston.o DoublePiston.o Arm.o Intake.o SimonSays.o SoccerOutput.o TankDrive.o TestSubsystem.o SubsystemManager.o main.o vision.o
+
 
 CXX = clang++
-CXXFLAGS = -Wall -c
+CXXFLAGS = -Wall -c -std=c++11 
 LD = clang++
+
 LDFLAGS = -Wall -lwiringPi -lpthread
+OPENCV = $(shell pkg-config --libs --static opencv)
 
 all : $(EXENAME)
 
 $(EXENAME) : $(OBJS)
-	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
+	$(LD) $(OPENCV) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
 main.o : main.cpp SubsystemManager/SubsystemManager.h ../StandardLibraries/wiringPiLib/wiringPi/wiringSerial.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
 	$(CXX) $(CXXFLAGS) main.cpp
@@ -55,6 +58,9 @@ wiringPi.o : ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.c ../StandardLib
 
 wiringPiI2C.o : ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.c ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.c
+
+vision.o : RobotVision/vision.cpp RobotVision/vision.h
+	$(CXX) $(CXXFLAGS) RobotVision/vision.cpp
 
 clean :
 	-rm -f *.o $(EXENAME)
