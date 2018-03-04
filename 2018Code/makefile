@@ -3,7 +3,8 @@ OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Victor.o SinglePiston.o
 
 
 CXX = clang++
-CXXFLAGS = -Wall -c -std=c++11 
+CXXFLAGS = -Wall -c
+OPENCVFLAGS = -Wall -c -std=c++11
 LD = clang++
 
 LDFLAGS = -Wall -lwiringPi -lpthread
@@ -60,7 +61,7 @@ wiringPiI2C.o : ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.c ../Stand
 	$(CXX) $(CXXFLAGS) ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.c
 
 vision.o : RobotVision/vision.cpp RobotVision/vision.h
-	$(CXX) $(CXXFLAGS) RobotVision/vision.cpp
+	$(CXX) $(OPENCVFLAGS) RobotVision/vision.cpp
 
 clean :
 	-rm -f *.o $(EXENAME)
