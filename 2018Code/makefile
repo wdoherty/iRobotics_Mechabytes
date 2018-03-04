@@ -14,7 +14,7 @@ $(EXENAME) : $(OBJS)
 main.o : main.cpp SubsystemManager/SubsystemManager.h ../StandardLibraries/wiringPiLib/wiringPi/wiringSerial.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
 	$(CXX) $(CXXFLAGS) main.cpp
 
-SubsystemManager.o : SubsystemManager/SubsystemManager.cpp SubsystemManager/SubsystemManager.h TestSubsystem/TestSubsystem.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+SubsystemManager.o : SubsystemManager/SubsystemManager.cpp SubsystemManager/SubsystemManager.h TestSubsystem/TestSubsystem.h TankDrive/TankDrive.h SoccerOutput/SoccerOutput.h SimonSays/SimonSays.h Intake/Intake.h Arm/Arm.h ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) SubsystemManager/SubsystemManager.cpp
 
 TestSubsystem.o : TestSubsystem/TestSubsystem.cpp TestSubsystem/TestSubsystem.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
