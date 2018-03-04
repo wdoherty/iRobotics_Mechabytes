@@ -7,7 +7,8 @@ class Intake
 {
 public:
     Intake(PCA9685* PWM, int foamPin, int soccerPin);
-    void updateIntake(int foamTrigger, int soccerTrigger);
+    void failsafe();
+    void updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger);
 private:
     PCA9685* controller;
     int _foamPin, _soccerPin;

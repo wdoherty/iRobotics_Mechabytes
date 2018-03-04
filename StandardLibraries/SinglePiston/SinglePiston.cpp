@@ -3,7 +3,7 @@
 SinglePiston::SinglePiston(int address){
     pin = address;
     // pinMode(pin, OUTPUT);
-    state = 1;
+    state = 0;
     setPiston();
 }
 SinglePiston::SinglePiston(int address, int initState){
