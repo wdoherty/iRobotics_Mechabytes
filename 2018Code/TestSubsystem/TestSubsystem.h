@@ -7,7 +7,6 @@
 class TestSubsystem
 {
 public:
-	TestSubsystem();
     TestSubsystem(PCA9685* output);
     void setMotorSpeed(int speed);
 private:

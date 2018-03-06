@@ -92,10 +92,10 @@ void PCA9685::setPWM(uint8_t led, int value) {
  \param off_value 0-4095 value to turn off the pulse
  */
 void PCA9685::setPWM(uint8_t led, int on_value, int off_value) {
-		wiringPiI2CWriteReg8      (i2c, LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF) ;
-		wiringPiI2CWriteReg8      (i2c, LED0_ON_H + LED_MULTIPLYER * (led - 1), on_value >> 8) ;
-		wiringPiI2CWriteReg8      (i2c, LED0_OFF_L + LED_MULTIPLYER * (led - 1), off_value & 0xFF) ;
-		wiringPiI2CWriteReg8      (i2c, LED0_OFF_H + LED_MULTIPLYER * (led - 1), off_value >> 8) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_ON_L + LED_MULTIPLYER * (led), on_value & 0xFF) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_ON_H + LED_MULTIPLYER * (led), on_value >> 8) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_OFF_L + LED_MULTIPLYER * (led), off_value & 0xFF) ;
+		wiringPiI2CWriteReg8      (i2c, LED0_OFF_H + LED_MULTIPLYER * (led), off_value >> 8) ;
 
 
 	//	i2c->write_byte(LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF);
@@ -111,10 +111,10 @@ void PCA9685::setPWM(uint8_t led, int on_value, int off_value) {
 int PCA9685::getPWM(uint8_t led){
 	int ledval = 0;
 	//ledval = i2c->read_byte(LED0_OFF_H + LED_MULTIPLYER * (led-1));
-	ledval = wiringPiI2CReadReg8(i2c, LED0_OFF_H + LED_MULTIPLYER * (led-1)) ;
+	ledval = wiringPiI2CReadReg8(i2c, LED0_OFF_H + LED_MULTIPLYER * (led)) ;
 	ledval = ledval & 0xf;
 	ledval <<= 8;
 	//ledval += i2c->read_byte(LED0_OFF_L + LED_MULTIPLYER * (led-1));
-	ledval += wiringPiI2CReadReg8(i2c, LED0_OFF_L + LED_MULTIPLYER * (led-1)) ;
+	ledval += wiringPiI2CReadReg8(i2c, LED0_OFF_L + LED_MULTIPLYER * (led)) ;
 	return ledval;
 }

@@ -20,7 +20,7 @@ public:
 private:
     PCA9685* PWM1;
     //insert subsystems here
-    // TestSubsystem* test;
+    TestSubsystem* test;
     SimonSays* simonSays;
     Intake* intake;
     TankDrive* driveTrain;
