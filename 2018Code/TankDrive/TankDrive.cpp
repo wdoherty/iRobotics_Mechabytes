@@ -19,33 +19,33 @@ TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, in
 
 void TankDrive::failsafe()
 {
-    left1->setThrottle(2048);
-    left2->setThrottle(2048);
-    right1->setThrottle(2048);
-    right2->setThrottle(2048);
+    left1->setThrottle(2185);
+    left2->setThrottle(2185);
+    right1->setThrottle(2185);
+    right2->setThrottle(2185);
 }
 
 void TankDrive::updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX)
 {
 //scales input signa from
 _throttle = (throttle >> 1);
-_throttle *= 4095;
+_throttle *= 1650;
 _throttle /= 100;
 
 _reverse = (reverse >> 1);
-_reverse *= 4095;
+_reverse *= 1650;
 _reverse /= 100;
 
 int throttleMag = _throttle - _reverse;
-throttleMag += (4095/2);
+throttleMag += (1650/2);
 
 _rStickX = rStickX;
 
-_rStickX *= 4095;
+_rStickX *= 1650;
 _rStickX /= 200;
 
-if(throttleMag > 1930 && throttleMag < 2160) throttleMag = 2048;
-if(_rStickX > 1930 && _rStickX < 2160) _rStickX = 2048;
+if(throttleMag > 743 && throttleMag < 907) throttleMag = 825;
+if(_rStickX > 743 && _rStickX < 907) _rStickX = 825;
 setThrottle(throttleMag, _rStickX);
 
   // setThrottle();
@@ -53,27 +53,27 @@ setThrottle(throttleMag, _rStickX);
 
 void TankDrive::setThrottle(int lStickY, int rStickX)
 {
-       double throttle = abs(lStickY-2048) * (lStickY < 2048 ? -1 : 1);    //// = magnitude & direction of throttle
-       double heading = abs(rStickX-2048) * (rStickX < 2048 ? -1 : 1);    //// = magnitude and direction of heading
+       double throttle = abs(lStickY-825) * (lStickY < 825 ? -1 : 1);    //// = magnitude & direction of throttle
+       double heading = abs(rStickX-825) * (rStickX < 825 ? -1 : 1);    //// = magnitude and direction of heading
 
-       double angularPower = fabs(throttle/2048)*(heading)*(headingMod); //scales rotation by throttle value when not in quick turn
+       double angularPower = fabs(throttle/825)*(heading)/(headingMod); //scales rotation by throttle value when not in quick turn
 
        setQuickTurn(throttle, heading);
 
    if(quickTurn)
    {
-   lSpeed = throttle + heading + 2048;
-   rSpeed = throttle - heading + 2048;
+   lSpeed = throttle + heading + 825;
+   rSpeed = throttle - heading + 825;
    }
    else
    {
-   lSpeed = throttle + angularPower + 2048;
-   rSpeed = throttle - angularPower + 2048;
+   lSpeed = throttle + angularPower + 825;
+   rSpeed = throttle - angularPower + 825;
    }
 
    //constrains motor values to within the PWM limits
-if(lSpeed > 4095) lSpeed = 4095;
-if(rSpeed > 4095) rSpeed = 4095;
+if(lSpeed > 1650) lSpeed = 1650;
+if(rSpeed > 1650) rSpeed = 1650;
 if(lSpeed < 0) lSpeed = 0;
 if(rSpeed < 0) rSpeed = 0;
 
@@ -93,6 +93,9 @@ if(rSpeed < 0) rSpeed = 0;
 // rSpeed = 4095 - rSpeed;
 
     //sends value to speed controller
+    
+    lSpeed += 1360;
+    rSpeed += 1360;
 	  std::cout << lSpeed << std::endl;
 
       left1->setThrottle(lSpeed);
@@ -103,6 +106,6 @@ if(rSpeed < 0) rSpeed = 0;
 
 void TankDrive::setQuickTurn(double throttle, double heading)
 {
-    if((fabs(throttle) < 5) && (fabs(heading) > 5)) quickTurn = true;
+    if((fabs(throttle) < 82) && (fabs(heading) > 82)) quickTurn = true;
     else quickTurn = false;
 }
