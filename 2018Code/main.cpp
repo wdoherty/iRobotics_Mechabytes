@@ -3,6 +3,7 @@
 #include "../StandardLibraries/wiringPiLib/wiringPi/wiringSerial.h"
 #include "../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h"
 #include "RobotVision/vision.h"
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <iostream>
@@ -52,9 +53,10 @@ void failsafe(SubsystemManager* subsystems){
 int main()
 {
 //Serial init
-	wiringPiSetupGpio();
+	wiringPiSetup();
 
-	int serialId = serialOpen("/dev/ttyS0", baudrate);
+	int serialId = serialOpen("/dev/ttyS0", 9600);
+    cout << serialId << endl;
 
 	memset(controller,0,sizeof(controller));
     memset(feedback,0,sizeof(feedback));
@@ -69,7 +71,7 @@ int main()
 	checkSumRX = 0;
 	x = 0;
 	packet_index = 0;
-	
+
 	cout << "init complete" << endl;
 	while(true)
 	{
@@ -79,7 +81,7 @@ int main()
 			cout << v->analyzeBoard() << endl;
 			usleep(3000000); //3 seconds
 		}*/
-		cout << "loop start" << endl;
+		// cout << "loop start" << endl;
         connection = false;
         while(packet_index == 0 && serialDataAvail(serialId) >= 22){
             serialGetchar(serialId);
@@ -88,10 +90,12 @@ int main()
 
         size1 = serialDataAvail(serialId);
         while(size1 > 0){
+            cout << "Inside size1 loop" << endl;
             if(packet_index == 0){
+                cout << "0" << endl;
                 if(serialGetchar(serialId)==255){
                     packet_index++;
-                    cout << "0" << endl;
+                    cout << "valid lead bit" << endl;
                 }
             }
             else if(packet_index < 9){
@@ -109,15 +113,16 @@ int main()
                 checkSumRX = 0;
             }
             else if(packet_index == 10){
+                cout << "10" << endl;
                 if(serialGetchar(serialId) == 240){
+                    cout << "valid end bit" << endl;
                     for(i=0; i<8; i++){
                         controller[i] = data[i];
                     }
                     connection = true;
                     read_time = millis();
 
-                    //after getting valid input, execute main code
-                    Robot->runRobot(controller);
+
                 }
                 packet_index=0;
             }
@@ -131,26 +136,11 @@ int main()
             // write the code below that you want to run
             // when the robot recieves valid data of the xbox controller
             // basically all the motor control stuff
-            // Serial1.write(6);
-/*            testMotor.write(180);
-            driveThrottle = data[3];
-            driveHeading = data[4];
-            omniTrigger = (B1 == ((data[0] & B10000) >> 4));
-    //        drive.updateDrive(driveThrottle, driveHeading, omniTrigger);
+            //after getting valid input, execute main code
+            cout << "Run Robot" << endl;
+            Robot->runRobot(controller);
 
-            intakeTrigger = (B1 == ((data[0] & B100000) >> 5));
-            doorTrigger = (B1 == ((data[0] & B1000) >> 3));
-            scoreTrigger = (B1 == ((data[0] & B10) >> 1));
-    //        intake.runIntake(scoreTrigger, intakeTrigger, doorTrigger);
-
-            lTrigger = data[6];
-            rTrigger = data[7];
-            clawCW = (B1 == ((data[0] & B100) >> 2));
-            clawCCW = (B1 == ((data[0] & B1) ));
-    //        arm.setArm(lTrigger, rTrigger, clawCW, clawCCW);
-
-            // below is the code for sending feedback to the driver station
-*/
+// below is the code for sending feedback to the driver station
             serialPutchar(serialId, 255);
             checkSumTX = 0;
             for(i=0; i<10; i++){
