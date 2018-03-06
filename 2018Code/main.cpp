@@ -85,23 +85,23 @@ int main()
         connection = false;
         while(packet_index == 0 && serialDataAvail(serialId) >= 22){
             serialGetchar(serialId);
-            cout << "dump extra" << endl;
+            //cout << "dump extra" << endl;
         }
 
         size1 = serialDataAvail(serialId);
         while(size1 > 0){
-            cout << "Inside size1 loop" << endl;
+            //cout << "Inside size1 loop" << endl;
             if(packet_index == 0){
-                cout << "0" << endl;
+                //cout << "0" << endl;
                 if(serialGetchar(serialId)==255){
                     packet_index++;
-                    cout << "valid lead bit" << endl;
+                    //cout << "valid lead bit" << endl;
                 }
             }
             else if(packet_index < 9){
                 data[packet_index-1] = serialGetchar(serialId);
                 checkSumRX += data[packet_index-1];
-                cout << packet_index << endl;
+                //cout << packet_index << endl;
                 packet_index++;
             }
             else if(packet_index == 9){
@@ -113,9 +113,9 @@ int main()
                 checkSumRX = 0;
             }
             else if(packet_index == 10){
-                cout << "10" << endl;
+                //cout << "10" << endl;
                 if(serialGetchar(serialId) == 240){
-                    cout << "valid end bit" << endl;
+                    //cout << "valid end bit" << endl;
                     for(i=0; i<8; i++){
                         controller[i] = data[i];
                     }
@@ -137,7 +137,7 @@ int main()
             // when the robot recieves valid data of the xbox controller
             // basically all the motor control stuff
             //after getting valid input, execute main code
-            cout << "Run Robot" << endl;
+            //cout << "Run Robot" << endl;
             Robot->runRobot(controller);
 
 // below is the code for sending feedback to the driver station

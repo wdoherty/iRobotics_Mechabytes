@@ -1,6 +1,7 @@
 #include "TankDrive.h"
 #include <stdlib.h>
 #include <math.h>
+#include <iostream>
 
 
 TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2) : controller(PWM)
@@ -40,7 +41,7 @@ throttleMag += (4095/2);
 
 _rStickX = rStickX;
 
-_rStickX *= 180;
+_rStickX *= 4095;
 _rStickX /= 200;
 
 if(throttleMag > 1930 && throttleMag < 2160) throttleMag = 2048;
@@ -92,7 +93,7 @@ if(rSpeed < 0) rSpeed = 0;
 // rSpeed = 4095 - rSpeed;
 
     //sends value to speed controller
-
+	  std::cout << lSpeed << std::endl;
 
       left1->setThrottle(lSpeed);
       left2->setThrottle(lSpeed);
