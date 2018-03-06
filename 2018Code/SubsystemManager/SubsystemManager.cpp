@@ -26,18 +26,8 @@ void SubsystemManager::initializeSubsystems()
 
 void SubsystemManager::runRobot(unsigned char controller[8])
 {
-	int position;
-	while(true)
-	{
-	for(int i = 0; i < 400; i++)
-	{
-		position = 10 * i;
-		for(int j = 0; j < 100; j++)
-		{
-			test->setMotorSpeed(position);
-		}
-	}
-    }
+    test->setMotorSpeed(1000);
+
     // start = 1 & (controller[0] >> 6);
     //
     // driveThrottleRight = controller[7];
