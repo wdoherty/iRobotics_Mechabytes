@@ -28,25 +28,26 @@ Arm::Arm(PCA9685* PWM, int armPin, int wheelPin, int clampPin, int doorPin) : co
 
 void Arm::failsafe()
 {
-    armPivot->setThrottle(2048);
-    ropeWheel->setThrottle(2048);
+    armPivot->setThrottle(2185);
+    ropeWheel->setThrottle(2185);
 }
 
 void Arm::updateArm(unsigned char ArmSpeed, unsigned char clampPos, unsigned char foamDoor, unsigned char wheel)
 {
     _armSpeed = (int)(ArmSpeed);
-    _armSpeed *= 4095;
+    _armSpeed *= 1650;
     _armSpeed /= 200;
 
-    if(_armSpeed > 1023 && _armSpeed < 3072) _armSpeed = 2048;
+    if(_armSpeed > 410 && _armSpeed < 1230) _armSpeed = 820;
+    _armSpeed += 1360;
     armPivot->setThrottle(_armSpeed);
 
     _clampPos = (int) clampPos;
     _foamDoor = (int) foamDoor;
     _wheel = (int) wheel;
 
-    if(_wheel == 1) ropeWheel->setThrottle(4095);
-    else ropeWheel->setThrottle(2048);
+    if(_wheel == 1) ropeWheel->setThrottle(3010);
+    else ropeWheel->setThrottle(2185);
 
     clampPiston->setState(_clampPos);
     doorPiston->setState(_foamDoor);

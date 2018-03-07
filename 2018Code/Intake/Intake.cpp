@@ -10,8 +10,8 @@ Intake::Intake(PCA9685* PWM, int foamPin, int soccerPin) : controller(PWM)
 
 void Intake::failsafe()
 {
-        foamIntake->setThrottle(4095/2); //stop foam intake
-        soccerIntake->setThrottle(4095/2); //stop soccer intake
+        foamIntake->setThrottle(2185); //stop foam intake
+        soccerIntake->setThrottle(2185); //stop soccer intake
 }
 
 void Intake::updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger)
@@ -20,17 +20,17 @@ void Intake::updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger
     //Soccer gets priority, always
     if((int)soccerTrigger == 1)
     {
-        foamIntake->setThrottle(0); //run the foam ball intake in reverse: soccer balls are in contact with it
-        soccerIntake->setThrottle(4095); //run main soccer intake in
+        foamIntake->setThrottle(1360); //run the foam ball intake in reverse: soccer balls are in contact with it
+        soccerIntake->setThrottle(3010); //run main soccer intake in
     }
     else if((int)foamTrigger == 1)
     {
-        foamIntake->setThrottle(4095); //run the foam ball intake in
-        soccerIntake->setThrottle(4095/2); //stop soccer intake
+        foamIntake->setThrottle(3010); //run the foam ball intake in
+        soccerIntake->setThrottle(2185); //stop soccer intake
     }
     else
     {
-        foamIntake->setThrottle(4095/2); //stop foam intake
-        soccerIntake->setThrottle(4095/2); //stop soccer intake
+        foamIntake->setThrottle(2185); //stop foam intake
+        soccerIntake->setThrottle(2185); //stop soccer intake
     }
 }

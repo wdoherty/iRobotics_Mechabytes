@@ -13,7 +13,7 @@ SimonSays::SimonSays(PCA9685* PWM, int pivotPin, int UL_Pin1, int UL_Pin2, int U
 
 void SimonSays::failsafe()
 {
-    pivot->setThrottle(2048);
+    pivot->setThrottle(2185);
     UL->setState(0);
     UR->setState(0);
     LL->setState(0);
@@ -60,9 +60,12 @@ void SimonSays::updateSimonSays(unsigned char ArmSpeed, unsigned char UL_State, 
 
     //controller sends joystick value 0-200, must scale to 0-4095 PWM magnitude
     _armSpeed = (int)(ArmSpeed);
-    _armSpeed *= 4095;
+    _armSpeed *= 1650;
     _armSpeed /= 200;
 
-    if(_armSpeed > 1023 && _armSpeed < 3072) _armSpeed = 2048;
+
+
+    if(_armSpeed > 410 && _armSpeed < 1230) _armSpeed = 825;
+    _armSpeed += 1360;
     pivot->setThrottle(_armSpeed);
 }

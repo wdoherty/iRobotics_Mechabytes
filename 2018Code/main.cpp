@@ -43,10 +43,7 @@ unsigned long read_time;
 void failsafe(SubsystemManager* subsystems){
     // write the code below that you want to run
     // when the robot loses a signal here
-//    arm.armFailsafe();
-//    intake.StopAllMotors();
-//    drive.driveBaseFailsafe();
-//testMotor.write(180);
+    subsystems->failsafe();
     connection = false;
 }
 
