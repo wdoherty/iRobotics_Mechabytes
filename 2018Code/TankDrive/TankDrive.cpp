@@ -90,7 +90,7 @@ if(rSpeed < 0) rSpeed = 0;
 
 //optionally invert drive direction if electrical swap is difficult
 // lSpeed = 4095 - lSpeed;
-// rSpeed = 4095 - rSpeed;
+ rSpeed = 1650 - rSpeed;
 
     //sends value to speed controller
     

@@ -20,12 +20,12 @@ void Intake::updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger
     //Soccer gets priority, always
     if((int)soccerTrigger == 1)
     {
-        foamIntake->setThrottle(1360); //run the foam ball intake in reverse: soccer balls are in contact with it
-        soccerIntake->setThrottle(3010); //run main soccer intake in
+        foamIntake->setThrottle(1785); //run the foam ball intake in reverse: soccer balls are in contact with it
+        soccerIntake->setThrottle(2585); //run main soccer intake in
     }
     else if((int)foamTrigger == 1)
     {
-        foamIntake->setThrottle(3010); //run the foam ball intake in
+        foamIntake->setThrottle(2585); //run the foam ball intake in
         soccerIntake->setThrottle(2185); //stop soccer intake
     }
     else
