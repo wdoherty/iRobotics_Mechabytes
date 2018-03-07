@@ -8,22 +8,10 @@
 #include <unistd.h>
 #include <iostream>
 
-#define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
+// #define baudrate 9600   // the baudrate for comms, has to match the baudrate of the driverstation
 #define time_out 500    // the number of milliseconds to wait after recieving signal before calling failsafe
 
 using namespace std;
-
-// #define DriveL1 2
-// #define DriveL2 3
-// #define DriveR1 4
-// #define DriveR2 5
-// #define rollers 6
-// #define lift 7
-// #define armMotor 8
-// #define wrist 9
-//
-// #define omniSolenoid 15
-// #define doorSolenoid 16
 
 unsigned char feedback[10];
 unsigned char controller[8];
@@ -52,7 +40,9 @@ int main()
 //Serial init
 	wiringPiSetup();
 
-	int serialId = serialOpen("/dev/ttyS0", 9600);
+	int serialId = serialOpen("/dev/ttyS0", 9600);     //for RPi 3
+    // int serialId = serialOpen("/dev/ttyAMA0", 9600);     //For previous RPi models
+
     cout << serialId << endl;
 
 	memset(controller,0,sizeof(controller));
@@ -78,29 +68,26 @@ int main()
 			cout << v->analyzeBoard() << endl;
 			usleep(3000000); //3 seconds
 		}*/
-		// cout << "loop start" << endl;
         try
         {
             connection = false;
+            //this loop discards any extra packets detected
             while(packet_index == 0 && serialDataAvail(serialId) >= 22){
                 serialGetchar(serialId);
-                //cout << "dump extra" << endl;
             }
 
             size1 = serialDataAvail(serialId);
             while(size1 > 0){
-                //cout << "Inside size1 loop" << endl;
                 if(packet_index == 0){
-                    //cout << "0" << endl;
+                    //checks for expected leading package
                     if(serialGetchar(serialId)==255){
                         packet_index++;
-                        //cout << "valid lead bit" << endl;
                     }
                 }
                 else if(packet_index < 9){
+                    //stores information from transmission
                     data[packet_index-1] = serialGetchar(serialId);
                     checkSumRX += data[packet_index-1];
-                    //cout << packet_index << endl;
                     packet_index++;
                 }
                 else if(packet_index == 9){
@@ -112,21 +99,21 @@ int main()
                     checkSumRX = 0;
                 }
                 else if(packet_index == 10){
-                    //cout << "10" << endl;
+                    //checks for expected ending package
                     if(serialGetchar(serialId) == 240){
-                        //cout << "valid end bit" << endl;
+                        //if ending package is valid, then use the information
+                        //as valid controller input
                         for(i=0; i<8; i++){
                             controller[i] = data[i];
                         }
                         connection = true;
                         read_time = millis();
-
-
                     }
                     packet_index=0;
                 }
                 size1--;
             }
+            //if timeout, run failsafe
             if(connection && millis() - read_time >= time_out){
                 failsafe(Robot);
             }
@@ -136,7 +123,6 @@ int main()
                 // when the robot recieves valid data of the xbox controller
                 // basically all the motor control stuff
                 //after getting valid input, execute main code
-                //cout << "Run Robot" << endl;
                 Robot->runRobot(controller);
 
     // below is the code for sending feedback to the driver station
@@ -155,6 +141,5 @@ int main()
             cout << "failsafe" << endl;
             Robot->failsafe();
         }
-
 	}
 }
