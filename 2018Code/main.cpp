@@ -47,7 +47,7 @@ int main()
     cout << serialId << endl;
 
 	memset(controller,0,sizeof(controller));
-    memset(feedback,0,sizeof(feedback));
+    // memset(feedback,0,sizeof(feedback));
     connection = true;
 
     SubsystemManager* Robot = new SubsystemManager();
