@@ -26,6 +26,15 @@ namespace iRoboticsDS
         private byte[] checkSumTX = new byte[1];
         private byte[] endByte = new byte[1];
 
+        private bool UL = false;
+        private bool UR = false;
+        private bool LL = false;
+        private bool LR = false;
+
+        Int32 _UL = 0;
+        Int32 _UR = 0;
+        Int32 _LL = 0;
+        Int32 _LR = 0;
 
         public DriverStation()
         {
@@ -159,11 +168,19 @@ namespace iRoboticsDS
                     (Convert.ToInt32(controller.Start) << 6);
 
                 controller_packet[0] = Convert.ToByte(i);
-                
-                i = (Convert.ToInt32(controller.DPad.Up)) |
+
+                /*i = (Convert.ToInt32(controller.DPad.Up)) |
                     (Convert.ToInt32(controller.DPad.Down) << 1) |
                     (Convert.ToInt32(controller.DPad.Left) << 2) |
                     (Convert.ToInt32(controller.DPad.Right) << 3) |
+                    (Convert.ToInt32(controller.LeftStick.Clicked) << 4) |
+                    (Convert.ToInt32(controller.RightStick.Clicked) << 5) |
+                    (Convert.ToInt32(controller.Back) << 6);*/
+
+                i = (_UL) |
+                    (_LR << 1) |
+                    (_LL << 2) |
+                    (_UR << 3) |
                     (Convert.ToInt32(controller.LeftStick.Clicked) << 4) |
                     (Convert.ToInt32(controller.RightStick.Clicked) << 5) |
                     (Convert.ToInt32(controller.Back) << 6);
@@ -476,22 +493,22 @@ namespace iRoboticsDS
 
             Pi3.Text = (gui_packet[3].ToString());
 
-            if (Convert.ToInt32(gui_packet[3] & 8) == 1)
+            if (Convert.ToInt32(gui_packet[3] & 15) == 1)
             {
                 SimonSays_textbox.Text = ("LL");
                 SimonSays_textbox.ForeColor = System.Drawing.Color.White;
             }
-            else if (Convert.ToInt32(gui_packet[3] & 8) == 2)
+            else if (Convert.ToInt32(gui_packet[3] & 15) == 2)
             {
                 SimonSays_textbox.Text = ("LR");
                 SimonSays_textbox.ForeColor = System.Drawing.Color.White;
             }
-            else if (Convert.ToInt32(gui_packet[3] & 8) == 4)
+            else if (Convert.ToInt32(gui_packet[3] & 15) == 4)
             {
                 SimonSays_textbox.Text = ("UL");
                 SimonSays_textbox.ForeColor = System.Drawing.Color.White;
             }
-            else if (Convert.ToInt32(gui_packet[3] & 8) == 8)
+            else if (Convert.ToInt32(gui_packet[3] & 15) == 8)
             {
                 SimonSays_textbox.Text = ("UR");
                 SimonSays_textbox.ForeColor = System.Drawing.Color.White;
@@ -626,6 +643,34 @@ namespace iRoboticsDS
         private void label23_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Piston_UL_Click(object sender, EventArgs e)
+        {
+            UL = !UL;
+            if (UL) _UL = 1;
+            else _UL = 0;
+        }
+
+        private void Piston_UR_Click(object sender, EventArgs e)
+        {
+            UR = !UR;
+            if (UR) _UR = 1;
+            else _UR = 0;
+        }
+
+        private void Piston_LL_Click(object sender, EventArgs e)
+        {
+            LL = !LL;
+            if (LL) _LL = 1;
+            else _LL = 0;
+        }
+
+        private void Piston_LR_Click(object sender, EventArgs e)
+        {
+            LR = !LR;
+            if (LR) _LR = 1;
+            else _LR = 0;
         }
     }
 }

@@ -99,9 +99,14 @@
             this.SimonSays_textbox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.RopeClamp_textBox = new System.Windows.Forms.TextBox();
+            this.Piston_UL = new System.Windows.Forms.Button();
+            this.Piston_UR = new System.Windows.Forms.Button();
+            this.Piston_LL = new System.Windows.Forms.Button();
+            this.Piston_LR = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -362,6 +367,10 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.panel6.Controls.Add(this.Piston_LR);
+            this.panel6.Controls.Add(this.Piston_LL);
+            this.panel6.Controls.Add(this.Piston_UR);
+            this.panel6.Controls.Add(this.Piston_UL);
             this.panel6.Location = new System.Drawing.Point(453, 463);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
@@ -888,6 +897,66 @@
             this.RopeClamp_textBox.TabIndex = 71;
             this.RopeClamp_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // Piston_UL
+            // 
+            this.Piston_UL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.Piston_UL.FlatAppearance.BorderSize = 0;
+            this.Piston_UL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Piston_UL.ForeColor = System.Drawing.Color.White;
+            this.Piston_UL.Location = new System.Drawing.Point(52, 34);
+            this.Piston_UL.Margin = new System.Windows.Forms.Padding(0);
+            this.Piston_UL.Name = "Piston_UL";
+            this.Piston_UL.Size = new System.Drawing.Size(85, 30);
+            this.Piston_UL.TabIndex = 13;
+            this.Piston_UL.Text = "UL";
+            this.Piston_UL.UseVisualStyleBackColor = false;
+            this.Piston_UL.Click += new System.EventHandler(this.Piston_UL_Click);
+            // 
+            // Piston_UR
+            // 
+            this.Piston_UR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.Piston_UR.FlatAppearance.BorderSize = 0;
+            this.Piston_UR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Piston_UR.ForeColor = System.Drawing.Color.White;
+            this.Piston_UR.Location = new System.Drawing.Point(269, 34);
+            this.Piston_UR.Margin = new System.Windows.Forms.Padding(0);
+            this.Piston_UR.Name = "Piston_UR";
+            this.Piston_UR.Size = new System.Drawing.Size(85, 30);
+            this.Piston_UR.TabIndex = 14;
+            this.Piston_UR.Text = "UR";
+            this.Piston_UR.UseVisualStyleBackColor = false;
+            this.Piston_UR.Click += new System.EventHandler(this.Piston_UR_Click);
+            // 
+            // Piston_LL
+            // 
+            this.Piston_LL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.Piston_LL.FlatAppearance.BorderSize = 0;
+            this.Piston_LL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Piston_LL.ForeColor = System.Drawing.Color.White;
+            this.Piston_LL.Location = new System.Drawing.Point(52, 185);
+            this.Piston_LL.Margin = new System.Windows.Forms.Padding(0);
+            this.Piston_LL.Name = "Piston_LL";
+            this.Piston_LL.Size = new System.Drawing.Size(85, 30);
+            this.Piston_LL.TabIndex = 15;
+            this.Piston_LL.Text = "LL";
+            this.Piston_LL.UseVisualStyleBackColor = false;
+            this.Piston_LL.Click += new System.EventHandler(this.Piston_LL_Click);
+            // 
+            // Piston_LR
+            // 
+            this.Piston_LR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.Piston_LR.FlatAppearance.BorderSize = 0;
+            this.Piston_LR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Piston_LR.ForeColor = System.Drawing.Color.White;
+            this.Piston_LR.Location = new System.Drawing.Point(269, 185);
+            this.Piston_LR.Margin = new System.Windows.Forms.Padding(0);
+            this.Piston_LR.Name = "Piston_LR";
+            this.Piston_LR.Size = new System.Drawing.Size(85, 30);
+            this.Piston_LR.TabIndex = 16;
+            this.Piston_LR.Text = "LR";
+            this.Piston_LR.UseVisualStyleBackColor = false;
+            this.Piston_LR.Click += new System.EventHandler(this.Piston_LR_Click);
+            // 
             // DriverStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -916,6 +985,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -996,6 +1066,10 @@
         private System.Windows.Forms.TextBox SimonSays_textbox;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox RopeClamp_textBox;
+        private System.Windows.Forms.Button Piston_LR;
+        private System.Windows.Forms.Button Piston_LL;
+        private System.Windows.Forms.Button Piston_UR;
+        private System.Windows.Forms.Button Piston_UL;
     }
 }
 
