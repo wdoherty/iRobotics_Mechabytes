@@ -52,6 +52,8 @@ private:
     unsigned char FingerPosition;
     unsigned char SoccerDoor;
 
+    unsigned char doorReset;
+
     unsigned char start;
 };
 
