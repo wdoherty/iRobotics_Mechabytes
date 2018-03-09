@@ -392,76 +392,126 @@ namespace iRoboticsDS
         private void updateArduinoReturnGUI()
         {
             //displays status of left drive train
-            Arduino0.Text = (gui_packet[0].ToString());
+            Pi0.Text = (gui_packet[0].ToString());
             DriveLeft_textbox.Text = (gui_packet[0].ToString());
             DriveLeft_textbox.ForeColor = System.Drawing.Color.White;
 
             //displays status of right drive train
-            Arduino1.Text = (gui_packet[1].ToString());
+            Pi1.Text = (gui_packet[1].ToString());
             DriveRight_textbox.Text = (gui_packet[1].ToString());
             DriveRight_textbox.ForeColor = System.Drawing.Color.White;
+            
+            Pi2.Text = (gui_packet[2].ToString());
 
             //displays status of intake system
-            Arduino2.Text = (gui_packet[2].ToString());
-            if (gui_packet[2] > 90)
+            if (Convert.ToInt32(gui_packet[2] & 3) == 1)
             {
-                Intake_textbox.Text = ("IN");
+                Intake_textbox.Text = ("Foam");
                 Intake_textbox.ForeColor = System.Drawing.Color.Green;
             }
-            else if(gui_packet[2] < 90)
+            else if (Convert.ToInt32(gui_packet[2] & 3) == 2)
             {
-                Intake_textbox.Text = ("OUT");
-                Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;
+                Intake_textbox.Text = ("Soccer");
+                Intake_textbox.ForeColor = System.Drawing.Color.Green;
             }
-            else
+            else if (Convert.ToInt32(gui_packet[2] & 3) == 0)
             {
-                Intake_textbox.Text = ("OFF");
+                Intake_textbox.Text = ("Off");
                 Intake_textbox.ForeColor = System.Drawing.Color.White;
             }
-
-            //displays state of door arm
-            Arduino3.Text = (gui_packet[3].ToString());
-            if (gui_packet[3] == 1)
+            else
             {
-                doorPiston_textbox.Text = ("UP");
-                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
+                Intake_textbox.Text = ("???");
+                Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;
             }
-            else if (gui_packet[3] == 0)
+
+            //displays state of finger
+            if (Convert.ToInt32(gui_packet[2] & 4) == 4)
             {
-                doorPiston_textbox.Text = ("DOWN");
+                doorPiston_textbox.Text = ("Down");
                 doorPiston_textbox.ForeColor = System.Drawing.Color.White;
             }
             else
             {
-                doorPiston_textbox.Text = ("Comm Error");
-                doorPiston_textbox.ForeColor = System.Drawing.Color.DarkRed;
+                doorPiston_textbox.Text = ("Up");
+                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
             }
 
-            //displays status of arm speed
-            Arduino4.Text = (gui_packet[4].ToString());
-            armSpeed_textbox.Text = (gui_packet[4].ToString());
-            armSpeed_textbox.ForeColor = System.Drawing.Color.White;
-
-            //displays status of ball release piston
-            Arduino5.Text = (gui_packet[5].ToString());
-            if (gui_packet[5] == 1)
+            //displays status of soccer door
+            if (Convert.ToInt32(gui_packet[2] & 8) == 8)
             {
-                BallRelease_textbox.Text = ("UP");
-                BallRelease_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (gui_packet[5] == 0)
-            {
-                BallRelease_textbox.Text = ("DOWN");
-                BallRelease_textbox.ForeColor = System.Drawing.Color.White;
+                SoccerDoor_textbox.Text = ("Down");
+                SoccerDoor_textbox.ForeColor = System.Drawing.Color.White;
             }
             else
             {
-                BallRelease_textbox.Text = ("Comm Error");
-                BallRelease_textbox.ForeColor = System.Drawing.Color.DarkRed;
+                SoccerDoor_textbox.Text = ("Up");
+                SoccerDoor_textbox.ForeColor = System.Drawing.Color.White;
             }
 
-            Arduino6.Text = (gui_packet[6].ToString());
-            Arduino7.Text = (gui_packet[7].ToString());
+            //displays status of foam door
+            if (Convert.ToInt32(gui_packet[2] & 16) == 16)
+            {
+                FoamDoor_textbox.Text = ("Down");
+                FoamDoor_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                FoamDoor_textbox.Text = ("Up");
+                FoamDoor_textbox.ForeColor = System.Drawing.Color.White;
+            }
+
+            //displays status of rope clamp
+
+            if (Convert.ToInt32(gui_packet[2] & 32) == 32)
+            {
+                RopeClamp_textBox.Text = ("In");
+                RopeClamp_textBox.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                RopeClamp_textBox.Text = ("Out");
+                RopeClamp_textBox.ForeColor = System.Drawing.Color.White;
+            }
+
+            Pi3.Text = (gui_packet[3].ToString());
+
+            if (Convert.ToInt32(gui_packet[3] & 8) == 1)
+            {
+                SimonSays_textbox.Text = ("LL");
+                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else if (Convert.ToInt32(gui_packet[3] & 8) == 2)
+            {
+                SimonSays_textbox.Text = ("LR");
+                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else if (Convert.ToInt32(gui_packet[3] & 8) == 4)
+            {
+                SimonSays_textbox.Text = ("UL");
+                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else if (Convert.ToInt32(gui_packet[3] & 8) == 8)
+            {
+                SimonSays_textbox.Text = ("UR");
+                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else if (Convert.ToInt32(gui_packet[3] & 8) == 0)
+            {
+                SimonSays_textbox.Text = ("None");
+                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
+            }
+            else
+            {
+                SimonSays_textbox.Text = ("???");
+                SimonSays_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            }
+
+
+            Pi4.Text = (gui_packet[4].ToString());
+            Pi5.Text = (gui_packet[5].ToString());
+            Pi6.Text = (gui_packet[6].ToString());
+            Pi7.Text = (gui_packet[7].ToString());
         }
 
         private void open_button_Click(object sender, EventArgs e)
@@ -554,6 +604,26 @@ namespace iRoboticsDS
         }
 
         private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
         {
 
         }

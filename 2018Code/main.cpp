@@ -68,8 +68,8 @@ int main()
 			cout << v->analyzeBoard() << endl;
 			usleep(3000000); //3 seconds
 		}*/
-        try
-        {
+        // try
+        // {
             connection = false;
             //this loop discards any extra packets detected
             while(packet_index == 0 && serialDataAvail(serialId) >= 22){
@@ -135,11 +135,11 @@ int main()
                 serialPutchar(serialId, checkSumTX);
                 serialPutchar(serialId, 240);
             }
-        }
-        catch (...)
-        {
-            cout << "failsafe" << endl;
-            Robot->failsafe();
-        }
+        // }
+        // catch (...)
+        // {
+        //     cout << "failsafe" << endl;
+        //     Robot->failsafe();
+        // }
 	}
 }

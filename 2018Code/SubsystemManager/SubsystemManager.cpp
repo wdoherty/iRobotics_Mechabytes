@@ -2,7 +2,6 @@
 
 SubsystemManager::SubsystemManager()
 {
-    //PCA9685(bus, address)
     PWM1 = new PCA9685(0x40);
 }
 

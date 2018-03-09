@@ -25,7 +25,7 @@ void TankDrive::failsafe()
     right2->setThrottle(2185);
 }
 
-void TankDrive::updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX)
+unsigned char* TankDrive::updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX)
 {
 //scales input signa from
 _throttle = (throttle >> 1);
@@ -93,7 +93,7 @@ if(rSpeed < 0) rSpeed = 0;
  rSpeed = 1650 - rSpeed;
 
     //sends value to speed controller
-    
+
     lSpeed += 1360;
     rSpeed += 1360;
 	  std::cout << lSpeed << std::endl;

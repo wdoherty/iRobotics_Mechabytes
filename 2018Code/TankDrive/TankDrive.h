@@ -7,7 +7,7 @@ class TankDrive
 {
 public:
     TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int rightPin1, int rightPin2);
-    void updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX);
+    unsigned char* updateDrive(unsigned char throttle, unsigned char reverse, unsigned char rStickX);
     void setQuickTurn(double throttle, double heading);
     void failsafe();
 
@@ -35,6 +35,8 @@ private:
 
     double headingMod;
     bool quickTurn;
+
+    unsigned char[2] driveVals;
 
 };
 

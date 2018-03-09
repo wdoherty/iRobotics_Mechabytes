@@ -8,10 +8,11 @@ class Intake
 public:
     Intake(PCA9685* PWM, int foamPin, int soccerPin);
     void failsafe();
-    void updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger);
+    unsigned char updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger);
 private:
     PCA9685* controller;
     int _foamPin, _soccerPin;
+    unsigned char value;
 
     Victor* foamIntake;
     Victor* soccerIntake;

@@ -47,13 +47,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.connection_textBox = new System.Windows.Forms.TextBox();
             this.connection_label = new System.Windows.Forms.Label();
-            this.BallRelease_textbox = new System.Windows.Forms.TextBox();
+            this.SoccerDoor_textbox = new System.Windows.Forms.TextBox();
             this.wheelType_label = new System.Windows.Forms.Label();
             this.doorPiston_textbox = new System.Windows.Forms.TextBox();
             this.drivingSpeed_label = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.armSpeed_textbox = new System.Windows.Forms.TextBox();
+            this.FoamDoor_textbox = new System.Windows.Forms.TextBox();
             this.shooter_label = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.Intake_textbox = new System.Windows.Forms.TextBox();
@@ -79,14 +79,14 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.Arduino7 = new System.Windows.Forms.TextBox();
-            this.Arduino6 = new System.Windows.Forms.TextBox();
-            this.Arduino5 = new System.Windows.Forms.TextBox();
-            this.Arduino4 = new System.Windows.Forms.TextBox();
-            this.Arduino3 = new System.Windows.Forms.TextBox();
-            this.Arduino2 = new System.Windows.Forms.TextBox();
-            this.Arduino1 = new System.Windows.Forms.TextBox();
-            this.Arduino0 = new System.Windows.Forms.TextBox();
+            this.Pi7 = new System.Windows.Forms.TextBox();
+            this.Pi6 = new System.Windows.Forms.TextBox();
+            this.Pi5 = new System.Windows.Forms.TextBox();
+            this.Pi4 = new System.Windows.Forms.TextBox();
+            this.Pi3 = new System.Windows.Forms.TextBox();
+            this.Pi2 = new System.Windows.Forms.TextBox();
+            this.Pi1 = new System.Windows.Forms.TextBox();
+            this.Pi0 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -95,6 +95,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.SimonSays_textbox = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.RopeClamp_textBox = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel5.SuspendLayout();
@@ -299,21 +303,21 @@
             this.connection_label.TabIndex = 68;
             this.connection_label.Text = "Signal Integrity:";
             // 
-            // BallRelease_textbox
+            // SoccerDoor_textbox
             // 
-            this.BallRelease_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.BallRelease_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BallRelease_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BallRelease_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BallRelease_textbox.ForeColor = System.Drawing.Color.White;
-            this.BallRelease_textbox.Location = new System.Drawing.Point(196, 288);
-            this.BallRelease_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.BallRelease_textbox.Multiline = true;
-            this.BallRelease_textbox.Name = "BallRelease_textbox";
-            this.BallRelease_textbox.ReadOnly = true;
-            this.BallRelease_textbox.Size = new System.Drawing.Size(181, 41);
-            this.BallRelease_textbox.TabIndex = 42;
-            this.BallRelease_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SoccerDoor_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.SoccerDoor_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SoccerDoor_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SoccerDoor_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoccerDoor_textbox.ForeColor = System.Drawing.Color.White;
+            this.SoccerDoor_textbox.Location = new System.Drawing.Point(196, 288);
+            this.SoccerDoor_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.SoccerDoor_textbox.Multiline = true;
+            this.SoccerDoor_textbox.Name = "SoccerDoor_textbox";
+            this.SoccerDoor_textbox.ReadOnly = true;
+            this.SoccerDoor_textbox.Size = new System.Drawing.Size(181, 41);
+            this.SoccerDoor_textbox.TabIndex = 42;
+            this.SoccerDoor_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // wheelType_label
             // 
@@ -323,9 +327,9 @@
             this.wheelType_label.Location = new System.Drawing.Point(23, 295);
             this.wheelType_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.wheelType_label.Name = "wheelType_label";
-            this.wheelType_label.Size = new System.Drawing.Size(129, 26);
+            this.wheelType_label.Size = new System.Drawing.Size(127, 26);
             this.wheelType_label.TabIndex = 41;
-            this.wheelType_label.Text = "BallRelease";
+            this.wheelType_label.Text = "SoccerDoor";
             // 
             // doorPiston_textbox
             // 
@@ -351,9 +355,9 @@
             this.drivingSpeed_label.Location = new System.Drawing.Point(23, 230);
             this.drivingSpeed_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.drivingSpeed_label.Name = "drivingSpeed_label";
-            this.drivingSpeed_label.Size = new System.Drawing.Size(120, 26);
+            this.drivingSpeed_label.Size = new System.Drawing.Size(73, 26);
             this.drivingSpeed_label.TabIndex = 0;
-            this.drivingSpeed_label.Text = "DoorPiston";
+            this.drivingSpeed_label.Text = "Finger";
             // 
             // panel6
             // 
@@ -367,7 +371,11 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel7.Controls.Add(this.armSpeed_textbox);
+            this.panel7.Controls.Add(this.RopeClamp_textBox);
+            this.panel7.Controls.Add(this.label23);
+            this.panel7.Controls.Add(this.SimonSays_textbox);
+            this.panel7.Controls.Add(this.label22);
+            this.panel7.Controls.Add(this.FoamDoor_textbox);
             this.panel7.Controls.Add(this.shooter_label);
             this.panel7.Location = new System.Drawing.Point(859, 107);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
@@ -375,21 +383,21 @@
             this.panel7.Size = new System.Drawing.Size(391, 342);
             this.panel7.TabIndex = 54;
             // 
-            // armSpeed_textbox
+            // FoamDoor_textbox
             // 
-            this.armSpeed_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.armSpeed_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.armSpeed_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.armSpeed_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.armSpeed_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.armSpeed_textbox.Location = new System.Drawing.Point(273, 14);
-            this.armSpeed_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.armSpeed_textbox.Multiline = true;
-            this.armSpeed_textbox.Name = "armSpeed_textbox";
-            this.armSpeed_textbox.ReadOnly = true;
-            this.armSpeed_textbox.Size = new System.Drawing.Size(99, 41);
-            this.armSpeed_textbox.TabIndex = 67;
-            this.armSpeed_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FoamDoor_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.FoamDoor_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FoamDoor_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FoamDoor_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FoamDoor_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.FoamDoor_textbox.Location = new System.Drawing.Point(273, 14);
+            this.FoamDoor_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.FoamDoor_textbox.Multiline = true;
+            this.FoamDoor_textbox.Name = "FoamDoor_textbox";
+            this.FoamDoor_textbox.ReadOnly = true;
+            this.FoamDoor_textbox.Size = new System.Drawing.Size(99, 41);
+            this.FoamDoor_textbox.TabIndex = 67;
+            this.FoamDoor_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // shooter_label
             // 
@@ -399,16 +407,16 @@
             this.shooter_label.Location = new System.Drawing.Point(21, 21);
             this.shooter_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.shooter_label.Name = "shooter_label";
-            this.shooter_label.Size = new System.Drawing.Size(116, 26);
+            this.shooter_label.Size = new System.Drawing.Size(115, 26);
             this.shooter_label.TabIndex = 66;
-            this.shooter_label.Text = "ArmSpeed";
+            this.shooter_label.Text = "FoamDoor";
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.panel8.Controls.Add(this.Intake_textbox);
             this.panel8.Controls.Add(this.autoCompress_label);
-            this.panel8.Controls.Add(this.BallRelease_textbox);
+            this.panel8.Controls.Add(this.SoccerDoor_textbox);
             this.panel8.Controls.Add(this.wheelType_label);
             this.panel8.Controls.Add(this.DriveRight_textbox);
             this.panel8.Controls.Add(this.doorPiston_textbox);
@@ -573,14 +581,14 @@
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.Arduino7);
-            this.panel1.Controls.Add(this.Arduino6);
-            this.panel1.Controls.Add(this.Arduino5);
-            this.panel1.Controls.Add(this.Arduino4);
-            this.panel1.Controls.Add(this.Arduino3);
-            this.panel1.Controls.Add(this.Arduino2);
-            this.panel1.Controls.Add(this.Arduino1);
-            this.panel1.Controls.Add(this.Arduino0);
+            this.panel1.Controls.Add(this.Pi7);
+            this.panel1.Controls.Add(this.Pi6);
+            this.panel1.Controls.Add(this.Pi5);
+            this.panel1.Controls.Add(this.Pi4);
+            this.panel1.Controls.Add(this.Pi3);
+            this.panel1.Controls.Add(this.Pi2);
+            this.panel1.Controls.Add(this.Pi1);
+            this.panel1.Controls.Add(this.Pi0);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
@@ -608,9 +616,9 @@
             this.label21.ForeColor = System.Drawing.Color.White;
             this.label21.Location = new System.Drawing.Point(63, 214);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(65, 17);
+            this.label21.Size = new System.Drawing.Size(28, 17);
             this.label21.TabIndex = 93;
-            this.label21.Text = "Arduino4";
+            this.label21.Text = "Pi4";
             // 
             // label20
             // 
@@ -618,9 +626,9 @@
             this.label20.ForeColor = System.Drawing.Color.White;
             this.label20.Location = new System.Drawing.Point(63, 265);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(65, 17);
+            this.label20.Size = new System.Drawing.Size(28, 17);
             this.label20.TabIndex = 92;
-            this.label20.Text = "Arduino5";
+            this.label20.Text = "Pi5";
             // 
             // label19
             // 
@@ -628,9 +636,9 @@
             this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(63, 316);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(65, 17);
+            this.label19.Size = new System.Drawing.Size(28, 17);
             this.label19.TabIndex = 91;
-            this.label19.Text = "Arduino6";
+            this.label19.Text = "Pi6";
             // 
             // label18
             // 
@@ -638,9 +646,9 @@
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(63, 372);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 17);
+            this.label18.Size = new System.Drawing.Size(28, 17);
             this.label18.TabIndex = 90;
-            this.label18.Text = "Arduino7";
+            this.label18.Text = "Pi7";
             // 
             // label17
             // 
@@ -648,9 +656,10 @@
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(63, 160);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 17);
+            this.label17.Size = new System.Drawing.Size(28, 17);
             this.label17.TabIndex = 89;
-            this.label17.Text = "Arduino3";
+            this.label17.Text = "Pi3";
+            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
@@ -658,9 +667,9 @@
             this.label16.ForeColor = System.Drawing.Color.White;
             this.label16.Location = new System.Drawing.Point(63, 105);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 17);
+            this.label16.Size = new System.Drawing.Size(28, 17);
             this.label16.TabIndex = 88;
-            this.label16.Text = "Arduino2";
+            this.label16.Text = "Pi2";
             // 
             // label15
             // 
@@ -668,9 +677,9 @@
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(63, 51);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 17);
+            this.label15.Size = new System.Drawing.Size(28, 17);
             this.label15.TabIndex = 87;
-            this.label15.Text = "Arduino1";
+            this.label15.Text = "Pi1";
             // 
             // label14
             // 
@@ -678,65 +687,66 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(63, 6);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 17);
+            this.label14.Size = new System.Drawing.Size(28, 17);
             this.label14.TabIndex = 86;
-            this.label14.Text = "Arduino0";
+            this.label14.Text = "Pi0";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
-            // Arduino7
+            // Pi7
             // 
-            this.Arduino7.Location = new System.Drawing.Point(66, 393);
-            this.Arduino7.Name = "Arduino7";
-            this.Arduino7.Size = new System.Drawing.Size(100, 22);
-            this.Arduino7.TabIndex = 85;
+            this.Pi7.Location = new System.Drawing.Point(66, 393);
+            this.Pi7.Name = "Pi7";
+            this.Pi7.Size = new System.Drawing.Size(100, 22);
+            this.Pi7.TabIndex = 85;
             // 
-            // Arduino6
+            // Pi6
             // 
-            this.Arduino6.Location = new System.Drawing.Point(66, 336);
-            this.Arduino6.Name = "Arduino6";
-            this.Arduino6.Size = new System.Drawing.Size(100, 22);
-            this.Arduino6.TabIndex = 84;
+            this.Pi6.Location = new System.Drawing.Point(66, 336);
+            this.Pi6.Name = "Pi6";
+            this.Pi6.Size = new System.Drawing.Size(100, 22);
+            this.Pi6.TabIndex = 84;
             // 
-            // Arduino5
+            // Pi5
             // 
-            this.Arduino5.Location = new System.Drawing.Point(66, 285);
-            this.Arduino5.Name = "Arduino5";
-            this.Arduino5.Size = new System.Drawing.Size(100, 22);
-            this.Arduino5.TabIndex = 83;
+            this.Pi5.Location = new System.Drawing.Point(66, 285);
+            this.Pi5.Name = "Pi5";
+            this.Pi5.Size = new System.Drawing.Size(100, 22);
+            this.Pi5.TabIndex = 83;
             // 
-            // Arduino4
+            // Pi4
             // 
-            this.Arduino4.Location = new System.Drawing.Point(66, 236);
-            this.Arduino4.Name = "Arduino4";
-            this.Arduino4.Size = new System.Drawing.Size(100, 22);
-            this.Arduino4.TabIndex = 82;
+            this.Pi4.Location = new System.Drawing.Point(66, 236);
+            this.Pi4.Name = "Pi4";
+            this.Pi4.Size = new System.Drawing.Size(100, 22);
+            this.Pi4.TabIndex = 82;
             // 
-            // Arduino3
+            // Pi3
             // 
-            this.Arduino3.Location = new System.Drawing.Point(66, 180);
-            this.Arduino3.Name = "Arduino3";
-            this.Arduino3.Size = new System.Drawing.Size(100, 22);
-            this.Arduino3.TabIndex = 81;
+            this.Pi3.Location = new System.Drawing.Point(66, 180);
+            this.Pi3.Name = "Pi3";
+            this.Pi3.Size = new System.Drawing.Size(100, 22);
+            this.Pi3.TabIndex = 81;
             // 
-            // Arduino2
+            // Pi2
             // 
-            this.Arduino2.Location = new System.Drawing.Point(66, 130);
-            this.Arduino2.Name = "Arduino2";
-            this.Arduino2.Size = new System.Drawing.Size(100, 22);
-            this.Arduino2.TabIndex = 80;
+            this.Pi2.Location = new System.Drawing.Point(66, 130);
+            this.Pi2.Name = "Pi2";
+            this.Pi2.Size = new System.Drawing.Size(100, 22);
+            this.Pi2.TabIndex = 80;
             // 
-            // Arduino1
+            // Pi1
             // 
-            this.Arduino1.Location = new System.Drawing.Point(66, 75);
-            this.Arduino1.Name = "Arduino1";
-            this.Arduino1.Size = new System.Drawing.Size(100, 22);
-            this.Arduino1.TabIndex = 79;
+            this.Pi1.Location = new System.Drawing.Point(66, 75);
+            this.Pi1.Name = "Pi1";
+            this.Pi1.Size = new System.Drawing.Size(100, 22);
+            this.Pi1.TabIndex = 79;
             // 
-            // Arduino0
+            // Pi0
             // 
-            this.Arduino0.Location = new System.Drawing.Point(66, 26);
-            this.Arduino0.Name = "Arduino0";
-            this.Arduino0.Size = new System.Drawing.Size(100, 22);
-            this.Arduino0.TabIndex = 78;
+            this.Pi0.Location = new System.Drawing.Point(66, 26);
+            this.Pi0.Name = "Pi0";
+            this.Pi0.Size = new System.Drawing.Size(100, 22);
+            this.Pi0.TabIndex = 78;
             // 
             // label13
             // 
@@ -820,6 +830,64 @@
             this.label4.Text = "ControllerData0";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(21, 89);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(124, 26);
+            this.label22.TabIndex = 68;
+            this.label22.Text = "SimonSays";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
+            // 
+            // SimonSays_textbox
+            // 
+            this.SimonSays_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.SimonSays_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SimonSays_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SimonSays_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SimonSays_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.SimonSays_textbox.Location = new System.Drawing.Point(273, 85);
+            this.SimonSays_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.SimonSays_textbox.Multiline = true;
+            this.SimonSays_textbox.Name = "SimonSays_textbox";
+            this.SimonSays_textbox.ReadOnly = true;
+            this.SimonSays_textbox.Size = new System.Drawing.Size(99, 41);
+            this.SimonSays_textbox.TabIndex = 69;
+            this.SimonSays_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(22, 158);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(128, 26);
+            this.label23.TabIndex = 70;
+            this.label23.Text = "RopeClamp";
+            this.label23.Click += new System.EventHandler(this.label23_Click);
+            // 
+            // RopeClamp_textBox
+            // 
+            this.RopeClamp_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.RopeClamp_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RopeClamp_textBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.RopeClamp_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RopeClamp_textBox.ForeColor = System.Drawing.Color.DarkRed;
+            this.RopeClamp_textBox.Location = new System.Drawing.Point(273, 154);
+            this.RopeClamp_textBox.Margin = new System.Windows.Forms.Padding(0);
+            this.RopeClamp_textBox.Multiline = true;
+            this.RopeClamp_textBox.Name = "RopeClamp_textBox";
+            this.RopeClamp_textBox.ReadOnly = true;
+            this.RopeClamp_textBox.Size = new System.Drawing.Size(99, 41);
+            this.RopeClamp_textBox.TabIndex = 71;
+            this.RopeClamp_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // DriverStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -871,7 +939,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox BallRelease_textbox;
+        private System.Windows.Forms.TextBox SoccerDoor_textbox;
         private System.Windows.Forms.Label wheelType_label;
         private System.Windows.Forms.TextBox doorPiston_textbox;
         private System.Windows.Forms.Label drivingSpeed_label;
@@ -886,7 +954,7 @@
         private System.Windows.Forms.Label autoCompress_label;
         private System.Windows.Forms.TextBox connection_textBox;
         private System.Windows.Forms.Label connection_label;
-        private System.Windows.Forms.TextBox armSpeed_textbox;
+        private System.Windows.Forms.TextBox FoamDoor_textbox;
         private System.Windows.Forms.Label shooter_label;
         private System.Windows.Forms.TextBox controller1_textBox;
         private System.Windows.Forms.Label label1;
@@ -916,14 +984,18 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox Arduino7;
-        private System.Windows.Forms.TextBox Arduino6;
-        private System.Windows.Forms.TextBox Arduino5;
-        private System.Windows.Forms.TextBox Arduino4;
-        private System.Windows.Forms.TextBox Arduino3;
-        private System.Windows.Forms.TextBox Arduino2;
-        private System.Windows.Forms.TextBox Arduino1;
-        private System.Windows.Forms.TextBox Arduino0;
+        private System.Windows.Forms.TextBox Pi7;
+        private System.Windows.Forms.TextBox Pi6;
+        private System.Windows.Forms.TextBox Pi5;
+        private System.Windows.Forms.TextBox Pi4;
+        private System.Windows.Forms.TextBox Pi3;
+        private System.Windows.Forms.TextBox Pi2;
+        private System.Windows.Forms.TextBox Pi1;
+        private System.Windows.Forms.TextBox Pi0;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox SimonSays_textbox;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox RopeClamp_textBox;
     }
 }
 
