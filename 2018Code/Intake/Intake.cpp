@@ -19,19 +19,19 @@ unsigned char Intake::updateIntake(unsigned char foamTrigger, unsigned char socc
     //Driver must hold button down to use Intake
     //Soccer gets priority, always
 
-    value = 0;
+    value = 0;  // default: neither trigger operational
 
     if((int)soccerTrigger == 1)
     {
         foamIntake->setThrottle(1785); //run the foam ball intake in reverse: soccer balls are in contact with it
         soccerIntake->setThrottle(2585); //run main soccer intake in
-        value = 2;  // binary 0
+        value = 2;  // binary 10, soccer bit high
     }
     else if((int)foamTrigger == 1)
     {
         foamIntake->setThrottle(2585); //run the foam ball intake in
-        soccerIntake->setThrottle(2185); //stop soccer intake
-        value = 1;
+        soccerIntake->setThrottle(1785); //reverse soccer intake
+        value = 1;  // binary 01, foam bit high
     }
     else
     {

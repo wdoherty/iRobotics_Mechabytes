@@ -16,7 +16,7 @@ public:
     SubsystemManager();
     void initializeSubsystems();
     void failsafe();
-    void runRobot(unsigned char controller[8]);
+    unsigned char* runRobot(unsigned char controller[8]);
 private:
     PCA9685* PWM1;
     //insert subsystems here
@@ -26,6 +26,9 @@ private:
     TankDrive* driveTrain;
     Arm* foamArm;
     SoccerOutput* soccer;
+
+    unsigned char returnValues[10];
+    unsigned char* driveVals;
 
 
     unsigned char driveThrottleRight;

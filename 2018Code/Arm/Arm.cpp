@@ -32,8 +32,10 @@ void Arm::failsafe()
     ropeWheel->setThrottle(2185);
 }
 
-void Arm::updateArm(unsigned char ArmSpeed, unsigned char clampPos, unsigned char foamDoor, unsigned char wheel)
+unsigned char Arm::updateArm(unsigned char ArmSpeed, unsigned char clampPos, unsigned char foamDoor, unsigned char wheel)
 {
+    value = 0;
+
     _armSpeed = (int)(ArmSpeed);
     _armSpeed *= 1650;
     _armSpeed /= 200;
@@ -51,4 +53,9 @@ void Arm::updateArm(unsigned char ArmSpeed, unsigned char clampPos, unsigned cha
 
     clampPiston->setState(_clampPos);
     doorPiston->setState(_foamDoor);
+
+    if(_foamDoor == 1) value += 16;
+    if(_clampPos == 1) value += 32;
+
+    return value;
 }

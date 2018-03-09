@@ -13,7 +13,8 @@
 
 using namespace std;
 
-unsigned char feedback[10];
+// unsigned char feedback[10];
+unsigned char* feedback;
 unsigned char controller[8];
 unsigned char data[8];
 
@@ -123,7 +124,7 @@ int main()
                 // when the robot recieves valid data of the xbox controller
                 // basically all the motor control stuff
                 //after getting valid input, execute main code
-                Robot->runRobot(controller);
+                feedback = Robot->runRobot(controller);
 
     // below is the code for sending feedback to the driver station
                 serialPutchar(serialId, 255);

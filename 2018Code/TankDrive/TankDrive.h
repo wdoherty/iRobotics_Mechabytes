@@ -36,7 +36,7 @@ private:
     double headingMod;
     bool quickTurn;
 
-    unsigned char[2] driveVals;
+    unsigned char driveVals[2];
 
 };
 

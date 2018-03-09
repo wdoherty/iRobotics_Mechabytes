@@ -1,4 +1,7 @@
 #include "SubsystemManager.h"
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 SubsystemManager::SubsystemManager()
 {
@@ -23,10 +26,12 @@ void SubsystemManager::initializeSubsystems()
     //test = new TestSubsystem(PWM1);
 }
 
-void SubsystemManager::runRobot(unsigned char controller[8])
+unsigned char* SubsystemManager::runRobot(unsigned char controller[8])
 {
     //NOTE: For the motor speeds, full reverse is a value of 1360, neutral is between 2160 and 2210, and full forward is 3010
     //These values are from testing on a talon that wasn't accepting a new calibration with output 0-4095
+    memset(returnValues,0,sizeof(returnValues));
+
      start = 1 & (controller[0] >> 6);
 
      driveThrottleRight = controller[7];
@@ -50,10 +55,14 @@ void SubsystemManager::runRobot(unsigned char controller[8])
      FingerPosition = 1 & (controller[0] >> 1);
      SoccerDoor = 1 & (controller[0]);
 
-     simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
+     returnValues[3] += simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
                                 SimonSays_LowerLeft, SimonSays_LowerRight);
-     intake->updateIntake(FoamIntake, SoccerIntake);
-     driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
-     foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
-     soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
+     returnValues[2] += intake->updateIntake(FoamIntake, SoccerIntake);
+     driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
+     returnValues[0] = driveVals[0];
+     returnValues[1] = driveVals[1];
+     returnValues[2] += foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
+     returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
+
+     return returnValues;
 }
