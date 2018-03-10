@@ -1,14 +1,25 @@
 #include "SimonSays.h"
 
-SimonSays::SimonSays(PCA9685* PWM, int pivotPin, int UL_Pin1, int UL_Pin2, int UR_Pin1, int UR_Pin2,
-                     int LL_Pin1, int LL_Pin2, int LR_Pin1, int LR_Pin2) : controller(PWM)
+// SimonSays::SimonSays(PCA9685* PWM, int pivotPin, int UL_Pin1, int UL_Pin2, int UR_Pin1, int UR_Pin2,
+//                      int LL_Pin1, int LL_Pin2, int LR_Pin1, int LR_Pin2) : controller(PWM)
+// {
+//     _pivotPin = pivotPin;
+//     pivot = new Victor(controller, _pivotPin);
+//     UL = new DoublePiston(UL_Pin, 0);
+//     UR = new DoublePiston(UR_Pin, 0);
+//     LL = new DoublePiston(LL_Pin, 0);
+//     LR = new DoublePiston(LR_Pin, 0);
+// }
+
+
+SimonSays::SimonSays(PCA9685* PWM, int pivotPin, int UL_Pin, int UR_Pin, int LL_Pin, int LR_Pin) : controller(PWM)
 {
     _pivotPin = pivotPin;
     pivot = new Victor(controller, _pivotPin);
-    UL = new DoublePiston(UL_Pin1, UL_Pin2, 0);
-    UR = new DoublePiston(UR_Pin1, UR_Pin2, 0);
-    LL = new DoublePiston(LL_Pin1, LL_Pin2, 0);
-    LR = new DoublePiston(LR_Pin1, LR_Pin2, 0);
+    UL = new SinglePiston(UL_Pin, 0);
+    UR = new SinglePiston(UR_Pin, 0);
+    LL = new SinglePiston(LL_Pin, 0);
+    LR = new SinglePiston(LR_Pin, 0);
 }
 
 void SimonSays::failsafe()
