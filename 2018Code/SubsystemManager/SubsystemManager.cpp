@@ -18,16 +18,21 @@ void SubsystemManager::failsafe()
 
 void SubsystemManager::initializeSubsystems()
 {
+	 /*
     simonSays = new SimonSays(PWM1, 6, 7, 11, 13, 15); //Arm pin 6, GPIO 4,21,17,20,27,16,22,12 for pistons (Pi 7,40,11,38,13,36,15,32)
     intake = new Intake(PWM1, 4, 5, 33); //Foam intake pin 4, soccer intake pin 5, digital pin GPIO 13 (Pi 33)
     driveTrain = new TankDrive(PWM1, 0, 1, 2, 3); //Left drive on pins 0 & 1, Right drive on pins 2 & 3
     foamArm = new Arm(PWM1, 7, 8, 24, 21); //foam arm on pwm 7, wheel on pwm 8, clamp piston GPIO 8, door GPIO 9 (Pi 24,21)
     soccer = new SoccerOutput(23, 29); //Soccer finger GPIO 11, Soccer door GPIO 5 (Pi 23,29)
-    //simonSays = new SimonSays(PWM1, 6, 17, 27, 22, 9); //Arm pin 6, GPIO 17, 27, 22, 9 for pistons (Pi 7,40,11,38,13,36,15,32)
-    //intake = new Intake(PWM1, 4, 5, 26); //Foam intake pin 4, soccer intake pin 5, digital pin GPIO 26 (Pi 37)
-    //driveTrain = new TankDrive(PWM1, 0, 1, 2, 3); //Left drive on pins 0 & 1, Right drive on pins 2 & 3
-    //foamArm = new Arm(PWM1, 7, 8, 11, 21); //foam arm on pwm 7, wheel on pwm 8, clamp piston GPIO 11, door GPIO 5 (Pi 23,29)
-    //soccer = new SoccerOutput(6, 13); //Soccer finger GPIO 6, Soccer door GPIO 13 (Pi 31,33)
+     */
+    // /*
+    simonSays = new SimonSays(PWM1, 6, 17, 27, 22, 23); //Arm pin 6, GPIO 17, 27, 22, 23 for pistons (Pi 11, 13, 15, 16)
+    intake = new Intake(PWM1, 4, 5, 26); //Foam intake pin 4, soccer intake pin 5, digital pin GPIO 26 (Pi 37)
+    driveTrain = new TankDrive(PWM1, 0, 1, 2, 3); //Left drive on pins 0 & 1, Right drive on pins 2 & 3
+    foamArm = new Arm(PWM1, 7, 8, 24, 21); //foam arm on pwm 7, wheel on pwm 8, clamp piston GPIO 24, door GPIO 5 (Pi 18,29)
+    soccer = new SoccerOutput(6, 13); //Soccer finger GPIO 6, Soccer door GPIO 13 (Pi 31,33)
+    // */
+    
     //test = new TestSubsystem(PWM1);
 }
 

@@ -8,7 +8,7 @@ Intake::Intake(PCA9685* PWM, int foamPin, int soccerPin, int hoodPin) : controll
     foamIntake = new Victor(controller, _foamPin);
     soccerIntake = new Victor(controller, _soccerPin);
     hood = new SinglePiston(hoodPin, 0);
-    //hood2 = new SinglePiston(19, 1);
+    hood2 = new SinglePiston(19, 1);
     hoodHold = true;
 }
 

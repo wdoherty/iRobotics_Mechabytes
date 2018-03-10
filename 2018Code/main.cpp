@@ -39,8 +39,8 @@ void failsafe(SubsystemManager* subsystems){
 int main()
 {
 //Serial init
-	wiringPiSetup();
-	//wiringPiSetupGpio();
+	//wiringPiSetup();
+	wiringPiSetupGpio();
 
 	int serialId = serialOpen("/dev/ttyS0", 9600);     //for RPi 3
     // int serialId = serialOpen("/dev/ttyAMA0", 9600);     //For previous RPi models
