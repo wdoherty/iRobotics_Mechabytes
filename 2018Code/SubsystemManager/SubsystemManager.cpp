@@ -59,7 +59,7 @@ unsigned char* SubsystemManager::runRobot(unsigned char controller[8])
 
      returnValues[3] += simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
                                 SimonSays_LowerLeft, SimonSays_LowerRight);
-     returnValues[2] += intake->updateIntake(FoamIntake, SoccerIntake);
+     returnValues[2] += intake->updateIntake(FoamIntake, SoccerIntake, doorReset);
      driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
      returnValues[0] = driveVals[0];
      returnValues[1] = driveVals[1];
