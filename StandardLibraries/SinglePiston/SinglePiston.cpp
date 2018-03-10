@@ -2,19 +2,19 @@
 
 SinglePiston::SinglePiston(int address){
     pin = address;
-    pinMode(pin, OUTPUT);
+    //pinMode(pin, OUTPUT);
     state = 0;
     setPiston();
 }
 SinglePiston::SinglePiston(int address, int initState){
     pin = address;
-    pinMode(pin, OUTPUT);
+    //pinMode(pin, OUTPUT);
     state = initState;
     setPiston();
 }
 
 void SinglePiston::setPiston(){
-    digitalWrite(pin, state);
+    //digitalWrite(pin, state);
 }
 
 

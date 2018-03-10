@@ -30,7 +30,7 @@ TankDrive.o : TankDrive/TankDrive.cpp TankDrive/TankDrive.h ../StandardLibraries
 SoccerOutput.o : SoccerOutput/SoccerOutput.cpp SoccerOutput/SoccerOutput.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
 	$(CXX) $(CXXFLAGS) SoccerOutput/SoccerOutput.cpp
 
-SimonSays.o : SimonSays/SimonSays.cpp SimonSays/SimonSays.h ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+SimonSays.o : SimonSays/SimonSays.cpp SimonSays/SimonSays.h ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) SimonSays/SimonSays.cpp
 
 Intake.o : Intake/Intake.cpp Intake/Intake.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h

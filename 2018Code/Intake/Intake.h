@@ -19,6 +19,7 @@ private:
     Victor* foamIntake;
     Victor* soccerIntake;
     SinglePiston* hood;
+    //SinglePiston* hood2;
 };
 
 #endif
