@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Victor.o SinglePiston.o DoublePiston.o Arm.o Intake.o SimonSays.o SoccerOutput.o TankDrive.o TestSubsystem.o SubsystemManager.o main.o vision.o
+OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Controller.o Controller_vars.o Victor.o SinglePiston.o DoublePiston.o Arm.o Intake.o SimonSays.o SoccerOutput.o TankDrive.o TestSubsystem.o SubsystemManager.o main.o vision.o
 
 
 CXX = clang++
@@ -47,6 +47,12 @@ SinglePiston.o : ../StandardLibraries/SinglePiston/SinglePiston.cpp ../StandardL
 
 Victor.o : ../StandardLibraries/Victor/Victor.cpp ../StandardLibraries/Victor/Victor.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) ../StandardLibraries/Victor/Victor.cpp
+
+Controller_vars.o : ../StandardLibraries/Controller/Controller_vars.cpp ../StandardLibraries/Controller/Controller_vars.h
+	$(CXX) $(CXXFLAGS) ../StandardLibraries/Controller/Controller_vars.cpp
+
+Controller.o : ../StandardLibraries/Controller/Controller.cpp ../StandardLibraries/Controller/Controller.h
+	$(CXX) $(CXXFLAGS) ../StandardLibraries/Controller/Controller.cpp
 
 PCA9685.o : ../StandardLibraries/PCA9685/PCA9685.cpp ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) ../StandardLibraries/PCA9685/PCA9685.cpp

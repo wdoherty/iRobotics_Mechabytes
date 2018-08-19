@@ -3,6 +3,7 @@
 
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/PCA9685/PCA9685.h"
+#include "../../StandardLibraries/Controller/Controller.h"
 #include "../TestSubsystem/TestSubsystem.h"
 #include "../SimonSays/SimonSays.h"
 #include "../Intake/Intake.h"
@@ -16,7 +17,7 @@ public:
     SubsystemManager();
     void initializeSubsystems();
     void failsafe();
-    unsigned char* runRobot(unsigned char controller[8]);
+    unsigned char* runRobot(unsigned char controllerIn[8]);
 private:
     PCA9685* PWM1;
     //insert subsystems here
@@ -26,6 +27,10 @@ private:
     TankDrive* driveTrain;
     Arm* foamArm;
     SoccerOutput* soccer;
+
+    Controller* controller;
+
+    unsigned char* controllerArray;
 
     unsigned char returnValues[10];
     unsigned char* driveVals;
