@@ -43,7 +43,7 @@
 PCA9685::PCA9685(int address) {
 	/* 0x40 is address of i2c */
 	i2c = wiringPiI2CSetup(0x40);
-	// i2c = i2cOpen(<<<<<<0/1>>>>>>, 0x40, 0);
+	// i2c = i2cOpen(1, 0x40, 0);  /* using i2c bus 1 (flags = 0) */
 	reset();
 	setPWMFreq(333);
 }
