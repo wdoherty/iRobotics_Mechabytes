@@ -3,14 +3,13 @@
 
 #include <stdint.h>
 
-typedef void (*re_decoderCB_t)(void);
+typedef void (*re_decoderCB_t)(int);
 
 class re_decoder
 {
    int mygpioA, mygpioB, levA, levB, lastGpio;
 
-   re_decoderCB_t mycallback_up;
-   re_decoderCB_t mycallback_down;
+   re_decoderCB_t mycallback;
 
    void _pulse(int gpio, int level, uint32_t tick);
 
@@ -20,7 +19,7 @@ class re_decoder
 
    public:
 
-   re_decoder(int gpioA, int gpioB, re_decoderCB_t callback_up, re_decoderCB_t callback_down);
+   re_decoder(int gpioA, int gpioB, re_decoderCB_t callback);
    /*
       This function establishes a rotary encoder on gpioA and gpioB.
 

@@ -1,6 +1,7 @@
 #include <iostream>
 
-#include "../wiringPiLib/wiringPi/wiringPi.h"
+// #include "../wiringPiLib/wiringPi/wiringPi.h"
+// #include <pigpio.h>
 
 #include "rotary_encoder.hpp"
 
@@ -30,11 +31,11 @@ void re_decoder::_pulse(int gpio, int level, uint32_t tick)
 
       if ((gpio == mygpioA) && (level == 1))
       {
-         if (levB) (mycallback_up)();
+         if (levB) (mycallback)(1);
       }
       else if ((gpio == mygpioB) && (level == 1))
       {
-         if (levA) (mycallback_down)();
+         if (levA) (mycallback)(-1);
       }
    }
 }
@@ -50,7 +51,7 @@ void re_decoder::_pulseEx(int gpio, int level, uint32_t tick, void *user)
    mySelf->_pulse(gpio, level, tick); /* Call the instance callback. */
 }
 
-re_decoder::re_decoder(int gpioA, int gpioB, re_decoderCB_t callback_up, re_decoderCB_t callback_down)
+re_decoder::re_decoder(int gpioA, int gpioB, re_decoderCB_t callback)
 {
    mygpioA = gpioA;
    mygpioB = gpioB;
@@ -62,22 +63,18 @@ re_decoder::re_decoder(int gpioA, int gpioB, re_decoderCB_t callback_up, re_deco
 
    lastGpio = -1;
 
-   pinMode(gpioA, INPUT);
-   pinMode(gpioB, INPUT);
+   gpioSetMode(gpioA, PI_INPUT);
+   gpioSetMode(gpioB, PI_INPUT);
 
    /* pull up is needed as encoder common is grounded */
 
-   pullUpDnControl(gpioA, PUD_UP);
-   pullUpDnControl(gpioB, PUD_UP);
+   gpioSetPullUpDown(gpioA, PI_PUD_UP);
+   gpioSetPullUpDown(gpioB, PI_PUD_UP);
 
    /* monitor encoder level changes */
 
    gpioSetAlertFuncEx(gpioA, _pulseEx, this);
    gpioSetAlertFuncEx(gpioB, _pulseEx, this);
-   /*
-   wiringPiISR(gpioA, INT_EDGE_BOTH, _pulseEx);
-   wiringPiISR(gpioB, INT_EDGE_BOTH, _pulseEx);
-   */
 
 }
 
@@ -85,8 +82,4 @@ void re_decoder::re_cancel(void)
 {
    gpioSetAlertFuncEx(mygpioA, 0, this);
    gpioSetAlertFuncEx(mygpioB, 0, this);
-   /*
-   wiringPiISR(gpioA, INT_EDGE_BOTH, 0);
-   wiringPiISR(gpioB, INT_EDGE_BOTH, 0);
-   */
 }

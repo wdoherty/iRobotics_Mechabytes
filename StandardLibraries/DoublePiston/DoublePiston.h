@@ -2,6 +2,7 @@
 #define DOUBLEPISTON_H
 
 #include "../wiringPiLib/wiringPi/wiringPi.h"
+// #include <pigpio.h>
 
 class DoublePiston
 {
