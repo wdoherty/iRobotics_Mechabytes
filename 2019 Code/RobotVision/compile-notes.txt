@@ -1,0 +1,3 @@
+to compile, run: g++ vision.cpp -o vision `pkg-config --cflags --libs opencv`
+
+ALSO: ` is different than '. ` is correct. 
