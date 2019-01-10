@@ -22,6 +22,8 @@ public:
     Backpack(PCA9685* PWM, int linkagePin, int pitPin, int groundLevelPin, int linkagePotAddr);
     ~Backpack();
     int setBackpackPosition(int position);
+    int setGroundIntake(int speed);
+    int setPitIntake(int speed);
     void failsafe();
 
 private:

@@ -46,6 +46,7 @@ int Backpack::setBackpackPosition(int position){
         return -1;
     }
 
+    /* turn on motor until at desired position */
     if (backpackPosition < position) {
         linkage->setThrottle(LINKAGE_DOWN);
         while (linkagePot->readState() < positions[position]) {
@@ -60,5 +61,21 @@ int Backpack::setBackpackPosition(int position){
     linkage->setThrottle(LINKAGE_OFF);
     
     backpackPosition = position;
+    return 0;
+}
+
+int Backpack::setGroundIntake(int speed) {
+    if (speed < 0 || speed > 4095) {
+        return -1;
+    }
+    groundIntake->setThrottle(speed);
+    return 0;
+}
+
+int Backpack::setPitIntake(int speed){
+    if (speed < 0 || speed > 4095) {
+        return -1;
+    }
+    pitIntake->setThrottle(speed);
     return 0;
 }
