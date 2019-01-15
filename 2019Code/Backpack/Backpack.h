@@ -4,17 +4,17 @@
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/Potentiometer/Potentiometer.h"
 
-#define BACKPACK_UP     0   /* position when we are carrying the balls                      */
-#define BACKPACK_GROUND 1   /* position when we are picking balls up from the ground        */
-#define BACKPACK_PIT    2   /* position when we are reaching down into the pit to get balls */
+#define BACKPACK_UP     0       /* position when we are carrying the balls                      */
+#define BACKPACK_GROUND 1       /* position when we are picking balls up from the ground        */
+#define BACKPACK_PIT    2       /* position when we are reaching down into the pit to get balls */
 
 //TODO: dummy values here, figure out these actual values
-#define POT_UP          100
-#define POT_GROUND      400
-#define POT_PIT         500
-#define LINKAGE_UP      1000
-#define LINKAGE_DOWN    3000
-#define LINKAGE_OFF     2185
+#define POT_UP          100     /* position when we are carrying the balls                      */
+#define POT_GROUND      400     /* position when we are picking balls up from the ground        */
+#define POT_PIT         500     /* position when we are reaching down into the pit to get balls */
+#define LINKAGE_UP      1000    /* throttle setting when raising linkage                        */
+#define LINKAGE_DOWN    3000    /* throttle setting when lowering linkage                       */
+#define LINKAGE_OFF     2185    /* throttle setting when holding linkage in position            */
 
 class Backpack 
 {
