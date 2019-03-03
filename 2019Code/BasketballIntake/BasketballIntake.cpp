@@ -5,26 +5,26 @@ BasketballIntake::BasketballIntake(PCA9685* PWM, int pivotPin, int intake1, int 
   _pivotPin = pivotPin;
   _intake1 = intake1;
   _intake2 = intake2;
-  armPivot = new Victor(controller, _pivotPin);
+  armPivot = new SinglePiston(_pivotPin, 0);
   intakeMotor_1 = new Victor(controller, _intake1);
   intakeMotor_2 = new Victor(controller, _intake2);
+
+  armToggle = 0;
+  oldToggleState = armToggle;
 }
 
-unsigned char BasketballIntake::updateBasketballIntake(unsigned char rotateUp, unsigned char rotateDown, unsigned char intakeIn, unsigned char intakeOut, unsigned char intakeHopper)
+unsigned char BasketballIntake::updateBasketballIntake(unsigned char rotate, unsigned char intakeIn, unsigned char intakeOut, unsigned char intakeHopper)
 {
   unsigned char intakeState = 0;
-  if(rotateUp > 0)
+
+  if(rotate > 0 && rotate != oldToggleState)
   {
-    armPivot->setThrottle(1785); //Brings intake arm up towards hopper
+    if(armToggle == 0) armToggle = 1;
+    else armToggle = 0;
+
+    armPivot->setState(armToggle);
   }
-  else if(rotateDown > 0)
-  {
-    armPivot->setThrottle(2585); //Lowers intake arm to ground
-  }
-  else
-  {
-    armPivot->setThrottle(2185); //Stops arm
-  }
+  oldToggleState = rotate;
 
   if(intakeIn > 0)
   {
@@ -59,7 +59,6 @@ unsigned char BasketballIntake::updateBasketballIntake(unsigned char rotateUp, u
 
 void BasketballIntake::failsafe()
 {
-  armPivot->setThrottle(2185); //stop foam intake
   intakeMotor_1->setThrottle(2185); //stop soccer intake
   intakeMotor_2->setThrottle(2185); //stop soccer intake
 }

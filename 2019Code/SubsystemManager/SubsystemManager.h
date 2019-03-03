@@ -4,12 +4,12 @@
 #include "../../StandardLibraries/Victor/Victor.h"
 #include "../../StandardLibraries/PCA9685/PCA9685.h"
 #include "../../StandardLibraries/Controller/Controller.h"
-#include "../TestSubsystem/TestSubsystem.h"
+#include "../Backpack/Backpack.h"
+#include "../BasketballIntake/BasketballIntake.h"
+#include "../BasketballShooter/BasketballShooter.h"
+#include "../BowlingBallIntake/BowlingBallIntake.h"
 #include "../SimonSays/SimonSays.h"
-#include "../Intake/Intake.h"
 #include "../TankDrive/TankDrive.h"
-#include "../Arm/Arm.h"
-#include "../SoccerOutput/SoccerOutput.h"
 
 class SubsystemManager
 {
@@ -21,12 +21,12 @@ public:
 private:
     PCA9685* PWM1;
     //insert subsystems here
-    //TestSubsystem* test;
     SimonSays* simonSays;
-    Intake* intake;
+    Backpack* backpack;
     TankDrive* driveTrain;
-    Arm* foamArm;
-    SoccerOutput* soccer;
+    BasketballIntake* basketball_intake;
+    BasketballShooter* basketball_shooter;
+    BowlingBallIntake* bowlingball_intake;
 
     Controller* controller;
 

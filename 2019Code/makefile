@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Controller.o Controller_vars.o Victor.o SinglePiston.o DoublePiston.o Arm.o Intake.o SimonSays.o SoccerOutput.o TankDrive.o TestSubsystem.o SubsystemManager.o main.o vision.o
+OBJS = wiringPiI2C.o wiringPi.o wiringSerial.o PCA9685.o Controller.o Controller_vars.o Victor.o SinglePiston.o DoublePiston.o BowlingBallIntake.o BasketballShooter.o BasketballIntake.o Backpack.o SimonSays.o TankDrive.o SubsystemManager.o main.o vision.o
 
 
 CXX = clang++
@@ -18,26 +18,26 @@ $(EXENAME) : $(OBJS)
 main.o : main.cpp SubsystemManager/SubsystemManager.h ../StandardLibraries/wiringPiLib/wiringPi/wiringSerial.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
 	$(CXX) $(OPENCVFLAGS) main.cpp
 
-SubsystemManager.o : SubsystemManager/SubsystemManager.cpp SubsystemManager/SubsystemManager.h TestSubsystem/TestSubsystem.h TankDrive/TankDrive.h SoccerOutput/SoccerOutput.h SimonSays/SimonSays.h Intake/Intake.h Arm/Arm.h ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+SubsystemManager.o : SubsystemManager/SubsystemManager.cpp SubsystemManager/SubsystemManager.h TankDrive/TankDrive.h  SimonSays/SimonSays.h BowlingBallIntake/BowlingBallIntake.h BasketballShooter/BasketballShooter.h BasketballIntake/BasketballIntake.h Backpack/Backpack.h ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) SubsystemManager/SubsystemManager.cpp
-
-TestSubsystem.o : TestSubsystem/TestSubsystem.cpp TestSubsystem/TestSubsystem.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
-	$(CXX) $(CXXFLAGS) TestSubsystem/TestSubsystem.cpp
 
 TankDrive.o : TankDrive/TankDrive.cpp TankDrive/TankDrive.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
 	$(CXX) $(CXXFLAGS) TankDrive/TankDrive.cpp
 
-SoccerOutput.o : SoccerOutput/SoccerOutput.cpp SoccerOutput/SoccerOutput.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
-	$(CXX) $(CXXFLAGS) SoccerOutput/SoccerOutput.cpp
-
-SimonSays.o : SimonSays/SimonSays.cpp SimonSays/SimonSays.h ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+SimonSays.o : SimonSays/SimonSays.cpp SimonSays/SimonSays.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
 	$(CXX) $(CXXFLAGS) SimonSays/SimonSays.cpp
 
-Intake.o : Intake/Intake.cpp Intake/Intake.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
-	$(CXX) $(CXXFLAGS) Intake/Intake.cpp
+BowlingBallIntake.o : BowlingBallIntake/BowlingBallIntake.cpp BowlingBallIntake/BowlingBallIntake.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) BowlingBallIntake/BowlingBallIntake.cpp
 
-Arm.o : Arm/Arm.cpp Arm/Arm.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
-	$(CXX) $(CXXFLAGS) Arm/Arm.cpp
+BasketballShooter.o : BasketballShooter/BasketballShooter.cpp BasketballShooter/BasketballShooter.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) BasketballShooter/BasketballShooter.cpp
+
+BasketballIntake.o : BasketballIntake/BasketballIntake.cpp BasketballIntake/BasketballIntake.h ../StandardLibraries/SinglePiston/SinglePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) BasketballIntake/BasketballIntake.cpp
+
+Backpack.o : Backpack/Backpack.cpp Backpack/Backpack.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h ../StandardLibraries/PCA9685/PCA9685.h ../StandardLibraries/Victor/Victor.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPiI2C.h
+	$(CXX) $(CXXFLAGS) Backpack/Backpack.cpp
 
 DoublePiston.o : ../StandardLibraries/DoublePiston/DoublePiston.cpp ../StandardLibraries/DoublePiston/DoublePiston.h ../StandardLibraries/wiringPiLib/wiringPi/wiringPi.h
 	$(CXX) $(CXXFLAGS) ../StandardLibraries/DoublePiston/DoublePiston.cpp
