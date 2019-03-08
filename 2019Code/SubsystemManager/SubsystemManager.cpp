@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <iostream>
+
 
 // intitalizes the subsystem manager and all global objects
 SubsystemManager::SubsystemManager()
@@ -53,6 +55,8 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
        controllerArray[i] = controllerIn[i];
      }
 
+     intakeVals = 0;
+
      memset(returnValues,0,sizeof(returnValues));
 
      // assigns values of XBox controller to specific functions
@@ -91,18 +95,21 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
 
       if(mode == 0)
       {
+        cout << "simon says" << endl;
         intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         intakeVals += backpack->updateBackpack(100, 0, 0);
       }
       else if(mode == 1)
       {
+        cout << "backpack" << endl;
         intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         intakeVals += backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
       }
       else
       {
+        cout << "bowling ball" << endl;
         intakeVals += bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         intakeVals += backpack->updateBackpack(100, 0, 0);
