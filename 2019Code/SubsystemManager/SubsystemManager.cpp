@@ -46,7 +46,13 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
 {
     //NOTE: For the motor speeds, full reverse is a value of 1360, neutral is between 2160 and 2210, and full forward is 3010
     //These values are from testing on a talon that wasn't accepting a new calibration with output 0-4095
-     controllerArray = controllerIn;
+     // controllerArray = controllerIn;
+     int i = 0;
+     for(; i < 8; i++)
+     {
+       controllerArray[i] = controllerIn[i];
+     }
+
      memset(returnValues,0,sizeof(returnValues));
 
      // assigns values of XBox controller to specific functions
