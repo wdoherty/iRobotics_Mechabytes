@@ -84,6 +84,8 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
       modeUp = controller->DPadRight();
       modeDown = controller->DPadLeft();
 
+      setMode();
+
       driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
 
       if(mode == 0)
