@@ -24,42 +24,42 @@ private:
     SimonSays* simonSays;
     Backpack* backpack;
     TankDrive* driveTrain;
-    BasketballIntake* basketball_intake;
-    BasketballShooter* basketball_shooter;
-    BowlingBallIntake* bowlingball_intake;
+    // BasketballIntake* basketball_intake;
+    // BasketballShooter* basketball_shooter;
+    BowlingBallIntake* bowlingBall;
 
     Controller* controller;
-
     unsigned char* controllerArray;
 
     unsigned char returnValues[10];
     unsigned char* driveVals;
 
-
     unsigned char driveThrottleRight;
     unsigned char driveThrottleLeft;
     unsigned char driveHeading;
 
-    unsigned char SimonSaysArm;
     unsigned char SimonSays_UpperLeft;
     unsigned char SimonSays_UpperRight;
     unsigned char SimonSays_LowerLeft;
     unsigned char SimonSays_LowerRight;
 
-    unsigned char FoamIntake;
-    unsigned char SoccerIntake;
+    unsigned char backpack_intake;
+    unsigned char backpack_outtake;
+    unsigned char backpack_presetUp;
+    unsigned char backpack_presetLevel;
+    unsigned char backpack_presetDown;
+    unsigned char backpack_manual;
 
-    unsigned char FoamArm;
-    unsigned char RopeClamp;
-    unsigned char Wheel;
-    unsigned char FoamDoor;
+    unsigned char bowlingball_intake;
+    unsigned char bowlingball_outtake;
+    unsigned char bowlingball_liftUp;
+    unsigned char bowlingball_liftDown;
+    unsigned char bowlingball_presetOut;
+    unsigned char bowlingball_presetIn;
+    unsigned char bowlingball_manual;
+    unsigned char bowlingball_tapUp;
 
-    unsigned char FingerPosition;
-    unsigned char SoccerDoor;
 
-    unsigned char doorReset;
-
-    unsigned char start;
 };
 
 #endif

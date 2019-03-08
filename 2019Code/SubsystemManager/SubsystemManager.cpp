@@ -15,9 +15,9 @@ SubsystemManager::SubsystemManager()
 void SubsystemManager::failsafe()
 {
     simonSays->failsafe();
-    intake->failsafe();
+    bowlingBall->failsafe();
     driveTrain->failsafe();
-    foamArm->failsafe();
+    backpack->failsafe();
 }
 
 // creates a new instance of each robot subsystem
@@ -25,11 +25,10 @@ void SubsystemManager::failsafe()
 
 void SubsystemManager::initializeSubsystems()
 {
-    simonSays = new SimonSays(PWM1, 6, 17, 27, 22, 23); //Arm pin 6, GPIO 17, 27, 22, 23 for pistons (Pi 11, 13, 15, 16)
-    intake = new Intake(PWM1, 4, 5, 26); //Foam intake pin 4, soccer intake pin 5, digital pin GPIO 26 (Pi 37)
-    driveTrain = new TankDrive(PWM1, 0, 1, 2, 3); //Left drive on pins 0 & 1, Right drive on pins 2 & 3
-    foamArm = new Arm(PWM1, 7, 8, 24, 21); //foam arm on pwm 7, wheel on pwm 8, clamp piston GPIO 24, door GPIO 5 (Pi 18,29)
-    soccer = new SoccerOutput(6, 13); //Soccer finger GPIO 6, Soccer door GPIO 13 (Pi 31,33)
+    driveTrain = new TankDrive(PWM1, 0, 1, 2, 3, 4, 5); //left drive 0, 1, 2; right drive 3, 4, 5
+    backpack = new Backpack(PWM1, 6, 7, 8); //frontIntake pin 6, rearIntake pin 7, linkage pin 8
+    bowlingBall = new BowlingBallIntake(PWM1, 9, 10, 11); //pivot pin 9, intake pin 10, lift pin 11
+    simonSays = new SimonSays(17, 27, 22, 23); //GPIO 17, 27, 22, 23 for pistons (Pi 11, 13, 15, 16)
 }
 
 // looping function
@@ -45,36 +44,38 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
      // assigns values of XBox controller to specific functions
       driveThrottleRight = controller->RTrigger();
       driveThrottleLeft = controller->LTrigger();
-      driveHeading = controller->RightStickX();
+      driveHeading = controller->LeftStickX();
 
-      SimonSaysArm = controller->LeftStickX();
-      SimonSays_UpperLeft = controller->DPadUp();
-      SimonSays_UpperRight = controller->DPadRight();
-      SimonSays_LowerLeft = controller->DPadLeft();
-      SimonSays_LowerRight = controller->DPadDown();
+      SimonSays_UpperLeft = controller->Y();
+      SimonSays_UpperRight = controller->B();
+      SimonSays_LowerLeft = controller->X();
+      SimonSays_LowerRight = controller->A();
 
-      doorReset = controller->Rstick();
+      backpack_intake = controller->LB();
+      backpack_outtake = controller->RB();
+      backpack_presetUp = controller->Y();
+      backpack_presetLevel = controller->X();
+      backpack_presetDown = controller->A();
+      backpack_manual = controller->RightStickY();
 
-      FoamIntake = controller->RB();
-      SoccerIntake = controller->LB();
-
-      FoamArm = controller->LeftStickY();
-      RopeClamp = controller->X();
-      Wheel = controller->Y();
-      FoamDoor = controller->select();
-
-      FingerPosition = controller->B();
-      SoccerDoor = controller->A();
+      bowlingball_intake = controller->LB();
+      bowlingball_outtake = controller->RB();
+      bowlingball_liftUp = controller->Y();
+      bowlingball_liftDown = controller->X();
+      bowlingball_presetOut = controller->B();
+      bowlingball_presetIn = controller->A();
+      bowlingball_manual = controller->RightStickY();
+      bowlingball_tapUp = controller->select();
 
      // passes controller values to subsystems, sets outputs based on commands, and sends feedback to DS
-     returnValues[3] += simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
-                                SimonSays_LowerLeft, SimonSays_LowerRight);
-     returnValues[2] += intake->updateIntake(FoamIntake, SoccerIntake, doorReset);
-     driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
-     returnValues[0] = driveVals[0];
-     returnValues[1] = driveVals[1];
-     returnValues[2] += foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
-     returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
+     // returnValues[3] += simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
+     //                            SimonSays_LowerLeft, SimonSays_LowerRight);
+     // returnValues[2] += intake->updateIntake(FoamIntake, SoccerIntake, doorReset);
+     // driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
+     // returnValues[0] = driveVals[0];
+     // returnValues[1] = driveVals[1];
+     // returnValues[2] += foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
+     // returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
 
      return returnValues;
 }
