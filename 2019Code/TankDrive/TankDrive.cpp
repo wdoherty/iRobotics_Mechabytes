@@ -99,8 +99,8 @@ lSpeed = 1650 - lSpeed;
 // rSpeed = 1650 - rSpeed;
 
     //sends value to speed controller
-    driveVals[0] = lSpeed;
-    driveVals[1] = rSpeed;
+    driveVals[0] = (lSpeed * 100)/1650;
+    driveVals[1] = (rSpeed*100)/1650;
 
     lSpeed += 1360;
     rSpeed += 1360;
