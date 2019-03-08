@@ -8,6 +8,11 @@ SubsystemManager::SubsystemManager()
 {
 // declares new instance of PWM driver at default I2C address
     PWM1 = new PCA9685(0x40);
+    int i = 0;
+    for(; i < 8; i++)
+    {
+      controllerArray[i] = 0;
+    }
     controller = new Controller(controllerArray);
     mode = 0;
     prev_modeUp = 0;
