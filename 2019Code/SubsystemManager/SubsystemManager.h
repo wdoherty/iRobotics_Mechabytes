@@ -31,7 +31,7 @@ private:
     BowlingBallIntake* bowlingBall;
 
     Controller* controller;
-    unsigned char* controllerArray;
+    unsigned char controllerArray[8];
 
     unsigned char mode;
     unsigned char modeUp;
