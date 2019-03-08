@@ -15,7 +15,7 @@ BowlingBallIntake::BowlingBallIntake(PCA9685* PWM, int pivotPin, int intakePin, 
 unsigned char BowlingBallIntake::updateBowlingBallIntake(unsigned char intakeIn, unsigned char intakeOut, unsigned char manualRotate,
   unsigned char liftUp, unsigned char liftDown)
   {
-    unsigned char intakeState ;
+    unsigned char intakeState;
     //handles intake state
     if(intakeIn > 0)
     {
