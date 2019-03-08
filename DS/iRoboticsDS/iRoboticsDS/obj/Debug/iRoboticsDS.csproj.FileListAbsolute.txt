@@ -33,8 +33,10 @@ C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsD
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.pdb
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\Debug\iRoboticsDS.exe
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\Debug\SlimDX.dll
-C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.csprojResolveAssemblyReference.cache
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.DriverStation.resources
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.Properties.Resources.resources
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.csproj.GenerateResource.Cache
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\Debug\iRoboticsDS.pdb
+C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.csprojAssemblyReference.cache
+C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.csproj.CoreCompileInputs.cache
+C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\Debug\iRoboticsDS.csproj.CopyComplete

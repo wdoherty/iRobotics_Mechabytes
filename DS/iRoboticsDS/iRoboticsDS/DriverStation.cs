@@ -26,15 +26,7 @@ namespace iRoboticsDS
         private byte[] checkSumTX = new byte[1];
         private byte[] endByte = new byte[1];
 
-        private bool UL = false;
-        private bool UR = false;
-        private bool LL = false;
-        private bool LR = false;
-
-        Int32 _UL = 0;
-        Int32 _UR = 0;
-        Int32 _LL = 0;
-        Int32 _LR = 0;
+        byte mode = 0;
 
         public DriverStation()
         {
@@ -169,18 +161,10 @@ namespace iRoboticsDS
 
                 controller_packet[0] = Convert.ToByte(i);
 
-                /*i = (Convert.ToInt32(controller.DPad.Up)) |
+                i = (Convert.ToInt32(controller.DPad.Up)) |
                     (Convert.ToInt32(controller.DPad.Down) << 1) |
                     (Convert.ToInt32(controller.DPad.Left) << 2) |
                     (Convert.ToInt32(controller.DPad.Right) << 3) |
-                    (Convert.ToInt32(controller.LeftStick.Clicked) << 4) |
-                    (Convert.ToInt32(controller.RightStick.Clicked) << 5) |
-                    (Convert.ToInt32(controller.Back) << 6);*/
-
-                i = (_UL) |
-                    (_LR << 1) |
-                    (_LL << 2) |
-                    (_UR << 3) |
                     (Convert.ToInt32(controller.LeftStick.Clicked) << 4) |
                     (Convert.ToInt32(controller.RightStick.Clicked) << 5) |
                     (Convert.ToInt32(controller.Back) << 6);
@@ -191,7 +175,7 @@ namespace iRoboticsDS
                 
                 controller_packet[3] = Convert.ToByte(controller.LeftStick.Position.Y * 100 + 100);
                 
-                controller_packet[4] = Convert.ToByte(controller.RightStick.Position.X * 100 + 100);
+               controller_packet[4] = Convert.ToByte(controller.RightStick.Position.X * 100 + 100);
                 
                 controller_packet[5] = Convert.ToByte(controller.RightStick.Position.Y * 100 + 100);
                 
@@ -614,63 +598,29 @@ namespace iRoboticsDS
                 System.Threading.Thread.Sleep(30);
             }
         }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label12_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label17_Click(object sender, EventArgs e)
         {
 
         }
+        private void label14_Click(object sender, EventArgs e)
+        {
 
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
         private void label22_Click(object sender, EventArgs e)
         {
 
         }
-
         private void label23_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Piston_UL_Click(object sender, EventArgs e)
-        {
-            UL = !UL;
-            if (UL) _UL = 1;
-            else _UL = 0;
-        }
-
-        private void Piston_UR_Click(object sender, EventArgs e)
-        {
-            UR = !UR;
-            if (UR) _UR = 1;
-            else _UR = 0;
-        }
-
-        private void Piston_LL_Click(object sender, EventArgs e)
-        {
-            LL = !LL;
-            if (LL) _LL = 1;
-            else _LL = 0;
-        }
-
-        private void Piston_LR_Click(object sender, EventArgs e)
-        {
-            LR = !LR;
-            if (LR) _LR = 1;
-            else _LR = 0;
         }
     }
 }

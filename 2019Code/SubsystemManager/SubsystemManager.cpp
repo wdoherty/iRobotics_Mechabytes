@@ -9,6 +9,9 @@ SubsystemManager::SubsystemManager()
 // declares new instance of PWM driver at default I2C address
     PWM1 = new PCA9685(0x40);
     controller = new Controller(controllerArray);
+    mode = 0;
+    prev_modeUp = 0;
+    prev_modeDown = 0;
 }
 
 // calls all subsystem failsafes
@@ -67,17 +70,18 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
       bowlingball_manual = controller->RightStickY();
       bowlingball_tapUp = controller->select();
 
-      mode = controller->LeftStickY();
+      modeUp = controller->DPadRight();
+      modeDown = controller->DPadLeft();
 
       driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
 
-      if(mode == 1)
+      if(mode == 0)
       {
         bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
         simonSays->updateSimonSays(0, 0, 0, 0);
         backpack->updateBackpack(100, 0, 0);
       }
-      else if(mode == 2)
+      else if(mode == 1)
       {
         bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
         simonSays->updateSimonSays(0, 0, 0, 0);
@@ -101,4 +105,20 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
      // returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
 
      return returnValues;
+}
+
+void SubsystemManager::setMode()
+{
+  if(modeUp > 0 && modeUp != prev_modeUp)
+  {
+    mode++;
+    mode %= 3;
+  }
+  else if(modeDown > 0 && modeDown != prev_modeDown)
+  {
+    mode--;
+    if(mode < 0) mode = 2;
+  }
+  prev_modeUp = modeUp;
+  prev_modeDown = modeDown;
 }

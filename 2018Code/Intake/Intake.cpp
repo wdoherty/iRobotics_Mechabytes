@@ -14,8 +14,8 @@ Intake::Intake(PCA9685* PWM, int foamPin, int soccerPin, int hoodPin) : controll
 
 void Intake::failsafe()
 {
-        foamIntake->setThrottle(2185); //stop foam intake
-        soccerIntake->setThrottle(2185); //stop soccer intake
+    foamIntake->setThrottle(2185); //stop foam intake
+    soccerIntake->setThrottle(2185); //stop soccer intake
 }
 
 unsigned char Intake::updateIntake(unsigned char foamTrigger, unsigned char soccerTrigger, unsigned char doorReset)

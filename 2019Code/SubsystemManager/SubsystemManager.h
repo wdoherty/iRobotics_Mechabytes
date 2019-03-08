@@ -19,6 +19,8 @@ public:
     void failsafe();
     unsigned char* runRobot(unsigned char controllerIn[8]);
 private:
+    void setMode();
+
     PCA9685* PWM1;
     //insert subsystems here
     SimonSays* simonSays;
@@ -32,6 +34,11 @@ private:
     unsigned char* controllerArray;
 
     unsigned char mode;
+    unsigned char modeUp;
+    unsigned char prev_modeUp;
+    unsigned char modeDown;
+    unsigned char prev_modeDown;
+
 
     unsigned char returnValues[10];
     // unsigned char* driveVals;
