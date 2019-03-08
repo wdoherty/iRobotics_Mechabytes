@@ -88,23 +88,24 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
 
       driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
 
+
       if(mode == 0)
       {
-        bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
-        simonSays->updateSimonSays(0, 0, 0, 0);
-        backpack->updateBackpack(100, 0, 0);
+        intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
+        intakeVals += backpack->updateBackpack(100, 0, 0);
       }
       else if(mode == 1)
       {
-        bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
-        simonSays->updateSimonSays(0, 0, 0, 0);
-        backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
+        intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
+        intakeVals += backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
       }
       else
       {
-        bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
-        simonSays->updateSimonSays(0, 0, 0, 0);
-        backpack->updateBackpack(100, 0, 0);
+        intakeVals += bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
+        intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
+        intakeVals += backpack->updateBackpack(100, 0, 0);
       }
 
      // passes controller values to subsystems, sets outputs based on commands, and sends feedback to DS
@@ -114,6 +115,7 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
      returnValues[0] = driveVals[0];
      returnValues[1] = driveVals[1];
      returnValues[2] = mode;
+     returnValues[3] = intakeVals;
      // returnValues[2] += foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
      // returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
 
@@ -129,8 +131,8 @@ void SubsystemManager::setMode()
   }
   else if(modeDown > 0 && modeDown != prev_modeDown)
   {
-    mode--;
-    if(mode < 0) mode = 2;
+    if(mode == 0) mode = 2;
+    else mode--;
   }
   prev_modeUp = modeUp;
   prev_modeDown = modeDown;

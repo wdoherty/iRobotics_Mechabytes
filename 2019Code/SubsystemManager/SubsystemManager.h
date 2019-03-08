@@ -42,6 +42,7 @@ private:
 
     unsigned char returnValues[10];
     unsigned char* driveVals;
+    unsigned char intakeVals;
 
     unsigned char driveThrottleRight;
     unsigned char driveThrottleLeft;

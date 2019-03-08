@@ -14,24 +14,28 @@ Backpack::Backpack(PCA9685* PWM, int frontIntakePin, int backIntakePin, int link
 
 unsigned char Backpack::updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake)
 {
+  unsigned char retval;
   moveBackpack(manualRotate);
 
   if(intake > 0)
   {
     frontIntake->setThrottle(2585);
     backIntake->setThrottle(1785);
+    retval = 32;
   }
   else if(outtake > 0)
   {
     frontIntake->setThrottle(1785);
     backIntake->setThrottle(2585);
+    retval = 16;
   }
   else
   {
     frontIntake->setThrottle(2185);
     backIntake->setThrottle(2185);
+    retval = 0;
   }
-  return 1;
+  return retval;
 }
 
 void Backpack::moveBackpack(unsigned char manualRotate)

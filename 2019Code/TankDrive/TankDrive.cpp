@@ -106,12 +106,12 @@ lSpeed = 1650 - lSpeed;
     rSpeed += 1360;
 	  // std::cout << lSpeed << std::endl;
 
-      left1->setThrottle(lSpeed);
-      left2->setThrottle(lSpeed);
-      left3->setThrottle(lSpeed);
-      right1->setThrottle(rSpeed);
-      right2->setThrottle(rSpeed);
-      right3->setThrottle(rSpeed);
+      left1->setThrottle(rSpeed);
+      left2->setThrottle(rSpeed);
+      left3->setThrottle(rSpeed);
+      right1->setThrottle(lSpeed);
+      right2->setThrottle(lSpeed);
+      right3->setThrottle(lSpeed);
 }
 
 void TankDrive::setQuickTurn(double throttle, double heading)

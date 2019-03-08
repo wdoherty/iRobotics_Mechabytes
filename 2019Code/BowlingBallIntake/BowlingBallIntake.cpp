@@ -15,17 +15,17 @@ BowlingBallIntake::BowlingBallIntake(PCA9685* PWM, int pivotPin, int intakePin, 
 unsigned char BowlingBallIntake::updateBowlingBallIntake(unsigned char intakeIn, unsigned char intakeOut, unsigned char manualRotate,
   unsigned char liftUp, unsigned char liftDown)
   {
-    unsigned char intakeState = 0;
+    unsigned char intakeState ;
     //handles intake state
     if(intakeIn > 0)
     {
       intakeRoller->setThrottle(2585);
-      intakeState = 1;
+      intakeState = 128;
     }
     else if(intakeOut > 0)
     {
       intakeRoller->setThrottle(1785);
-      intakeState = 2;
+      intakeState = 64;
     }
     else
     {
