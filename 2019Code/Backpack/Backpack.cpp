@@ -1,4 +1,6 @@
 #include "Backpack.h"
+#include <math.h>
+#include <stdlib.h>
 
 Backpack::Backpack(PCA9685* PWM, int frontIntakePin, int backIntakePin, int linkagePin) : controller(PWM)
 {
@@ -10,20 +12,9 @@ Backpack::Backpack(PCA9685* PWM, int frontIntakePin, int backIntakePin, int link
   linkage = new Victor(controller, _linkagePin);
 }
 
-unsigned char Backpack::updateBackpack(unsigned char rotateUp, unsigned char rotateDown, unsigned char intake, unsigned char outtake)
+unsigned char Backpack::updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake)
 {
-  if(rotateUp > 0)
-  {
-    linkage->setThrottle(2585);
-  }
-  else if(rotateDown > 0)
-  {
-    linkage->setThrottle(1785);
-  }
-  else
-  {
-    linkage->setThrottle(2185);
-  }
+  moveBackpack(manualRotate);
 
   if(intake > 0)
   {
@@ -41,6 +32,21 @@ unsigned char Backpack::updateBackpack(unsigned char rotateUp, unsigned char rot
     backIntake->setThrottle(2185);
   }
   return 1;
+}
+
+void Backpack::moveBackpack(unsigned char manualRotate)
+{
+  int rotateMag = manualRotate;
+  rotateMag *= 1650;
+  rotateMag /= 200;
+
+  if(rotateMag > 743 && rotateMag < 907) rotateMag = 825;
+
+  double rotateThrottle = abs(rotateMag - 825) * (rotateMag < 825 ? -1 : 1);
+
+  rotateThrottle += 1360;
+
+  linkage->setThrottle(rotateThrottle);
 }
 
 void Backpack::failsafe()

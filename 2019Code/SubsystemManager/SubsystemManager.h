@@ -31,8 +31,10 @@ private:
     Controller* controller;
     unsigned char* controllerArray;
 
+    unsigned char mode;
+
     unsigned char returnValues[10];
-    unsigned char* driveVals;
+    // unsigned char* driveVals;
 
     unsigned char driveThrottleRight;
     unsigned char driveThrottleLeft;
@@ -58,8 +60,6 @@ private:
     unsigned char bowlingball_presetIn;
     unsigned char bowlingball_manual;
     unsigned char bowlingball_tapUp;
-
-
 };
 
 #endif

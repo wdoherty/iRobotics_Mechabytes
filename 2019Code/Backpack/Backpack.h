@@ -7,7 +7,8 @@ class Backpack
 {
 public:
     Backpack(PCA9685* PWM, int frontIntakePin, int backIntakePin, int linkagePin);
-    unsigned char updateBackpack(unsigned char rotateUp, unsigned char rotateDown, unsigned char intake, unsigned char outtake);
+    unsigned char updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake);
+    void moveBackpack(unsigned char manualRotate);
     void failsafe();
 private:
     PCA9685* controller;

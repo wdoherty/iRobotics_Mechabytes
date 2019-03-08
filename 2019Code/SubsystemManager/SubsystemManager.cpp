@@ -67,6 +67,29 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
       bowlingball_manual = controller->RightStickY();
       bowlingball_tapUp = controller->select();
 
+      mode = controller->LeftStickY();
+
+      driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
+
+      if(mode == 1)
+      {
+        bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        simonSays->updateSimonSays(0, 0, 0, 0);
+        backpack->updateBackpack(100, 0, 0);
+      }
+      else if(mode == 2)
+      {
+        bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        simonSays->updateSimonSays(0, 0, 0, 0);
+        backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
+      }
+      else
+      {
+        bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
+        simonSays->updateSimonSays(0, 0, 0, 0);
+        backpack->updateBackpack(100, 0, 0);
+      }
+
      // passes controller values to subsystems, sets outputs based on commands, and sends feedback to DS
      // returnValues[3] += simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
      //                            SimonSays_LowerLeft, SimonSays_LowerRight);
