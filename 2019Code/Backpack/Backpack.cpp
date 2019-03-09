@@ -43,7 +43,7 @@ void Backpack::moveBackpack(unsigned char manualRotate)
   rotateMag *= 1650;
   rotateMag /= 200;
 
-  if(rotateMag > 619 && rotateMag < 1031) rotateMag = 820;
+  if(rotateMag > 619 && rotateMag < 1031) rotateMag = 825;
   BackpackVals[1] = rotateMag/16;
   if(BackpackVals[1] > 100) BackpackVals[1] = 100;
 

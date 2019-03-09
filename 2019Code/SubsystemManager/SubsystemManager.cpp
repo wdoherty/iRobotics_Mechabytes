@@ -93,37 +93,37 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
 
       if(mode == 0)
       {
-        intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        bowlingVals = bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        intakeVals += bowlingVals[0];
         intakeVals += simonSays->updateSimonSays(SimonSays_UpperLeft, SimonSays_UpperRight, SimonSays_LowerLeft, SimonSays_LowerRight);
         backpackVals = backpack->updateBackpack(100, 0, 0);
         intakeVals += backpackVals[0];
       }
       else if(mode == 1)
       {
-        intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        bowlingVals = bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
+        intakeVals += bowlingVals[0];
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         backpackVals = backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
         intakeVals += backpackVals[0];
       }
       else
       {
-        intakeVals += bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
+        bowlingVals = bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
+        intakeVals += bowlingVals[0];
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         backpackVals = backpack->updateBackpack(100, 0, 0);
         intakeVals += backpackVals[0];
       }
 
-     // passes controller values to subsystems, sets outputs based on commands, and sends feedback to DS
-     // returnValues[3] += simonSays->updateSimonSays(SimonSaysArm, SimonSays_UpperLeft, SimonSays_UpperRight,
-     //                            SimonSays_LowerLeft, SimonSays_LowerRight);
-     // returnValues[2] += intake->updateIntake(FoamIntake, SoccerIntake, doorReset);
+     //sends feedback to DS
+
      returnValues[0] = driveVals[0];
      returnValues[1] = driveVals[1];
      returnValues[2] = mode;
      returnValues[3] = intakeVals;
      returnValues[4] = backpackVals[1];
-     // returnValues[2] += foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
-     // returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
+     returnValues[5] = bowlingVals[1];
 
      return returnValues;
 }

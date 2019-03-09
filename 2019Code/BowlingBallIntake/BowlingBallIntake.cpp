@@ -12,25 +12,24 @@ BowlingBallIntake::BowlingBallIntake(PCA9685* PWM, int pivotPin, int intakePin, 
   ballLift = new Victor(controller, _liftPin);
 }
 
-unsigned char BowlingBallIntake::updateBowlingBallIntake(unsigned char intakeIn, unsigned char intakeOut, unsigned char manualRotate,
+unsigned char* BowlingBallIntake::updateBowlingBallIntake(unsigned char intakeIn, unsigned char intakeOut, unsigned char manualRotate,
   unsigned char liftUp, unsigned char liftDown)
   {
-    unsigned char intakeState;
     //handles intake state
     if(intakeIn > 0)
     {
       intakeRoller->setThrottle(2585);
-      intakeState = 128;
+      bowlingVals[0] = 128;
     }
     else if(intakeOut > 0)
     {
       intakeRoller->setThrottle(1785);
-      intakeState = 64;
+      bowlingVals[0] = 64;
     }
     else
     {
       intakeRoller->setThrottle(2185);
-      intakeState = 0;
+      bowlingVals[0] = 0;
     }
 
     //handles manual rotation of intake roller position
@@ -49,24 +48,22 @@ unsigned char BowlingBallIntake::updateBowlingBallIntake(unsigned char intakeIn,
     {
       ballLift->setThrottle(2185);
     }
-    return intakeState;
+    return bowlingVals;
   }
 
 void BowlingBallIntake::moveIntake(unsigned char manualRotate)
 {
-  int rotateMag = manualRotate;
+  int rotateMag = (int)manualRotate;
   rotateMag *= 1650;
   rotateMag /= 200;
 
   if(rotateMag > 743 && rotateMag < 907) rotateMag = 825;
+  bowlingVals[1] = rotateMag/16;
+  if(bowlingVals[1] > 100) bowlingVals[1] = 100;
+  
+  rotateMag += 1360;
 
-  double rotateThrottle = abs(rotateMag - 825) * (rotateMag < 825 ? -1 : 1);
-
-  rotateThrottle /= 4;
-
-  rotateThrottle += 1360;
-
-  intakePivot->setThrottle(rotateThrottle);
+  intakePivot->setThrottle(rotateMag);
 }
 
 void BowlingBallIntake::failsafe()

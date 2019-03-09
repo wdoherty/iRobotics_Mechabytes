@@ -43,6 +43,7 @@ private:
     unsigned char returnValues[10];
     unsigned char* driveVals;
     unsigned char* backpackVals;
+    unsigned char* bowlingVals;
     unsigned char intakeVals;
 
     unsigned char driveThrottleRight;
