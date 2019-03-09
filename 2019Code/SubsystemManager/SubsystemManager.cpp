@@ -36,7 +36,7 @@ void SubsystemManager::initializeSubsystems()
     driveTrain = new TankDrive(PWM1, 0, 1, 2, 3, 4, 5); //left drive 0, 1, 2; right drive 3, 4, 5
     backpack = new Backpack(PWM1, 6, 7, 8); //frontIntake pin 6, rearIntake pin 7, linkage pin 8
     bowlingBall = new BowlingBallIntake(PWM1, 9, 10, 11); //pivot pin 9, intake pin 10, lift pin 11
-    simonSays = new SimonSays(17, 27, 22, 23); //GPIO 17, 27, 22, 23 for pistons (Pi 11, 13, 15, 16)
+    simonSays = new SimonSays(17, 27, 22, 18); //GPIO 17, 27, 22, 23 for pistons (Pi 11, 13, 15, 16)
 }
 
 // looping function
