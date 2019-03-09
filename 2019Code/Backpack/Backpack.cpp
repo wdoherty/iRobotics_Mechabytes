@@ -44,7 +44,8 @@ void Backpack::moveBackpack(unsigned char manualRotate)
   rotateMag /= 200;
 
   if(rotateMag > 619 && rotateMag < 1031) rotateMag = 820;
-  BackpackVals[1] = rotateMag;
+  BackpackVals[1] = rotateMag/16;
+  if(BackpackVals[1] > 100) BackpackVals[1] = 100;
 
   rotateMag += 1360;
 

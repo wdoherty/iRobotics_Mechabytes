@@ -3,8 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 
-using namespace std;
-
 // intitalizes the subsystem manager and all global objects
 SubsystemManager::SubsystemManager()
 {
