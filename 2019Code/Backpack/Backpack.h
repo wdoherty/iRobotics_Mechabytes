@@ -7,7 +7,7 @@ class Backpack
 {
 public:
     Backpack(PCA9685* PWM, int frontIntakePin, int backIntakePin, int linkagePin);
-    unsigned char updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake);
+    unsigned char* updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake);
     void moveBackpack(unsigned char manualRotate);
     void failsafe();
 private:
@@ -19,6 +19,7 @@ private:
     int _backIntakePin;
     Victor* linkage;
     int _linkagePin;
+    unsigned char BackpackVals[2];
 };
 
 #endif

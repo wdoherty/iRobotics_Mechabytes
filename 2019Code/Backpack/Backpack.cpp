@@ -12,47 +12,43 @@ Backpack::Backpack(PCA9685* PWM, int frontIntakePin, int backIntakePin, int link
   linkage = new Victor(controller, _linkagePin);
 }
 
-unsigned char Backpack::updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake)
+unsigned char* Backpack::updateBackpack(unsigned char manualRotate, unsigned char intake, unsigned char outtake)
 {
-  unsigned char retval;
   moveBackpack(manualRotate);
 
   if(intake > 0)
   {
     frontIntake->setThrottle(2585);
     backIntake->setThrottle(1785);
-    retval = 32;
+    BackpackVals[0] = 32;
   }
   else if(outtake > 0)
   {
     frontIntake->setThrottle(1785);
     backIntake->setThrottle(2585);
-    retval = 16;
+    BackpackVals[0] = 16;
   }
   else
   {
     frontIntake->setThrottle(2185);
     backIntake->setThrottle(2185);
-    retval = 0;
+    BackpackVals[0] = 0;
   }
-  return retval;
+  return BackpackVals;
 }
 
 void Backpack::moveBackpack(unsigned char manualRotate)
 {
-  int rotateMag = manualRotate;
+  int rotateMag = (int)manualRotate;
   rotateMag *= 1650;
   rotateMag /= 200;
 
-  if(rotateMag > 743 && rotateMag < 907) rotateMag = 825;
+  if(rotateMag > 619 && rotateMag < 1031) rotateMag = 820;
+  BackpackVals[1] = rotateMag;
 
-  double rotateThrottle = abs(rotateMag - 825) * (rotateMag < 825 ? -1 : 1);
+  rotateMag += 1360;
 
-  rotateThrottle /= 4;
-
-  rotateThrottle += 1360;
-
-  linkage->setThrottle(rotateThrottle);
+  linkage->setThrottle(rotateMag);
 }
 
 void Backpack::failsafe()

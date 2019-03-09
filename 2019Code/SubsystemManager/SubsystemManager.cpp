@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <iostream>
 
 using namespace std;
 
@@ -98,19 +97,22 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
       {
         intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
         intakeVals += simonSays->updateSimonSays(SimonSays_UpperLeft, SimonSays_UpperRight, SimonSays_LowerLeft, SimonSays_LowerRight);
-        intakeVals += backpack->updateBackpack(100, 0, 0);
+        backpackVals = backpack->updateBackpack(100, 0, 0);
+        intakeVals += backpackVals[0];
       }
       else if(mode == 1)
       {
         intakeVals += bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
-        intakeVals += backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
+        backpackVals = backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
+        intakeVals += backpackVals[0];
       }
       else
       {
         intakeVals += bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
-        intakeVals += backpack->updateBackpack(100, 0, 0);
+        backpackVals = backpack->updateBackpack(100, 0, 0);
+        intakeVals += backpackVals[0];
       }
 
      // passes controller values to subsystems, sets outputs based on commands, and sends feedback to DS
@@ -121,6 +123,7 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
      returnValues[1] = driveVals[1];
      returnValues[2] = mode;
      returnValues[3] = intakeVals;
+     returnValues[4] = backpackVals[1];
      // returnValues[2] += foamArm->updateArm(FoamArm, RopeClamp, FoamDoor, Wheel);
      // returnValues[2] += soccer->updateSoccerOutput(FingerPosition, SoccerDoor);
 
