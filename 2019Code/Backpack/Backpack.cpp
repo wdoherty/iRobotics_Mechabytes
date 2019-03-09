@@ -48,6 +48,8 @@ void Backpack::moveBackpack(unsigned char manualRotate)
 
   double rotateThrottle = abs(rotateMag - 825) * (rotateMag < 825 ? -1 : 1);
 
+  rotateThrottle /= 4;
+
   rotateThrottle += 1360;
 
   linkage->setThrottle(rotateThrottle);
