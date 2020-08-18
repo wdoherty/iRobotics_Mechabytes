@@ -26,15 +26,7 @@ namespace iRoboticsDS
         private byte[] checkSumTX = new byte[1];
         private byte[] endByte = new byte[1];
 
-        private bool UL = false;
-        private bool UR = false;
-        private bool LL = false;
-        private bool LR = false;
-
-        Int32 _UL = 0;
-        Int32 _UR = 0;
-        Int32 _LL = 0;
-        Int32 _LR = 0;
+        byte mode = 0;
 
         public DriverStation()
         {
@@ -169,18 +161,10 @@ namespace iRoboticsDS
 
                 controller_packet[0] = Convert.ToByte(i);
 
-                /*i = (Convert.ToInt32(controller.DPad.Up)) |
+                i = (Convert.ToInt32(controller.DPad.Up)) |
                     (Convert.ToInt32(controller.DPad.Down) << 1) |
                     (Convert.ToInt32(controller.DPad.Left) << 2) |
                     (Convert.ToInt32(controller.DPad.Right) << 3) |
-                    (Convert.ToInt32(controller.LeftStick.Clicked) << 4) |
-                    (Convert.ToInt32(controller.RightStick.Clicked) << 5) |
-                    (Convert.ToInt32(controller.Back) << 6);*/
-
-                i = (_UL) |
-                    (_LR << 1) |
-                    (_LL << 2) |
-                    (_UR << 3) |
                     (Convert.ToInt32(controller.LeftStick.Clicked) << 4) |
                     (Convert.ToInt32(controller.RightStick.Clicked) << 5) |
                     (Convert.ToInt32(controller.Back) << 6);
@@ -191,7 +175,7 @@ namespace iRoboticsDS
                 
                 controller_packet[3] = Convert.ToByte(controller.LeftStick.Position.Y * 100 + 100);
                 
-                controller_packet[4] = Convert.ToByte(controller.RightStick.Position.X * 100 + 100);
+               controller_packet[4] = Convert.ToByte(controller.RightStick.Position.X * 100 + 100);
                 
                 controller_packet[5] = Convert.ToByte(controller.RightStick.Position.Y * 100 + 100);
                 
@@ -228,170 +212,6 @@ namespace iRoboticsDS
         private void updateGUIState()
         {
             connection_textBox.Text = "     " + Convert.ToString(signal_integrity) + "%";
-            /**
-            if (Convert.ToInt32(gui_packet[0] & 3) == 0)
-            {
-                sortingStatus_textBox.Text = "Reset";
-                sortingStatus_textBox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (Convert.ToInt32(gui_packet[0] & 3) == 1)
-            {
-                sortingStatus_textBox.Text = "Working";
-                sortingStatus_textBox.ForeColor = System.Drawing.Color.DodgerBlue;
-            }
-            else if (Convert.ToInt32(gui_packet[0] & 3) == 2)
-            {
-                sortingStatus_textBox.Text = "Good";
-                sortingStatus_textBox.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (Convert.ToInt32(gui_packet[0] & 3) == 3)
-            {
-                sortingStatus_textBox.Text = "Bad";
-                sortingStatus_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            }
-
-            /////////////////////////////////////////////////////////////
-
-            if (Convert.ToBoolean(gui_packet[0] & 4))
-            {
-                computerVision_textBox.Text = "ON";
-                computerVision_textBox.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                computerVision_textBox.Text = "OFF";
-                computerVision_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            }
-
-            if (Convert.ToBoolean(gui_packet[0] & 8))
-            {
-                Intake_textbox.Text = "Auto";
-                Intake_textbox.ForeColor = System.Drawing.Color.DodgerBlue;
-            }
-            else
-            {
-                Intake_textbox.Text = "Manual";
-                Intake_textbox.ForeColor = System.Drawing.Color.DarkOrange;
-            }
-            if (Convert.ToBoolean(gui_packet[0] & 16))
-            {
-                DriveRight_textbox.Text = "ON";
-                DriveRight_textbox.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                DriveRight_textbox.Text = "OFF";
-                DriveRight_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            }
-            if (Convert.ToBoolean(gui_packet[0] & 64))
-            {
-                armSpeed_textbox.Text = "ON";
-                armSpeed_textbox.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                armSpeed_textbox.Text = "OFF";
-                armSpeed_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            }
-
-            if (Convert.ToBoolean(gui_packet[0] & 32))
-            {
-                intake_textBox.Text = "ON";
-                intake_textBox.ForeColor = System.Drawing.Color.DodgerBlue;
-            }
-            else
-            {
-                intake_textBox.Text = "OFF";
-                intake_textBox.ForeColor = System.Drawing.Color.DarkOrange;
-            }
-
-            /////////////////////////////////////////////////////////////
-
-            if (Convert.ToInt32(gui_packet[2] & 96) == 0)
-            {
-                BallRelease_textbox.Text = "Mecanum";
-                BallRelease_textbox.ForeColor = System.Drawing.Color.DodgerBlue;
-            }
-            else if (Convert.ToInt32(gui_packet[2] & 96) == 32)
-            {
-                BallRelease_textbox.Text = "Traction";
-                BallRelease_textbox.ForeColor = System.Drawing.Color.DarkOrange;
-            }
-            else if (Convert.ToInt32(gui_packet[2] & 96) >= 64)
-            {
-                BallRelease_textbox.Text = "Quick Turn";
-                BallRelease_textbox.ForeColor = System.Drawing.Color.Green;
-            }
-
-            /////////////////////////////////////////////////////////////
-
-            if (Convert.ToInt32(gui_packet[1] & 96) == 0)
-            {
-                doorPiston_textbox.Text = "Precision";
-                doorPiston_textbox.ForeColor = System.Drawing.Color.DarkOrange;
-            }
-            else if (Convert.ToInt32(gui_packet[1] & 96) == 32)
-            {
-                doorPiston_textbox.Text = "Normal";
-                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (Convert.ToInt32(gui_packet[1] & 96) == 64)
-            {
-                doorPiston_textbox.Text = "Turbo";
-                doorPiston_textbox.ForeColor = System.Drawing.Color.DodgerBlue;
-            }
-
-            ///////////////////////////////////////////////////////////////////
-
-            if (Convert.ToInt32(gui_packet[1] & 31) <= 16)
-            {
-                ballsScored_progressBar.Value = Convert.ToInt32(gui_packet[1] & 31);
-                ballsScored_textBox.Text = Convert.ToString(gui_packet[1] & 31) + " / 16";
-            }
-            if (Convert.ToInt32(gui_packet[2] & 31) <= 16)
-            {
-                ballsGood_progressBar.Value = Convert.ToInt32(gui_packet[2] & 31);
-                ballsGood_textBox.Text = Convert.ToString(gui_packet[2] & 31) + " / 16";
-            }
-            if (Convert.ToInt32(gui_packet[3] & 63) <= 48)
-            {
-                ballsBad_progressBar.Value = Convert.ToInt32(gui_packet[3] & 63);
-                ballsBad_textBox.Text = Convert.ToString(gui_packet[3] & 63) + " / 48";
-            }
-
-            ///////////////////////////////////////////////////////////////////
-
-            manipulatorAngle_textBox.Text = Convert.ToString(gui_packet[4]);
-
-            DriveLeft_textbox.Text = Convert.ToString(gui_packet[5]);
-            if (Convert.ToInt32(gui_packet[5]) >= 40 && Convert.ToInt32(gui_packet[5]) <= 110)
-            {
-                DriveLeft_textbox.ForeColor = System.Drawing.Color.Green;
-            }
-            else
-            {
-                DriveLeft_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            }
-
-            //////////////////////////////////////////////////////////////
-
-            if (Convert.ToInt32(gui_packet[6]) <= 200)
-            {
-                fl_trackBar.Value = Convert.ToInt32(gui_packet[6]);
-            }
-            if (Convert.ToInt32(gui_packet[7]) <= 200)
-            {
-                fr_trackBar.Value = Convert.ToInt32(gui_packet[7]);
-            }
-            if (Convert.ToInt32(gui_packet[8]) <= 200)
-            {
-                bl_trackBar.Value = Convert.ToInt32(gui_packet[8]);
-            }
-            if (Convert.ToInt32(gui_packet[9]) <= 200)
-            {
-                br_trackBar.Value = Convert.ToInt32(gui_packet[9]);
-            }
-            */
         }
 
         private void updateControllerGUI()
@@ -417,114 +237,90 @@ namespace iRoboticsDS
             Pi1.Text = (gui_packet[1].ToString());
             DriveRight_textbox.Text = (gui_packet[1].ToString());
             DriveRight_textbox.ForeColor = System.Drawing.Color.White;
+
+            if(gui_packet[2] == 0)
+            {
+                Mode_textbox.Text = "Simon Says";
+            }
+            else if (gui_packet[2] == 1)
+            {
+                Mode_textbox.Text = "Backpack";
+            }
+            else if (gui_packet[2] == 2)
+            {
+                Mode_textbox.Text = "Bowling Ball";
+            }
+            else
+            {
+                Mode_textbox.Text = "lol error";
+            }
+
+            //Mode_textbox.Text = (gui_packet[2].ToString());
+            Mode_textbox.ForeColor = System.Drawing.Color.White;
             
             Pi2.Text = (gui_packet[2].ToString());
 
-            //displays status of intake system
-            if (Convert.ToInt32(gui_packet[2] & 3) == 1)
+            if(Convert.ToInt32(gui_packet[3] & 1) == 1)
             {
-                Intake_textbox.Text = ("Foam");
-                Intake_textbox.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (Convert.ToInt32(gui_packet[2] & 3) == 2)
-            {
-                Intake_textbox.Text = ("Soccer");
-                Intake_textbox.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (Convert.ToInt32(gui_packet[2] & 3) == 0)
-            {
-                Intake_textbox.Text = ("Off");
-                Intake_textbox.ForeColor = System.Drawing.Color.White;
+                LL_textbox.Text = "1";
             }
             else
             {
-                Intake_textbox.Text = ("???");
-                Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;
+                LL_textbox.Text = "0";
             }
-
-            //displays state of finger
-            if (Convert.ToInt32(gui_packet[2] & 4) == 4)
+            if (Convert.ToInt32(gui_packet[3] & 2) == 2)
             {
-                doorPiston_textbox.Text = ("Down");
-                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
+                LR_textbox.Text = "1";
             }
             else
             {
-                doorPiston_textbox.Text = ("Up");
-                doorPiston_textbox.ForeColor = System.Drawing.Color.White;
+                LR_textbox.Text = "0";
             }
-
-            //displays status of soccer door
-            if (Convert.ToInt32(gui_packet[2] & 8) == 8)
+            if (Convert.ToInt32(gui_packet[3] & 4) == 4)
             {
-                SoccerDoor_textbox.Text = ("Down");
-                SoccerDoor_textbox.ForeColor = System.Drawing.Color.White;
+                UL_textbox.Text = "1";
             }
             else
             {
-                SoccerDoor_textbox.Text = ("Up");
-                SoccerDoor_textbox.ForeColor = System.Drawing.Color.White;
+                UL_textbox.Text = "0";
             }
-
-            //displays status of foam door
-            if (Convert.ToInt32(gui_packet[2] & 16) == 16)
+            if (Convert.ToInt32(gui_packet[3] & 8) == 8)
             {
-                FoamDoor_textbox.Text = ("Down");
-                FoamDoor_textbox.ForeColor = System.Drawing.Color.White;
+                UR_textbox.Text = "1";
             }
             else
             {
-                FoamDoor_textbox.Text = ("Up");
-                FoamDoor_textbox.ForeColor = System.Drawing.Color.White;
+                UR_textbox.Text = "0";
             }
-
-            //displays status of rope clamp
-
-            if (Convert.ToInt32(gui_packet[2] & 32) == 32)
+            if (Convert.ToInt32(gui_packet[3] & 16) == 16)
             {
-                RopeClamp_textBox.Text = ("In");
-                RopeClamp_textBox.ForeColor = System.Drawing.Color.White;
+                Backpack_intake_textbox.Text = "Outtake";
+            }
+            else if (Convert.ToInt32(gui_packet[3] & 32) == 32)
+            {
+                Backpack_intake_textbox.Text = "Intake";
             }
             else
             {
-                RopeClamp_textBox.Text = ("Out");
-                RopeClamp_textBox.ForeColor = System.Drawing.Color.White;
+                Backpack_intake_textbox.Text = "Off";
             }
+            if (Convert.ToInt32(gui_packet[3] & 64) == 64)
+            {
+                bowlingball_intake_textbx.Text = "Outtake";
+            }
+            else if (Convert.ToInt32(gui_packet[3] & 128) == 128)
+            {
+                bowlingball_intake_textbx.Text = "Intake";
+            }
+            else
+            {
+                bowlingball_intake_textbx.Text = "Off";
+            }
+            backpackSpeed_textbox.Text = (gui_packet[4].ToString());
+            bowlingArmSpeed_textbox.Text = (gui_packet[5].ToString());
 
+            
             Pi3.Text = (gui_packet[3].ToString());
-
-            if (Convert.ToInt32(gui_packet[3] & 15) == 1)
-            {
-                SimonSays_textbox.Text = ("LL");
-                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (Convert.ToInt32(gui_packet[3] & 15) == 2)
-            {
-                SimonSays_textbox.Text = ("LR");
-                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (Convert.ToInt32(gui_packet[3] & 15) == 4)
-            {
-                SimonSays_textbox.Text = ("UL");
-                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (Convert.ToInt32(gui_packet[3] & 15) == 8)
-            {
-                SimonSays_textbox.Text = ("UR");
-                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else if (Convert.ToInt32(gui_packet[3] & 8) == 0)
-            {
-                SimonSays_textbox.Text = ("None");
-                SimonSays_textbox.ForeColor = System.Drawing.Color.White;
-            }
-            else
-            {
-                SimonSays_textbox.Text = ("???");
-                SimonSays_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            }
-
-
             Pi4.Text = (gui_packet[4].ToString());
             Pi5.Text = (gui_packet[5].ToString());
             Pi6.Text = (gui_packet[6].ToString());
@@ -614,63 +410,49 @@ namespace iRoboticsDS
                 System.Threading.Thread.Sleep(30);
             }
         }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label12_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label17_Click(object sender, EventArgs e)
         {
 
         }
+        private void label14_Click(object sender, EventArgs e)
+        {
 
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
         private void label22_Click(object sender, EventArgs e)
         {
 
         }
-
         private void label23_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Piston_UL_Click(object sender, EventArgs e)
+        private void label22_Click_1(object sender, EventArgs e)
         {
-            UL = !UL;
-            if (UL) _UL = 1;
-            else _UL = 0;
+
         }
 
-        private void Piston_UR_Click(object sender, EventArgs e)
+        private void Mode_textbox_TextChanged(object sender, EventArgs e)
         {
-            UR = !UR;
-            if (UR) _UR = 1;
-            else _UR = 0;
+
         }
 
-        private void Piston_LL_Click(object sender, EventArgs e)
+        private void label22_Click_2(object sender, EventArgs e)
         {
-            LL = !LL;
-            if (LL) _LL = 1;
-            else _LL = 0;
+
         }
 
-        private void Piston_LR_Click(object sender, EventArgs e)
+        private void label22_Click_3(object sender, EventArgs e)
         {
-            LR = !LR;
-            if (LR) _LR = 1;
-            else _LR = 0;
+
         }
     }
 }

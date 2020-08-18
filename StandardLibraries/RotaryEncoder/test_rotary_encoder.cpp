@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <pigpio.h>
+#include "../wiringPiLib/wiringPi/wiringPi.h"
 
 #include "rotary_encoder.hpp"
 
@@ -42,4 +42,3 @@ int main(int argc, char *argv[])
 
    gpioTerminate();
 }
-

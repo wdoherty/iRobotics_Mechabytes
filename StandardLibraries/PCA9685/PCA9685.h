@@ -26,6 +26,8 @@
 #include <inttypes.h>
 //#include "I2C.h"
 #include "../wiringPiLib/wiringPi/wiringPiI2C.h"
+// #include <pigpio.h>
+
 // Register Definitions
 
 #define MODE1 0x00			//Mode  register  1
