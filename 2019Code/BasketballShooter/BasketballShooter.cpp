@@ -71,6 +71,25 @@ unsigned char BasketballShooter::updateBasketballShooter(unsigned char stage, un
   return 1;
 }
 
+unsigned char BasketballShooter::updateBasketballShooter(unsigned char turretL, unsigned char turretR)
+{
+  int turretMagnitude = 0;
+
+  if(turretL > 0)
+  {
+    turretMagnitude = (800 * 1) + 2185;
+    turret->setThrottle(turretMagnitude);
+  }
+  else if(turretR > 0)
+  {
+    turretMagnitude = (800 * -1) + 2185;
+    turret->setThrottle(turretMagnitude);
+  }
+  else turret->setThrottle(2185);
+
+  return 1;
+}
+
 void BasketballShooter::failsafe()
 {
   shooter->setThrottle(2185);

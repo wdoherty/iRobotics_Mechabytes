@@ -18,12 +18,12 @@ unsigned char* BowlingBallIntake::updateBowlingBallIntake(unsigned char intakeIn
     //handles intake state
     if(intakeIn > 0)
     {
-      intakeRoller->setThrottle(2585);
+      intakeRoller->setThrottle(2485);
       bowlingVals[0] = 128;
     }
     else if(intakeOut > 0)
     {
-      intakeRoller->setThrottle(1785);
+      intakeRoller->setThrottle(1885);
       bowlingVals[0] = 64;
     }
     else
@@ -60,7 +60,7 @@ void BowlingBallIntake::moveIntake(unsigned char manualRotate)
   if(rotateMag > 743 && rotateMag < 907) rotateMag = 825;
   bowlingVals[1] = rotateMag/16;
   if(bowlingVals[1] > 100) bowlingVals[1] = 100;
-  
+
   rotateMag += 1360;
 
   intakePivot->setThrottle(rotateMag);

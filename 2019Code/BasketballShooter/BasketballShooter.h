@@ -9,6 +9,7 @@ class BasketballShooter
 public:
     BasketballShooter(PCA9685* PWM, int stopperPin, int shooterPin, int turretPin, int stagingPin1, int stagingPin2);
     unsigned char updateBasketballShooter(unsigned char stage, unsigned char feed, unsigned char runShooter, int turretOfffset);
+    unsigned char updateBasketballShooter(unsigned char turretL, unsigned char turretR);
     void failsafe();
 private:
     PCA9685* controller;

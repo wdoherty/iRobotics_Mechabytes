@@ -10,3 +10,15 @@ C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsD
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.csproj.CopyComplete
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.exe
 C:\Users\Billy\Desktop\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.pdb
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\x86\Debug\iRoboticsDS.exe.config
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\x86\Debug\iRoboticsDS.exe
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\x86\Debug\iRoboticsDS.pdb
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\bin\x86\Debug\SlimDX.dll
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.csprojAssemblyReference.cache
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.DriverStation.resources
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.Properties.Resources.resources
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.csproj.GenerateResource.cache
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.csproj.CoreCompileInputs.cache
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.csproj.CopyComplete
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.exe
+C:\Users\Billy\Desktop\iRobotics\Mechabytes\RobotCode\Mechabytes\DS\iRoboticsDS\iRoboticsDS\obj\x86\Debug\iRoboticsDS.pdb

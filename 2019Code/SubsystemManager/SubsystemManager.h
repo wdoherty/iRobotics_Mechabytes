@@ -27,7 +27,7 @@ private:
     Backpack* backpack;
     TankDrive* driveTrain;
     // BasketballIntake* basketball_intake;
-    // BasketballShooter* basketball_shooter;
+    BasketballShooter* basketball_shooter;
     BowlingBallIntake* bowlingBall;
 
     Controller* controller;
@@ -61,6 +61,9 @@ private:
     unsigned char backpack_presetLevel;
     unsigned char backpack_presetDown;
     unsigned char backpack_manual;
+
+    unsigned char turretLeft;
+    unsigned char turretRight;
 
     unsigned char bowlingball_intake;
     unsigned char bowlingball_outtake;

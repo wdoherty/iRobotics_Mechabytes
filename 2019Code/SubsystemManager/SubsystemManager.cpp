@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-
+// using namespace std;
 // intitalizes the subsystem manager and all global objects
 SubsystemManager::SubsystemManager()
 {
@@ -26,6 +26,7 @@ void SubsystemManager::failsafe()
     bowlingBall->failsafe();
     driveTrain->failsafe();
     backpack->failsafe();
+    basketball_shooter->failsafe();
 }
 
 // creates a new instance of each robot subsystem
@@ -33,10 +34,11 @@ void SubsystemManager::failsafe()
 
 void SubsystemManager::initializeSubsystems()
 {
-    driveTrain = new TankDrive(PWM1, 0, 1, 2, 3, 4, 5); //left drive 0, 1, 2; right drive 3, 4, 5
+    driveTrain = new TankDrive(PWM1, 12, 1, 2, 3, 4, 5); //left drive 0, 1, 2; right drive 3, 4, 5
     backpack = new Backpack(PWM1, 6, 7, 8); //frontIntake pin 6, rearIntake pin 7, linkage pin 8
     bowlingBall = new BowlingBallIntake(PWM1, 9, 10, 11); //pivot pin 9, intake pin 10, lift pin 11
     simonSays = new SimonSays(17, 27, 22, 18); //GPIO 17, 27, 22, 23 for pistons (Pi 11, 13, 15, 16)
+    basketball_shooter = new BasketballShooter(PWM1,23,13,0,14,15); //no stopper, no shooter, turret pin 0, no staging1, no staging2
 }
 
 // looping function
@@ -56,7 +58,7 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
      intakeVals = 0;
 
      memset(returnValues,0,sizeof(returnValues));
-
+     // cout << "Reading controller" << endl;
      // assigns values of XBox controller to specific functions
       driveThrottleRight = controller->RTrigger();
       driveThrottleLeft = controller->LTrigger();
@@ -74,8 +76,11 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
       backpack_presetDown = controller->A();
       backpack_manual = controller->RightStickY();
 
-      bowlingball_intake = controller->LB();
-      bowlingball_outtake = controller->RB();
+      // turretLeft = controller->X();
+      // turretRight = controller->Y();
+
+      bowlingball_intake = controller->RB();
+      bowlingball_outtake = controller->LB();
       bowlingball_liftUp = controller->Y();
       bowlingball_liftDown = controller->X();
       bowlingball_presetOut = controller->B();
@@ -85,7 +90,7 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
 
       modeUp = controller->DPadRight();
       modeDown = controller->DPadLeft();
-
+      // cout << "Read controller" << endl;
       setMode();
 
       driveVals = driveTrain->updateDrive(driveThrottleRight, driveThrottleLeft, driveHeading);
@@ -93,24 +98,30 @@ unsigned char* SubsystemManager::runRobot(unsigned char controllerIn[8])
 
       if(mode == 0)
       {
-        bowlingVals = bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
-        intakeVals += bowlingVals[0];
+        basketball_shooter->updateBasketballShooter(turretLeft, turretRight);
+        bowlingVals = bowlingBall->updateBowlingBallIntake(0, 0, 0, 0, 0);
+        // intakeVals += bowlingVals[0];
+        intakeVals += 0;
         intakeVals += simonSays->updateSimonSays(SimonSays_UpperLeft, SimonSays_UpperRight, SimonSays_LowerLeft, SimonSays_LowerRight);
         backpackVals = backpack->updateBackpack(100, 0, 0);
         intakeVals += backpackVals[0];
       }
       else if(mode == 1)
       {
-        bowlingVals = bowlingBall->updateBowlingBallIntake(0, 0, 100, 0, 0);
-        intakeVals += bowlingVals[0];
+        basketball_shooter->updateBasketballShooter(0, 0);
+        bowlingVals = bowlingBall->updateBowlingBallIntake(0, 0, 0, 0, 0);
+        // intakeVals += bowlingVals[0];
+        intakeVals += 0;
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         backpackVals = backpack->updateBackpack(backpack_manual, backpack_intake, backpack_outtake);
         intakeVals += backpackVals[0];
       }
       else
       {
+        basketball_shooter->updateBasketballShooter(0, 0);
         bowlingVals = bowlingBall->updateBowlingBallIntake(bowlingball_intake, bowlingball_outtake, bowlingball_manual, bowlingball_liftUp, bowlingball_liftDown);
-        intakeVals += bowlingVals[0];
+        // intakeVals += bowlingVals[0];
+        intakeVals += 0;
         intakeVals += simonSays->updateSimonSays(0, 0, 0, 0);
         backpackVals = backpack->updateBackpack(100, 0, 0);
         intakeVals += backpackVals[0];

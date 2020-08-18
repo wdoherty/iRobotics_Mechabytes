@@ -18,7 +18,8 @@ TankDrive::TankDrive(PCA9685* PWM, int leftPin1, int leftPin2, int leftPin3, int
     right1 = new Victor(controller, _rightPin1);
     right2 = new Victor(controller, _rightPin2);
     right3 = new Victor(controller, _rightPin3);
-    headingMod = 1.6;
+    // headingMod = 1.6;
+    headingMod = 1;
 }
 
 void TankDrive::failsafe()
@@ -60,7 +61,7 @@ return driveVals;
 void TankDrive::setThrottle(int lStickY, int rStickX)
 {
        double throttle = abs(lStickY-825) * (lStickY < 825 ? -1 : 1);    //// = magnitude & direction of throttle
-       double heading = abs(rStickX-825) * (rStickX < 825 ? -1 : 1);    //// = magnitude and direction of heading
+       double heading = abs(rStickX-825) * (rStickX < 825 ? 1 : -1);    //// = magnitude and direction of heading
 
        double angularPower = fabs(throttle/825)*(heading)/(headingMod); //scales rotation by throttle value when not in quick turn
 

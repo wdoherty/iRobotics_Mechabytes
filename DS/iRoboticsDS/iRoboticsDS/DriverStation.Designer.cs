@@ -47,21 +47,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.connection_textBox = new System.Windows.Forms.TextBox();
             this.connection_label = new System.Windows.Forms.Label();
-            this.SoccerDoor_textbox = new System.Windows.Forms.TextBox();
-            this.wheelType_label = new System.Windows.Forms.Label();
-            this.doorPiston_textbox = new System.Windows.Forms.TextBox();
-            this.drivingSpeed_label = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.UL_label = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.FoamDoor_textbox = new System.Windows.Forms.TextBox();
-            this.shooter_label = new System.Windows.Forms.Label();
+            this.Backpack_intake_textbox = new System.Windows.Forms.TextBox();
+            this.Backpack_intake_label = new System.Windows.Forms.Label();
+            this.bowlingball_intake_textbx = new System.Windows.Forms.TextBox();
+            this.bowlingball_intake_label = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.Intake_textbox = new System.Windows.Forms.TextBox();
-            this.autoCompress_label = new System.Windows.Forms.Label();
+            this.Mode_textbox = new System.Windows.Forms.TextBox();
+            this.Mode_label = new System.Windows.Forms.Label();
             this.DriveRight_textbox = new System.Windows.Forms.TextBox();
-            this.compressorStatus_label = new System.Windows.Forms.Label();
+            this.DriveRight_label = new System.Windows.Forms.Label();
             this.DriveLeft_textbox = new System.Windows.Forms.TextBox();
-            this.pressure_label = new System.Windows.Forms.Label();
+            this.DriveLeft_label = new System.Windows.Forms.Label();
             this.ControllerData1 = new System.Windows.Forms.TextBox();
             this.ControllerData2 = new System.Windows.Forms.TextBox();
             this.ControllerData3 = new System.Windows.Forms.TextBox();
@@ -95,14 +94,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.SimonSays_textbox = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.RopeClamp_textBox = new System.Windows.Forms.TextBox();
-            this.Piston_UL = new System.Windows.Forms.Button();
-            this.Piston_UR = new System.Windows.Forms.Button();
-            this.Piston_LL = new System.Windows.Forms.Button();
-            this.Piston_LR = new System.Windows.Forms.Button();
+            this.UR_label = new System.Windows.Forms.Label();
+            this.LL_label = new System.Windows.Forms.Label();
+            this.LR_label = new System.Windows.Forms.Label();
+            this.UL_textbox = new System.Windows.Forms.TextBox();
+            this.UR_textbox = new System.Windows.Forms.TextBox();
+            this.LR_textbox = new System.Windows.Forms.TextBox();
+            this.LL_textbox = new System.Windows.Forms.TextBox();
+            this.backpackSpeed_label = new System.Windows.Forms.Label();
+            this.backpackSpeed_textbox = new System.Windows.Forms.TextBox();
+            this.bowlingArmSpeed_label = new System.Windows.Forms.Label();
+            this.bowlingArmSpeed_textbox = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.panel5.SuspendLayout();
@@ -133,7 +135,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Green;
+            this.label3.ForeColor = System.Drawing.Color.Gold;
             this.label3.Location = new System.Drawing.Point(735, 45);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -308,164 +310,154 @@
             this.connection_label.TabIndex = 68;
             this.connection_label.Text = "Signal Integrity:";
             // 
-            // SoccerDoor_textbox
-            // 
-            this.SoccerDoor_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.SoccerDoor_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SoccerDoor_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SoccerDoor_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoccerDoor_textbox.ForeColor = System.Drawing.Color.White;
-            this.SoccerDoor_textbox.Location = new System.Drawing.Point(196, 288);
-            this.SoccerDoor_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.SoccerDoor_textbox.Multiline = true;
-            this.SoccerDoor_textbox.Name = "SoccerDoor_textbox";
-            this.SoccerDoor_textbox.ReadOnly = true;
-            this.SoccerDoor_textbox.Size = new System.Drawing.Size(181, 41);
-            this.SoccerDoor_textbox.TabIndex = 42;
-            this.SoccerDoor_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // wheelType_label
-            // 
-            this.wheelType_label.AutoSize = true;
-            this.wheelType_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wheelType_label.ForeColor = System.Drawing.Color.White;
-            this.wheelType_label.Location = new System.Drawing.Point(23, 295);
-            this.wheelType_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.wheelType_label.Name = "wheelType_label";
-            this.wheelType_label.Size = new System.Drawing.Size(127, 26);
-            this.wheelType_label.TabIndex = 41;
-            this.wheelType_label.Text = "SoccerDoor";
-            // 
-            // doorPiston_textbox
-            // 
-            this.doorPiston_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.doorPiston_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.doorPiston_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.doorPiston_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doorPiston_textbox.ForeColor = System.Drawing.Color.White;
-            this.doorPiston_textbox.Location = new System.Drawing.Point(196, 223);
-            this.doorPiston_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.doorPiston_textbox.Multiline = true;
-            this.doorPiston_textbox.Name = "doorPiston_textbox";
-            this.doorPiston_textbox.ReadOnly = true;
-            this.doorPiston_textbox.Size = new System.Drawing.Size(181, 41);
-            this.doorPiston_textbox.TabIndex = 40;
-            this.doorPiston_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // drivingSpeed_label
-            // 
-            this.drivingSpeed_label.AutoSize = true;
-            this.drivingSpeed_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drivingSpeed_label.ForeColor = System.Drawing.Color.White;
-            this.drivingSpeed_label.Location = new System.Drawing.Point(23, 230);
-            this.drivingSpeed_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.drivingSpeed_label.Name = "drivingSpeed_label";
-            this.drivingSpeed_label.Size = new System.Drawing.Size(73, 26);
-            this.drivingSpeed_label.TabIndex = 0;
-            this.drivingSpeed_label.Text = "Finger";
-            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel6.Controls.Add(this.Piston_LR);
-            this.panel6.Controls.Add(this.Piston_LL);
-            this.panel6.Controls.Add(this.Piston_UR);
-            this.panel6.Controls.Add(this.Piston_UL);
+            this.panel6.Controls.Add(this.LL_textbox);
+            this.panel6.Controls.Add(this.LR_textbox);
+            this.panel6.Controls.Add(this.UR_textbox);
+            this.panel6.Controls.Add(this.UL_textbox);
+            this.panel6.Controls.Add(this.LR_label);
+            this.panel6.Controls.Add(this.LL_label);
+            this.panel6.Controls.Add(this.UR_label);
+            this.panel6.Controls.Add(this.UL_label);
             this.panel6.Location = new System.Drawing.Point(453, 463);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(796, 283);
             this.panel6.TabIndex = 53;
             // 
+            // UL_label
+            // 
+            this.UL_label.AutoSize = true;
+            this.UL_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UL_label.ForeColor = System.Drawing.Color.White;
+            this.UL_label.Location = new System.Drawing.Point(39, 46);
+            this.UL_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UL_label.Name = "UL_label";
+            this.UL_label.Size = new System.Drawing.Size(40, 26);
+            this.UL_label.TabIndex = 72;
+            this.UL_label.Text = "UL";
+            this.UL_label.Click += new System.EventHandler(this.label22_Click_3);
+            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel7.Controls.Add(this.RopeClamp_textBox);
-            this.panel7.Controls.Add(this.label23);
-            this.panel7.Controls.Add(this.SimonSays_textbox);
-            this.panel7.Controls.Add(this.label22);
-            this.panel7.Controls.Add(this.FoamDoor_textbox);
-            this.panel7.Controls.Add(this.shooter_label);
+            this.panel7.Controls.Add(this.bowlingArmSpeed_textbox);
+            this.panel7.Controls.Add(this.bowlingArmSpeed_label);
+            this.panel7.Controls.Add(this.backpackSpeed_textbox);
+            this.panel7.Controls.Add(this.backpackSpeed_label);
+            this.panel7.Controls.Add(this.Backpack_intake_textbox);
+            this.panel7.Controls.Add(this.Backpack_intake_label);
+            this.panel7.Controls.Add(this.bowlingball_intake_textbx);
+            this.panel7.Controls.Add(this.bowlingball_intake_label);
             this.panel7.Location = new System.Drawing.Point(859, 107);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(391, 342);
             this.panel7.TabIndex = 54;
             // 
-            // FoamDoor_textbox
+            // Backpack_intake_textbox
             // 
-            this.FoamDoor_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.FoamDoor_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FoamDoor_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.FoamDoor_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FoamDoor_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.FoamDoor_textbox.Location = new System.Drawing.Point(273, 14);
-            this.FoamDoor_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.FoamDoor_textbox.Multiline = true;
-            this.FoamDoor_textbox.Name = "FoamDoor_textbox";
-            this.FoamDoor_textbox.ReadOnly = true;
-            this.FoamDoor_textbox.Size = new System.Drawing.Size(99, 41);
-            this.FoamDoor_textbox.TabIndex = 67;
-            this.FoamDoor_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Backpack_intake_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.Backpack_intake_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Backpack_intake_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Backpack_intake_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Backpack_intake_textbox.ForeColor = System.Drawing.Color.White;
+            this.Backpack_intake_textbox.Location = new System.Drawing.Point(214, 89);
+            this.Backpack_intake_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.Backpack_intake_textbox.Multiline = true;
+            this.Backpack_intake_textbox.Name = "Backpack_intake_textbox";
+            this.Backpack_intake_textbox.ReadOnly = true;
+            this.Backpack_intake_textbox.Size = new System.Drawing.Size(138, 41);
+            this.Backpack_intake_textbox.TabIndex = 71;
+            this.Backpack_intake_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // shooter_label
+            // Backpack_intake_label
             // 
-            this.shooter_label.AutoSize = true;
-            this.shooter_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shooter_label.ForeColor = System.Drawing.Color.White;
-            this.shooter_label.Location = new System.Drawing.Point(21, 21);
-            this.shooter_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.shooter_label.Name = "shooter_label";
-            this.shooter_label.Size = new System.Drawing.Size(115, 26);
-            this.shooter_label.TabIndex = 66;
-            this.shooter_label.Text = "FoamDoor";
+            this.Backpack_intake_label.AutoSize = true;
+            this.Backpack_intake_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Backpack_intake_label.ForeColor = System.Drawing.Color.White;
+            this.Backpack_intake_label.Location = new System.Drawing.Point(16, 96);
+            this.Backpack_intake_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Backpack_intake_label.Name = "Backpack_intake_label";
+            this.Backpack_intake_label.Size = new System.Drawing.Size(172, 26);
+            this.Backpack_intake_label.TabIndex = 70;
+            this.Backpack_intake_label.Text = "Backpack Intake";
+            this.Backpack_intake_label.Click += new System.EventHandler(this.label22_Click_2);
+            // 
+            // bowlingball_intake_textbx
+            // 
+            this.bowlingball_intake_textbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.bowlingball_intake_textbx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bowlingball_intake_textbx.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bowlingball_intake_textbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bowlingball_intake_textbx.ForeColor = System.Drawing.Color.White;
+            this.bowlingball_intake_textbx.Location = new System.Drawing.Point(214, 21);
+            this.bowlingball_intake_textbx.Margin = new System.Windows.Forms.Padding(0);
+            this.bowlingball_intake_textbx.Multiline = true;
+            this.bowlingball_intake_textbx.Name = "bowlingball_intake_textbx";
+            this.bowlingball_intake_textbx.ReadOnly = true;
+            this.bowlingball_intake_textbx.Size = new System.Drawing.Size(138, 41);
+            this.bowlingball_intake_textbx.TabIndex = 69;
+            this.bowlingball_intake_textbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // bowlingball_intake_label
+            // 
+            this.bowlingball_intake_label.AutoSize = true;
+            this.bowlingball_intake_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bowlingball_intake_label.ForeColor = System.Drawing.Color.White;
+            this.bowlingball_intake_label.Location = new System.Drawing.Point(16, 28);
+            this.bowlingball_intake_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bowlingball_intake_label.Name = "bowlingball_intake_label";
+            this.bowlingball_intake_label.Size = new System.Drawing.Size(191, 26);
+            this.bowlingball_intake_label.TabIndex = 68;
+            this.bowlingball_intake_label.Text = "BowlingBall Intake";
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.panel8.Controls.Add(this.Intake_textbox);
-            this.panel8.Controls.Add(this.autoCompress_label);
-            this.panel8.Controls.Add(this.SoccerDoor_textbox);
-            this.panel8.Controls.Add(this.wheelType_label);
+            this.panel8.Controls.Add(this.Mode_textbox);
+            this.panel8.Controls.Add(this.Mode_label);
             this.panel8.Controls.Add(this.DriveRight_textbox);
-            this.panel8.Controls.Add(this.doorPiston_textbox);
-            this.panel8.Controls.Add(this.compressorStatus_label);
-            this.panel8.Controls.Add(this.drivingSpeed_label);
+            this.panel8.Controls.Add(this.DriveRight_label);
             this.panel8.Controls.Add(this.DriveLeft_textbox);
-            this.panel8.Controls.Add(this.pressure_label);
+            this.panel8.Controls.Add(this.DriveLeft_label);
             this.panel8.Location = new System.Drawing.Point(453, 107);
             this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(393, 342);
             this.panel8.TabIndex = 55;
             // 
-            // Intake_textbox
+            // Mode_textbox
             // 
-            this.Intake_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.Intake_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Intake_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Intake_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Intake_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.Intake_textbox.Location = new System.Drawing.Point(239, 158);
-            this.Intake_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.Intake_textbox.Multiline = true;
-            this.Intake_textbox.Name = "Intake_textbox";
-            this.Intake_textbox.ReadOnly = true;
-            this.Intake_textbox.Size = new System.Drawing.Size(138, 41);
-            this.Intake_textbox.TabIndex = 67;
-            this.Intake_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Mode_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.Mode_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Mode_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Mode_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mode_textbox.ForeColor = System.Drawing.Color.White;
+            this.Mode_textbox.Location = new System.Drawing.Point(131, 153);
+            this.Mode_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.Mode_textbox.Multiline = true;
+            this.Mode_textbox.Name = "Mode_textbox";
+            this.Mode_textbox.ReadOnly = true;
+            this.Mode_textbox.Size = new System.Drawing.Size(245, 41);
+            this.Mode_textbox.TabIndex = 67;
+            this.Mode_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Mode_textbox.TextChanged += new System.EventHandler(this.Mode_textbox_TextChanged);
             // 
-            // autoCompress_label
+            // Mode_label
             // 
-            this.autoCompress_label.AutoSize = true;
-            this.autoCompress_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.autoCompress_label.ForeColor = System.Drawing.Color.White;
-            this.autoCompress_label.Location = new System.Drawing.Point(23, 165);
-            this.autoCompress_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.autoCompress_label.Name = "autoCompress_label";
-            this.autoCompress_label.Size = new System.Drawing.Size(71, 26);
-            this.autoCompress_label.TabIndex = 66;
-            this.autoCompress_label.Text = "Intake";
+            this.Mode_label.AutoSize = true;
+            this.Mode_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mode_label.ForeColor = System.Drawing.Color.White;
+            this.Mode_label.Location = new System.Drawing.Point(23, 164);
+            this.Mode_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Mode_label.Name = "Mode_label";
+            this.Mode_label.Size = new System.Drawing.Size(66, 26);
+            this.Mode_label.TabIndex = 66;
+            this.Mode_label.Text = "Mode";
+            this.Mode_label.Click += new System.EventHandler(this.label22_Click_1);
             // 
             // DriveRight_textbox
             // 
@@ -473,7 +465,7 @@
             this.DriveRight_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DriveRight_textbox.Cursor = System.Windows.Forms.Cursors.Default;
             this.DriveRight_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DriveRight_textbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.DriveRight_textbox.ForeColor = System.Drawing.Color.White;
             this.DriveRight_textbox.Location = new System.Drawing.Point(277, 89);
             this.DriveRight_textbox.Margin = new System.Windows.Forms.Padding(0);
             this.DriveRight_textbox.Multiline = true;
@@ -483,17 +475,17 @@
             this.DriveRight_textbox.TabIndex = 65;
             this.DriveRight_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // compressorStatus_label
+            // DriveRight_label
             // 
-            this.compressorStatus_label.AutoSize = true;
-            this.compressorStatus_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compressorStatus_label.ForeColor = System.Drawing.Color.White;
-            this.compressorStatus_label.Location = new System.Drawing.Point(23, 96);
-            this.compressorStatus_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.compressorStatus_label.Name = "compressorStatus_label";
-            this.compressorStatus_label.Size = new System.Drawing.Size(114, 26);
-            this.compressorStatus_label.TabIndex = 64;
-            this.compressorStatus_label.Text = "DriveRight";
+            this.DriveRight_label.AutoSize = true;
+            this.DriveRight_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriveRight_label.ForeColor = System.Drawing.Color.White;
+            this.DriveRight_label.Location = new System.Drawing.Point(23, 96);
+            this.DriveRight_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DriveRight_label.Name = "DriveRight_label";
+            this.DriveRight_label.Size = new System.Drawing.Size(114, 26);
+            this.DriveRight_label.TabIndex = 64;
+            this.DriveRight_label.Text = "DriveRight";
             // 
             // DriveLeft_textbox
             // 
@@ -511,17 +503,17 @@
             this.DriveLeft_textbox.TabIndex = 63;
             this.DriveLeft_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pressure_label
+            // DriveLeft_label
             // 
-            this.pressure_label.AutoSize = true;
-            this.pressure_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pressure_label.ForeColor = System.Drawing.Color.White;
-            this.pressure_label.Location = new System.Drawing.Point(23, 28);
-            this.pressure_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.pressure_label.Name = "pressure_label";
-            this.pressure_label.Size = new System.Drawing.Size(99, 26);
-            this.pressure_label.TabIndex = 62;
-            this.pressure_label.Text = "DriveLeft";
+            this.DriveLeft_label.AutoSize = true;
+            this.DriveLeft_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriveLeft_label.ForeColor = System.Drawing.Color.White;
+            this.DriveLeft_label.Location = new System.Drawing.Point(23, 28);
+            this.DriveLeft_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DriveLeft_label.Name = "DriveLeft_label";
+            this.DriveLeft_label.Size = new System.Drawing.Size(99, 26);
+            this.DriveLeft_label.TabIndex = 62;
+            this.DriveLeft_label.Text = "DriveLeft";
             // 
             // ControllerData1
             // 
@@ -839,63 +831,161 @@
             this.label4.Text = "ControllerData0";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label22
+            // UR_label
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(21, 89);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(124, 26);
-            this.label22.TabIndex = 68;
-            this.label22.Text = "SimonSays";
-            this.label22.Click += new System.EventHandler(this.label22_Click);
+            this.UR_label.AutoSize = true;
+            this.UR_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UR_label.ForeColor = System.Drawing.Color.White;
+            this.UR_label.Location = new System.Drawing.Point(284, 46);
+            this.UR_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UR_label.Name = "UR_label";
+            this.UR_label.Size = new System.Drawing.Size(44, 26);
+            this.UR_label.TabIndex = 73;
+            this.UR_label.Text = "UR";
             // 
-            // SimonSays_textbox
+            // LL_label
             // 
-            this.SimonSays_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.SimonSays_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SimonSays_textbox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SimonSays_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SimonSays_textbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.SimonSays_textbox.Location = new System.Drawing.Point(273, 85);
-            this.SimonSays_textbox.Margin = new System.Windows.Forms.Padding(0);
-            this.SimonSays_textbox.Multiline = true;
-            this.SimonSays_textbox.Name = "SimonSays_textbox";
-            this.SimonSays_textbox.ReadOnly = true;
-            this.SimonSays_textbox.Size = new System.Drawing.Size(99, 41);
-            this.SimonSays_textbox.TabIndex = 69;
-            this.SimonSays_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LL_label.AutoSize = true;
+            this.LL_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LL_label.ForeColor = System.Drawing.Color.White;
+            this.LL_label.Location = new System.Drawing.Point(39, 209);
+            this.LL_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LL_label.Name = "LL_label";
+            this.LL_label.Size = new System.Drawing.Size(36, 26);
+            this.LL_label.TabIndex = 74;
+            this.LL_label.Text = "LL";
             // 
-            // label23
+            // LR_label
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(22, 158);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(128, 26);
-            this.label23.TabIndex = 70;
-            this.label23.Text = "RopeClamp";
-            this.label23.Click += new System.EventHandler(this.label23_Click);
+            this.LR_label.AutoSize = true;
+            this.LR_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LR_label.ForeColor = System.Drawing.Color.White;
+            this.LR_label.Location = new System.Drawing.Point(284, 209);
+            this.LR_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LR_label.Name = "LR_label";
+            this.LR_label.Size = new System.Drawing.Size(40, 26);
+            this.LR_label.TabIndex = 75;
+            this.LR_label.Text = "LR";
             // 
-            // RopeClamp_textBox
+            // UL_textbox
             // 
-            this.RopeClamp_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.RopeClamp_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RopeClamp_textBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.RopeClamp_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RopeClamp_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.RopeClamp_textBox.Location = new System.Drawing.Point(273, 154);
-            this.RopeClamp_textBox.Margin = new System.Windows.Forms.Padding(0);
-            this.RopeClamp_textBox.Multiline = true;
-            this.RopeClamp_textBox.Name = "RopeClamp_textBox";
-            this.RopeClamp_textBox.ReadOnly = true;
-            this.RopeClamp_textBox.Size = new System.Drawing.Size(99, 41);
-            this.RopeClamp_textBox.TabIndex = 71;
-            this.RopeClamp_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UL_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.UL_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UL_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.UL_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UL_textbox.ForeColor = System.Drawing.Color.White;
+            this.UL_textbox.Location = new System.Drawing.Point(83, 37);
+            this.UL_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.UL_textbox.Multiline = true;
+            this.UL_textbox.Name = "UL_textbox";
+            this.UL_textbox.ReadOnly = true;
+            this.UL_textbox.Size = new System.Drawing.Size(54, 41);
+            this.UL_textbox.TabIndex = 76;
+            this.UL_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // UR_textbox
+            // 
+            this.UR_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.UR_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UR_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.UR_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UR_textbox.ForeColor = System.Drawing.Color.White;
+            this.UR_textbox.Location = new System.Drawing.Point(339, 37);
+            this.UR_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.UR_textbox.Multiline = true;
+            this.UR_textbox.Name = "UR_textbox";
+            this.UR_textbox.ReadOnly = true;
+            this.UR_textbox.Size = new System.Drawing.Size(54, 41);
+            this.UR_textbox.TabIndex = 77;
+            this.UR_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LR_textbox
+            // 
+            this.LR_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.LR_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LR_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LR_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LR_textbox.ForeColor = System.Drawing.Color.White;
+            this.LR_textbox.Location = new System.Drawing.Point(339, 198);
+            this.LR_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.LR_textbox.Multiline = true;
+            this.LR_textbox.Name = "LR_textbox";
+            this.LR_textbox.ReadOnly = true;
+            this.LR_textbox.Size = new System.Drawing.Size(54, 41);
+            this.LR_textbox.TabIndex = 78;
+            this.LR_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // LL_textbox
+            // 
+            this.LL_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.LL_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LL_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LL_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LL_textbox.ForeColor = System.Drawing.Color.White;
+            this.LL_textbox.Location = new System.Drawing.Point(83, 198);
+            this.LL_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.LL_textbox.Multiline = true;
+            this.LL_textbox.Name = "LL_textbox";
+            this.LL_textbox.ReadOnly = true;
+            this.LL_textbox.Size = new System.Drawing.Size(54, 41);
+            this.LL_textbox.TabIndex = 79;
+            this.LL_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // backpackSpeed_label
+            // 
+            this.backpackSpeed_label.AutoSize = true;
+            this.backpackSpeed_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backpackSpeed_label.ForeColor = System.Drawing.Color.White;
+            this.backpackSpeed_label.Location = new System.Drawing.Point(16, 164);
+            this.backpackSpeed_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.backpackSpeed_label.Name = "backpackSpeed_label";
+            this.backpackSpeed_label.Size = new System.Drawing.Size(176, 26);
+            this.backpackSpeed_label.TabIndex = 72;
+            this.backpackSpeed_label.Text = "Backpack Speed";
+            // 
+            // backpackSpeed_textbox
+            // 
+            this.backpackSpeed_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.backpackSpeed_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backpackSpeed_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.backpackSpeed_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backpackSpeed_textbox.ForeColor = System.Drawing.Color.White;
+            this.backpackSpeed_textbox.Location = new System.Drawing.Point(214, 153);
+            this.backpackSpeed_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.backpackSpeed_textbox.Multiline = true;
+            this.backpackSpeed_textbox.Name = "backpackSpeed_textbox";
+            this.backpackSpeed_textbox.ReadOnly = true;
+            this.backpackSpeed_textbox.Size = new System.Drawing.Size(138, 41);
+            this.backpackSpeed_textbox.TabIndex = 73;
+            this.backpackSpeed_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // bowlingArmSpeed_label
+            // 
+            this.bowlingArmSpeed_label.AutoSize = true;
+            this.bowlingArmSpeed_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bowlingArmSpeed_label.ForeColor = System.Drawing.Color.White;
+            this.bowlingArmSpeed_label.Location = new System.Drawing.Point(16, 230);
+            this.bowlingArmSpeed_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bowlingArmSpeed_label.Name = "bowlingArmSpeed_label";
+            this.bowlingArmSpeed_label.Size = new System.Drawing.Size(199, 26);
+            this.bowlingArmSpeed_label.TabIndex = 74;
+            this.bowlingArmSpeed_label.Text = "BowlingArm Speed";
+            // 
+            // bowlingArmSpeed_textbox
+            // 
+            this.bowlingArmSpeed_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.bowlingArmSpeed_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bowlingArmSpeed_textbox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bowlingArmSpeed_textbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bowlingArmSpeed_textbox.ForeColor = System.Drawing.Color.White;
+            this.bowlingArmSpeed_textbox.Location = new System.Drawing.Point(214, 219);
+            this.bowlingArmSpeed_textbox.Margin = new System.Windows.Forms.Padding(0);
+            this.bowlingArmSpeed_textbox.Multiline = true;
+            this.bowlingArmSpeed_textbox.Name = "bowlingArmSpeed_textbox";
+            this.bowlingArmSpeed_textbox.ReadOnly = true;
+            this.bowlingArmSpeed_textbox.Size = new System.Drawing.Size(138, 41);
+            this.bowlingArmSpeed_textbox.TabIndex = 75;
+            this.bowlingArmSpeed_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DriverStation
             // 
@@ -926,6 +1016,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -949,23 +1040,15 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox SoccerDoor_textbox;
-        private System.Windows.Forms.Label wheelType_label;
-        private System.Windows.Forms.TextBox doorPiston_textbox;
-        private System.Windows.Forms.Label drivingSpeed_label;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TextBox DriveRight_textbox;
-        private System.Windows.Forms.Label compressorStatus_label;
+        private System.Windows.Forms.Label DriveRight_label;
         private System.Windows.Forms.TextBox DriveLeft_textbox;
-        private System.Windows.Forms.Label pressure_label;
-        private System.Windows.Forms.TextBox Intake_textbox;
-        private System.Windows.Forms.Label autoCompress_label;
+        private System.Windows.Forms.Label DriveLeft_label;
         private System.Windows.Forms.TextBox connection_textBox;
         private System.Windows.Forms.Label connection_label;
-        private System.Windows.Forms.TextBox FoamDoor_textbox;
-        private System.Windows.Forms.Label shooter_label;
         private System.Windows.Forms.TextBox controller1_textBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -1002,14 +1085,24 @@
         private System.Windows.Forms.TextBox Pi2;
         private System.Windows.Forms.TextBox Pi1;
         private System.Windows.Forms.TextBox Pi0;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox SimonSays_textbox;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox RopeClamp_textBox;
-        private System.Windows.Forms.Button Piston_LR;
-        private System.Windows.Forms.Button Piston_LL;
-        private System.Windows.Forms.Button Piston_UR;
-        private System.Windows.Forms.Button Piston_UL;
+        private System.Windows.Forms.Label Mode_label;
+        private System.Windows.Forms.TextBox Mode_textbox;
+        private System.Windows.Forms.Label bowlingball_intake_label;
+        private System.Windows.Forms.Label Backpack_intake_label;
+        private System.Windows.Forms.TextBox bowlingball_intake_textbx;
+        private System.Windows.Forms.Label UL_label;
+        private System.Windows.Forms.TextBox Backpack_intake_textbox;
+        private System.Windows.Forms.TextBox LL_textbox;
+        private System.Windows.Forms.TextBox LR_textbox;
+        private System.Windows.Forms.TextBox UR_textbox;
+        private System.Windows.Forms.TextBox UL_textbox;
+        private System.Windows.Forms.Label LR_label;
+        private System.Windows.Forms.Label LL_label;
+        private System.Windows.Forms.Label UR_label;
+        private System.Windows.Forms.TextBox backpackSpeed_textbox;
+        private System.Windows.Forms.Label backpackSpeed_label;
+        private System.Windows.Forms.TextBox bowlingArmSpeed_textbox;
+        private System.Windows.Forms.Label bowlingArmSpeed_label;
     }
 }
 
